@@ -1,0 +1,395 @@
+# i3 config file (v4.8)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# 22 jul 2015 - E7
+
+#.......
+# Font
+#.......
+
+#set $ft xft:DroidSans:size=8
+#set $ft pango:Inconsolata:size=8
+#set $ft -xos4-terminesspowerline-medium-r-normal--12-120-72-72-c-60-iso10646-1
+#font pango:Terminus 8
+font pango:Roboto 8
+set $ft terminus12
+set $mainMonitor DP-0
+#set $mainMonitor HDMI-0
+set $rightMonitor DP-3
+set $topMonitor HDMI-0
+set $leftMonitor DVI-D-0
+
+#------------------------------------------------------------
+
+# Look
+
+#------------------------------------------------------------
+
+new_window pixel 2
+new_float pixel 2
+
+# Hybrid colors
+set $back               #1d1F21
+set $black              #282A2E
+set $grey               #373B41
+set $lightgrey          #707880
+set $white              #C5C8C6
+set $yellow             #F0C674
+set $red                #CC6666
+set $darkred            #A54242
+set $green              #B5BD56
+
+#class                  border      backgr.     text        split
+client.focused          $green     $green       $black      $red
+client.focused_inactive $grey       $grey       $lightgrey  $grey
+client.unfocused        $grey       $grey       $lightgrey  $grey
+client.urgent           $red        $red        $black      $red
+client.background       $back
+
+
+#------------------------------------------------------------
+
+# Workspaces
+
+#------------------------------------------------------------
+
+#Monitor 1 - Main
+set $workspace1 "1:"
+set $workspace2 "2:"
+set $workspace3 "3:"
+set $workspace4 "4:"
+set $workspace5 "5:"
+set $workspace6 "6:"
+set $workspace7 "7:"
+set $workspace8 "8:"
+set $workspace9 "9:"
+set $workspace10 "10: Temp"
+
+#Monitor 2 - Right
+set $workspace11 "11:"
+set $workspace12 "12:"
+set $workspace13 "13:"
+set $workspace14 "14:"
+set $workspace15 "15:"
+set $workspace16 "16:"
+set $workspace17 "17:"
+set $workspace18 "18:"
+set $workspace19 "19:"
+set $workspace20 "20: Temp"
+
+#Monitor 3 - Top
+set $workspace21 "21:"
+set $workspace22 "22:"
+set $workspace23 "23:"
+set $workspace24 "24:"
+set $workspace25 "25:"
+set $workspace26 "26:"
+set $workspace27 "27:"
+set $workspace28 "28:"
+set $workspace29 "29:"
+set $workspace30 "30: Temp"
+
+#Monitor 4 - Left
+set $workspace31 "31:"
+set $workspace32 "32:"
+set $workspace33 "33:"
+set $workspace34 "34:"
+set $workspace35 "35:"
+set $workspace36 "36:"
+set $workspace37 "37:"
+set $workspace38 "38:"
+set $workspace39 "39:"
+set $workspace40 "40: Temp"
+
+#Assign workspaces to monitor 1
+workspace $workspace1 output $mainMonitor
+workspace $workspace2 output $mainMonitor
+workspace $workspace3 output $mainMonitor
+workspace $workspace4 output $mainMonitor
+workspace $workspace5 output $mainMonitor
+workspace $workspace6 output $mainMonitor
+workspace $workspace7 output $mainMonitor
+workspace $workspace8 output $mainMonitor
+workspace $workspace9 output $mainMonitor
+workspace $workspace10 output $mainMonitor
+
+#Assign workspaces to monitor2
+workspace $workspace11 output $rightMonitor
+workspace $workspace12 output $rightMonitor
+workspace $workspace13 output $rightMonitor
+workspace $workspace14 output $rightMonitor
+workspace $workspace15 output $rightMonitor
+workspace $workspace16 output $rightMonitor
+workspace $workspace17 output $rightMonitor
+workspace $workspace18 output $rightMonitor
+workspace $workspace19 output $rightMonitor
+workspace $workspace20 output $rightMonitor
+
+#Assign workspaces to monitor3
+workspace $workspace21 output $topMonitor
+workspace $workspace22 output $topMonitor
+workspace $workspace23 output $topMonitor
+workspace $workspace24 output $topMonitor
+workspace $workspace25 output $topMonitor
+workspace $workspace26 output $topMonitor
+workspace $workspace27 output $topMonitor
+workspace $workspace28 output $topMonitor
+workspace $workspace29 output $topMonitor
+workspace $workspace30 output $topMonitor
+
+#Assign workspaces to monitor4
+workspace $workspace31 output $leftMonitor
+workspace $workspace32 output $leftMonitor
+workspace $workspace33 output $leftMonitor
+workspace $workspace34 output $leftMonitor
+workspace $workspace35 output $leftMonitor
+workspace $workspace36 output $leftMonitor
+workspace $workspace37 output $leftMonitor
+workspace $workspace38 output $leftMonitor
+workspace $workspace39 output $leftMonitor
+workspace $workspace40 output $leftMonitor
+
+#------------------------------------------------------------
+
+# Default Workspaces
+
+# xprop to find class
+#------------------------------------------------------------
+
+#assign application to workspace. user xprop to find window class. WM_CLASS(STRING)
+assign [class="Deluge"] $workspace25
+assign [class="(i)VirtualBox"] $workspace6
+assign [class="Synergy"] $workspace20
+assign [class="Virt-manager"] $workspace20
+assign [class="ckb-next"] $workspace20
+
+#------------------------------------------------------------
+
+# Layout
+
+#------------------------------------------------------------
+
+for_window [class="(?i)feh"] floating enable
+for_window [class="(?i)lxappearance"] floating enable
+for_window [class="(?i)VirtualBox"] floating enable
+for_window [class="Wfica_Seamless"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="smplayer"] floating enable
+for_window [class="Citrix maximized probe window"] floating enable
+for_window [class="pygui.py"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Xfce4-panel"] floating enable
+
+#------------------------------------------------------------
+
+# Key Binds
+
+#------------------------------------------------------------
+
+# Using bindcode for compatibility
+
+# Principal mod key (Super = Win key)
+# mod1 = Alt (xmodmap to show)
+# mod4 = Winkey (xmodmap to show)
+
+set $mod Mod4
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+
+#-----Media keys-----
+bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioStop exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 2 toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 2 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 2 +5%
+
+# kill focused window (mod+q)
+bindsym $mod+Shift+q kill
+
+# Cursor key for focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+#-----Focused Window-----
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Shitf+cursor for move windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation (mod+g)
+bindsym $mod+g split h
+
+# split in vertical orientation (mod+v)
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container (mod+f)
+bindsym $mod+f fullscreen
+
+# change container layout (stacked (mod+s), tabbed (mod+t), default(mod+e))
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating (mod+shitf+space)
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows (mod+space)
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container (mod+a)
+bindsym $mod+a focus parent
+
+# focus the child container (mod+z)
+bindsym $mod+z focus child
+
+#Lock screen
+bindsym $mod+shift+x exec xflock4
+bindsym $mod+shift+z exec dm-tool lock
+
+#switch to workspace
+#Monitor 1
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+#Monitor 2
+bindsym $mod+Control+1 workspace $workspace11
+bindsym $mod+Control+2 workspace $workspace12
+bindsym $mod+Control+3 workspace $workspace13
+bindsym $mod+Control+4 workspace $workspace14
+bindsym $mod+Control+5 workspace $workspace15
+bindsym $mod+Control+6 workspace $workspace16
+bindsym $mod+Control+7 workspace $workspace17
+bindsym $mod+Control+8 workspace $workspace18
+bindsym $mod+Control+9 workspace $workspace19
+bindsym $mod+Control+0 workspace $workspace20
+
+#Monitor 3
+bindsym $mod+Mod1+1 workspace $workspace21
+bindsym $mod+Mod1+2 workspace $workspace22
+bindsym $mod+Mod1+3 workspace $workspace23
+bindsym $mod+Mod1+4 workspace $workspace24
+bindsym $mod+Mod1+5 workspace $workspace25
+bindsym $mod+Mod1+6 workspace $workspace26
+bindsym $mod+Mod1+7 workspace $workspace27
+bindsym $mod+Mod1+8 workspace $workspace28
+bindsym $mod+Mod1+9 workspace $workspace29
+bindsym $mod+Mod1+0 workspace $workspace30
+
+# move focused container to workspace
+# Monitor 1
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+#reload the configuration file (mod+shitf+c)
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3) (mod+shitf+r)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session) (mod+shitf+e)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that) (mod+r)
+mode "resize" {
+  # These bindings trigger as soon as you enter the resize mode
+
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym j resize grow height 10 px or 10 ppt
+  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
+
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#-----Terminal----- (mod+Enter)
+bindsym $mod+Return exec urxvt
+#bindsym $mod+Return exec xfce4-terminal
+
+#-----GTK Theme----- (mod+winkey+a)
+#bindsym $mod+Mod1+a exec lxappearance
+
+#-----D Menu-----
+bindsym $mod+d exec dmenu_run -fn "$ft" -nb "$back" -nf "$white" -sb "$yellow" -sf "$black"
+
+
+#-------Bar Settings-------#
+#bar {
+  #i3bar_command ~/.config/i3/lemonbar/i3_lemonbar.sh
+ # status_command i3blocks
+ # tray_output primary
+ # position top
+ # strip_workspace_numbers yes
+#}
+
+#Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+
+#-------Gaps-------#
+gaps inner 10
+gaps outer -5
+#workspace $workspace6 gaps inner 0
+
+#------Startup-------#
+exec ~/.screenlayout/default.sh
+#exec_always feh --bg-scale /home/fleetscut/.wallpapers/current_wallpaper
+exec_always nitrogen --restore
+
+#Macro keyboard
+#exec_always xinput float $(xinput --list --id-only "Topre Corporation Realforce 87")
+exec_always xinput set-prop $(xinput --list --id-only "Topre Corporation Realforce 87") "Device Enabled" 0
+#exec sudo /home/fleetscut/programming/python/i3keyboard/i3keyboard.py
+exec_always sudo /home/fleetscut/programming/python/i3keyboard/launch.sh
+
+#exec ~/programming/python/i3keyboard/i3keyboard.py
+
+exec_always compton -f
+#exec udiskie
+
+#Corsair keyboard software
+#exec ckb-next
