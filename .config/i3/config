@@ -13,10 +13,10 @@
 #font pango:Terminus 8
 font pango:Roboto 8
 set $ft terminus12
-set $mainMonitor DP-0
+set $mainMonitor DP-5
 #set $mainMonitor HDMI-0
 set $rightMonitor DP-3
-set $topMonitor HDMI-0
+set $topMonitor DP-0
 set $leftMonitor DVI-D-0
 
 #------------------------------------------------------------
