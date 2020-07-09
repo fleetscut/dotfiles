@@ -67,3 +67,5 @@ URxvt.keysym.Control-Left: \033[1;5D
 URxvt.perl-ext-common: resize-font
 
 !!URxvt*.termName: screen-256color
+
+Xcursor.size: 16

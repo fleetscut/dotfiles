@@ -13,11 +13,11 @@
 #font pango:Terminus 8
 font pango:Roboto 8
 set $ft terminus12
-set $mainMonitor DP-5
+set $mainMonitor HDMI-0
 #set $mainMonitor HDMI-0
-set $rightMonitor DP-3
+set $rightMonitor DP-5
 set $topMonitor DP-0
-set $leftMonitor DVI-D-0
+set $leftMonitor DP-3
 
 #------------------------------------------------------------
 
@@ -234,7 +234,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation (mod+g)
-bindsym $mod+g split h
+bindsym $mod+b split h
 
 # split in vertical orientation (mod+v)
 bindsym $mod+v split v
@@ -260,8 +260,11 @@ bindsym $mod+a focus parent
 bindsym $mod+z focus child
 
 #Lock screen
-bindsym $mod+shift+x exec xflock4
+#bindsym $mod+shift+x exec xflock4
 bindsym $mod+shift+z exec dm-tool lock
+
+#Open browser
+bindsym $mod+c exec chromium
 
 #switch to workspace
 #Monitor 1
@@ -300,6 +303,18 @@ bindsym $mod+Mod1+8 workspace $workspace28
 bindsym $mod+Mod1+9 workspace $workspace29
 bindsym $mod+Mod1+0 workspace $workspace30
 
+#Monitor 4
+bindsym $mod+Control+Mod1+1 workspace $workspace31
+bindsym $mod+Control+Mod1+2 workspace $workspace32
+bindsym $mod+Control+Mod1+3 workspace $workspace33
+bindsym $mod+Control+Mod1+4 workspace $workspace34
+bindsym $mod+Control+Mod1+5 workspace $workspace35
+bindsym $mod+Control+Mod1+6 workspace $workspace36
+bindsym $mod+Control+Mod1+7 workspace $workspace37
+bindsym $mod+Control+Mod1+8 workspace $workspace38
+bindsym $mod+Control+Mod1+9 workspace $workspace39
+bindsym $mod+Control+Mod1+0 workspace $workspace40
+
 # move focused container to workspace
 # Monitor 1
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -312,6 +327,43 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# Monitor 2
+bindsym $mod+Control+Shift+1 move container to workspace $workspace11
+bindsym $mod+Control+Shift+2 move container to workspace $workspace12
+bindsym $mod+Control+Shift+3 move container to workspace $workspace13
+bindsym $mod+Control+Shift+4 move container to workspace $workspace14
+bindsym $mod+Control+Shift+5 move container to workspace $workspace15
+bindsym $mod+Control+Shift+6 move container to workspace $workspace16
+bindsym $mod+Control+Shift+7 move container to workspace $workspace17
+bindsym $mod+Control+Shift+8 move container to workspace $workspace18
+bindsym $mod+Control+Shift+9 move container to workspace $workspace19
+bindsym $mod+Control+Shift+0 move container to workspace $workspace20
+
+# Monitor 3
+# bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Mod1+Shift+1 move container to workspace $workspace21
+bindsym $mod+Mod1+Shift+2 move container to workspace $workspace22
+bindsym $mod+Mod1+Shift+3 move container to workspace $workspace23
+bindsym $mod+Mod1+Shift+4 move container to workspace $workspace24
+bindsym $mod+Mod1+Shift+5 move container to workspace $workspace25
+bindsym $mod+Mod1+Shift+6 move container to workspace $workspace26
+bindsym $mod+Mod1+Shift+7 move container to workspace $workspace27
+bindsym $mod+Mod1+Shift+8 move container to workspace $workspace28
+bindsym $mod+Mod1+Shift+9 move container to workspace $workspace29
+bindsym $mod+Mod1+Shift+0 move container to workspace $workspace30
+                                                      
+# Monitor 4
+bindsym $mod+Control+Mod1+Shift+1 move container to workspace $workspace31
+bindsym $mod+Control+Mod1+Shift+2 move container to workspace $workspace32
+bindsym $mod+Control+Mod1+Shift+3 move container to workspace $workspace33
+bindsym $mod+Control+Mod1+Shift+4 move container to workspace $workspace34
+bindsym $mod+Control+Mod1+Shift+5 move container to workspace $workspace35
+bindsym $mod+Control+Mod1+Shift+6 move container to workspace $workspace36
+bindsym $mod+Control+Mod1+Shift+7 move container to workspace $workspace37
+bindsym $mod+Control+Mod1+Shift+8 move container to workspace $workspace38
+bindsym $mod+Control+Mod1+Shift+9 move container to workspace $workspace39
+bindsym $mod+Control+Mod1+Shift+0 move container to workspace $workspace40
 
 #reload the configuration file (mod+shitf+c)
 bindsym $mod+Shift+c reload
@@ -329,16 +381,16 @@ mode "resize" {
   # Pressing right will grow the window’s width.
   # Pressing up will shrink the window’s height.
   # Pressing down will grow the window’s height.
-  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym h resize grow width 10 px or 10 ppt
   bindsym j resize grow height 10 px or 10 ppt
   bindsym k resize shrink height 10 px or 10 ppt
-  bindsym l resize grow width 10 px or 10 ppt
+  bindsym l resize shrink width 10 px or 10 ppt
 
   # same bindings, but for the arrow keys
-  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Left resize grow width 10 px or 10 ppt
   bindsym Down resize grow height 10 px or 10 ppt
   bindsym Up resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow width 10 px or 10 ppt
+  bindsym Right resize shrink width 10 px or 10 ppt
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
@@ -376,15 +428,16 @@ gaps outer -5
 #workspace $workspace6 gaps inner 0
 
 #------Startup-------#
-exec ~/.screenlayout/default.sh
+#exec ~/.screenlayout/default.sh
+#exec light-locker
 #exec_always feh --bg-scale /home/fleetscut/.wallpapers/current_wallpaper
 exec_always nitrogen --restore
 
 #Macro keyboard
 #exec_always xinput float $(xinput --list --id-only "Topre Corporation Realforce 87")
-exec_always xinput set-prop $(xinput --list --id-only "Topre Corporation Realforce 87") "Device Enabled" 0
+#exec_always xinput set-prop $(xinput --list --id-only "Topre Corporation Realforce 87") "Device Enabled" 0
 #exec sudo /home/fleetscut/programming/python/i3keyboard/i3keyboard.py
-exec_always sudo /home/fleetscut/programming/python/i3keyboard/launch.sh
+#exec_always sudo /home/fleetscut/programming/python/i3keyboard/launch.sh
 
 #exec ~/programming/python/i3keyboard/i3keyboard.py
 
