@@ -1,0 +1,7 @@
+{
+    // jedi
+    "python.jediEnabled": false,
+
+    //linting
+    "python.linting.pylintEnabled": true
+}
