@@ -1,0 +1,405 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+;find monitor
+;xrandr -q | grep " connected" | cut -d ' ' -f1
+
+[monitors]
+main = ${xrdb:globals.monitor.main}
+left = ${xrdb:globals.monitor.left}
+right = ${xrdb:globals.monitor.right}
+top = ${xrdb:globals.monitor.top}
+
+
+[colors]
+mainbarcolor = #4b0908
+background-alt = #444
+foreground = #ffffff
+fontcolor1 = #fbca03
+fontcolor2 = #aa0505
+;color1 = #bc5068
+modulecolor1 = #aa0505
+;color2 = #362d58
+modulecolor2 = #fbca03
+wsfocused = #b97d10
+windowalert = #ffffff
+
+[sizes]
+barWidth = 100%
+barHeightBig = 26
+barHeightSmall = 15
+
+[bar/main]
+;Position and size settings
+;monitor = HDMI-0
+monitor = ${monitors.main}
+width = ${sizes.barWidth}
+height = ${sizes.barHeightBig}
+line-size = 3
+line-color = #f00
+border-size = 0
+border-color = #00000000
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+;offset-x = 50
+;offset-y = 50
+radius = 6
+fixed-center = true
+
+background = ${colors.mainbarcolor}
+foreground = ${colors.foreground}
+
+
+font-0 = FontAwesome
+font-1 = Roboto Mono for Powerline:pixelsize=10:weight=bold;0
+
+modules-left = i3 left-spacer1 left-seperator1 xwindow left-seperator2
+modules-center = 
+modules-right = right-seperator1 volume right-seperator2 memory cpu right-seperator1 date right-seperator2 time right-seperator1
+
+tray-position = right
+tray-padding = 2
+tray-background = ${colors.modulecolor1}
+tray-reparent = true
+
+[bar/right]
+monitor = ${monitors.right}
+width = 100%
+height = 33
+offset-x = 50
+offset-y = 50
+radius = 6
+fixed-center = true
+
+background = ${colors.mainbarcolor}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+boarder-size = 4
+boarder-color = #00000000
+
+padding-left = 4
+padding-right = 4
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = FontAwesome
+font-1 = Roboto Mono for Powerline:pixelsize=10:weight=bold;0
+font-2 = siji:pixelsize=10
+
+modules-left = i3
+modules-center = xwindow
+modules-right = volume memory cpu date time powermenu
+
+
+[bar/top]
+monitor = ${monitors.top}
+width = 100%
+height = 33
+offset-x = 50
+offset-y = 50
+radius = 6
+fixed-center = true
+
+background = ${colors.mainbarcolor}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 4
+padding-right = 4
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = FontAwesome:style=Regular
+font-1 = Roboto Mono for Powerline:pixelsize=10:weight=bold:style=Regular
+font-2 = siji:pixelsize=10
+
+modules-left = i3
+modules-center = xwindow
+modules-right = volume memory cpu date time powermenu
+
+[bar/left]
+monitor = ${monitors.left}
+width = 100%
+height = 33
+offset-x = 50
+offset-y = 50
+radius = 6
+fixed-center = true
+
+background = ${colors.mainbarcolor}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+boarder-size = 4
+boarder-color = #00000000
+
+padding-left = 4
+padding-right = 4
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = FontAwesome
+font-1 = Roboto Mono for Powerline:pixelsize=10:weight=bold;0
+font-2 = siji:pixelsize=10
+
+modules-left = i3
+modules-center = xwindow
+modules-right = volume memory cpu date time powermenu
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+format-foreground = ${colors.fontcolor1}
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+enable-scroll = false
+
+label-mode-padding = 2
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.modulecolor1}
+
+label-unfocused = %name%
+label-unfocused-background = ${colors.modulecolor1}
+label-unfocused-padding = 2
+
+label-focused = %name%
+label-focused-background = ${colors.wsfocused}
+label-focused-underline = ${colors.wsfocused}
+label-focused-padding = 2
+
+label-visible = %name%
+label-visible-background = ${colors.modulecolor1}
+label-visible-padding = 0
+
+label-urgent = %name%
+label-urgent-background = ${colors.modulecolor1}
+label-urgent-padding = 2
+
+;label-seperator = |
+
+;[module/mpd]
+;type = internal/mpd
+;format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+;icon-prev = 
+;icon-stop = 
+;icon-play = 
+;icon-pause = 
+;icon-next = 
+
+;label-song-maxlen = 25
+;label-song-ellipsis = true
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU: "
+format-prefix-foreground = ${colors.fontcolor1}
+format-background = ${colors.modulecolor1}
+format-padding = 2
+;format-underline = #f90000
+label = %percentage%%
+label-foreground = ${colors.fontcolor1}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "RAM: "
+format-prefix-foreground = ${colors.fontcolor1}
+format-background = ${colors.modulecolor1}
+format-padding = 2
+;format-underline = #4bffdc
+label = %percentage_used%%
+label-foreground = ${colors.fontcolor1}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = " %Y-%m-%d"
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M
+
+format-prefix = %{A:~/.config/polybar/scripts/calendar.sh:}   %{A}
+;format-prefix-foreground = #E5C078
+;format-underline = #0a6cf5
+format-padding = 2
+
+format-background = ${colors.modulecolor2}
+format-foreground = ${colors.modulecolor1}
+
+label = %date%
+
+[module/time]
+type = internal/date
+interval = 5
+
+time = %H:%M
+format-padding = 2
+;format-prefix = " "
+format-prefix-foreground = #7B5E8D
+format-background = ${colors.modulecolor1}
+format-foreground = ${colors.modulecolor2}
+label = %time%
+
+[module/volume]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_0d_00.4.analog-stereo
+
+format-volume-background = ${colors.modulecolor2}
+format-padding = 2
+
+format-volume = <label-volume> <bar-volume> 
+label-volume =  %percentage%
+label-volume-foreground = #c4b7c5
+
+format-muted = <label-muted>
+label-muted = 
+format-muted-foreground = ${colors.fontcolor1}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = true
+bar-volume-indicator = |
+bar-volume-fill = ─ 
+bar-volume-empty = ─
+bar-volume-empty-foreground = ${colors.fontcolor1}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+;----------
+;Modules
+;----------
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+format-background = ${colors.modulecolor2}
+format-foreground = ${colors.modulecolor1}
+format-padding = 2
+
+[module/left-seperator1]
+type = custom/text
+content = "%{T0}%{T-}"
+content-foreground = ${colors.fontcolor2}
+content-background = ${colors.modulecolor2}
+
+[module/left-seperator2]
+type = custom/text
+content = "%{T0}%{T-}"
+content-foreground = ${colors.fontcolor1}
+content-background = ${colors.modulecolor1}
+
+[module/left-spacer1]
+type = custom/text
+content = "%{T0} %{T-}"
+content-foreground = ${colors.fontcolor1}
+content-background = ${colors.modulecolor1}
+content-padding = 1
+
+[module/right-seperator1]
+type = custom/text
+content = "%{T0}%{T-}"
+content-foreground = ${colors.fontcolor1}
+content-background = ${colors.modulecolor1}
+
+[module/right-seperator2]
+type = custom/text
+content = "%{T0}%{T-}"
+content-foreground = ${colors.fontcolor2}
+content-background = ${colors.modulecolor2}
+
+[module/arrow1]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.modulecolor1}
+content-background = #1a1c1e
+
+[module/arrow2]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = #000000
+content-background = ${colors.modulecolor1}
+
+[module/arrow3]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.modulecolor2}
+content-background = ${colors.modulecolor1}
+
+[module/arrow5]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 4
+content-foreground = ${colors.modulecolor1}
+content-background = ${colors.modulecolor2}
+
+[module/arrow6]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.modulecolor1}
+content-background = ${colors.modulecolor2}
+
+[module/arrow7]
+type= custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.modulecolor1}
+content-background = ${colors.modulecolor2}
+
+[module/arrowblank]
+type= custom/text
+content = "%{T0}%{T-}"
+content-font = 2
+content-foreground = ${colors.modulecolor1}
+content-background = ${colors.modulecolor1}
+
+[module/arrow8]
+type = custom/text
+content = "%{T2} %{T-}"
+content-font = 2
+content-foreground = ${colors.modulecolor2}
+content-background = ${colors.modulecolor1}
