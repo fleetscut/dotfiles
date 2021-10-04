@@ -1,14 +1,17 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/.local/bin/:$PATH
+#if [[ -z $TMUX ]]; then
+#    export PATH=$HOME/.local/bin/:$PATH
+#fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="simonoff"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -119,3 +122,5 @@ citrix() {
         echo "Missing file name"    
     fi
 }
+
+alias luamake=/home/fleetscut/.config/nvim/lua-language-server/3rd/luamake/luamake

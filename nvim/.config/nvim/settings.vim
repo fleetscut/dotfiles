@@ -19,6 +19,8 @@ set scrolloff=8
 set termguicolors
 set signcolumn=yes
 set listchars+=eol:$
+set splitbelow
+set splitright
 
 "set colorcolumn=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -41,21 +43,7 @@ endif
 let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 
 let mapleader = " "
-let g:netrw_browse_split=2
+let g:netrw_browse_split = 0
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
-"coc config
-let g:coc_global_extensions = [
-            \'coc-python',
-            \'coc-tsserver',
-            \'coc-highlight',
-            \'coc-html',
-            \'coc-json',
-            \'coc-eslint',
-            \'coc-css',
-            \'coc-snippets',
-            \'coc-pairs',
-            \'coc-prettier',
-            \'coc-vetur',
-\]
