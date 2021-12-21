@@ -1,7 +1,9 @@
 local M = {}
 
-local keys = require 'fleetscut.keymaps'
+local settings = require"fleetscut.settings"
 local jdtls = require 'jdtls'
+local capabilities = settings.capabilities
+local on_attach = settings.on_attach
 
 function M.start_jdt()
     local root_markers = {'gradlew', '.git', 'mvnw'}
@@ -37,7 +39,9 @@ function M.start_jdt()
     };
   }
     config.cmd = {'java-lsp.sh', workspace_folder}
-    config.on_attach = keys.on_attach
+    config.capabilities = capabilities
+    config.on_attach = on_attach
+    config.flags = {allow_incremental_sync = true}
     jdtls.start_or_attach(config)
 end
 

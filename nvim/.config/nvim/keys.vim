@@ -42,7 +42,7 @@ xnoremap <leader>p "_ddP
 nnoremap <leader>d "_dd
 vnoremap <leader>d "_dd
 
-nnoremap <leader>o o<C-c>
+nnoremap <leader>o o<C-c>k
 nnoremap <leader>O O<C-c>j
 
 
@@ -56,3 +56,10 @@ nnoremap <leader>Y gg"+yG
 "Move selected lines
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+"Ranger
+let g:ranger_map_keys = 0
+"let g:ranger_replace_netrw = 1
+map <leader>fr :Ranger<CR>
+
+nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>

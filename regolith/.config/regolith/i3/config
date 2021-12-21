@@ -425,6 +425,8 @@ bindsym $mod+$prevwsKey workspace prev_on_output
 set_from_resource $scratchpadShowKey i3-wm.binding.scratchpad.show Ctrl+a
 bindsym $mod+$scratchpadShowKey scratchpad show
 
+bindsym $mod+Shift+$scratchpadShowKey [class="Google-chrome"] scratchpad show
+
 ###############################################################################
 # Window and Workspace Configuration
 ###############################################################################

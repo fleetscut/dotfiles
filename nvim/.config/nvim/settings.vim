@@ -22,7 +22,7 @@ set listchars+=eol:$
 set splitbelow
 set splitright
 
-"set colorcolumn=80
+set colorcolumn=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 set background=dark
@@ -47,3 +47,21 @@ let g:netrw_browse_split = 0
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
+"Treesitter
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldlevelstart=20
+
+
+let g:neoformat_java_clangcustom = {
+            \ 'exe': 'clang-format',
+            \ 'args': ['-assume-filename=' . expand('%:t'), '-style="{IndentWidth: 4, ColumnLimit: 0}"'],
+            \ 'stdin': 1,
+            \ }
+
+let g:neoformat_enabled_java = ['clangcustom']
+
+augroup fmt
+  autocmd!
+  autocmd BufWritePre *.java Neoformat
+augroup END

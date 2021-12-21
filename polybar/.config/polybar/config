@@ -18,17 +18,14 @@ top = ${xrdb:globals.monitor.top}
 
 
 [colors]
-mainbarcolor = #4b0908
-background-alt = #444
-foreground = #ffffff
-fontcolor1 = #fbca03
-fontcolor2 = #aa0505
-;color1 = #bc5068
-modulecolor1 = #aa0505
-;color2 = #362d58
-modulecolor2 = #fbca03
-wsfocused = #b97d10
-windowalert = #ffffff
+background = ${xrdb:color.bar.background}
+background-alt = #99222222
+;foreground = ${xrdb:color7:#222}
+foreground = ${xrdb:color.bar.foregrounkkd}
+foreground-alt = #551
+primary = #00ffb52a
+secondary = #e60053
+alert = #bd2c40
 
 [sizes]
 barWidth = 100%
@@ -37,38 +34,44 @@ barHeightSmall = 15
 
 [bar/main]
 ;Position and size settings
-;monitor = HDMI-0
 monitor = ${monitors.main}
 width = ${sizes.barWidth}
 height = ${sizes.barHeightBig}
+radius = 6
+fixed-center = false
+;dpi = 192
+
 line-size = 3
 line-color = #f00
-border-size = 0
-border-color = #00000000
-padding-left = 0
-padding-right = 0
-module-margin-left = 0
-module-margin-right = 0
-;offset-x = 50
-;offset-y = 50
-radius = 6
-fixed-center = true
 
-background = ${colors.mainbarcolor}
+;border-size = 0
+border-top-size = 0
+border-left-size = 25
+border-right-size = 25
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 5
+
+font-0 = FontAwesome:pixelsize=14;4
+font-1 = Roboto Mono for Powerline:size=11;2
+font-2 = Wuncon Siji:pixelsize=10;0
+
+background = ${colors.background}
 foreground = ${colors.foreground}
 
 
-font-0 = FontAwesome
-font-1 = Roboto Mono for Powerline:pixelsize=10:weight=bold;0
 
 modules-left = i3 left-spacer1 left-seperator1 xwindow left-seperator2
 modules-center = 
 modules-right = right-seperator1 volume right-seperator2 memory cpu right-seperator1 date right-seperator2 time right-seperator1
 
 tray-position = right
-tray-padding = 2
+tray-padding = 0
 tray-background = ${colors.modulecolor1}
-tray-reparent = true
+tray-transparent = true
 
 [bar/right]
 monitor = ${monitors.right}

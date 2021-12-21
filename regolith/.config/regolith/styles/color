@@ -15,3 +15,6 @@
 #define color_blue     #81A1C1
 #define color_cyan     #88C0D0
 #define color_green    #A3BE8C
+
+color.bar.background:  #00222222
+color.bar.foreground:  #dfdfdf

@@ -6,10 +6,12 @@
 !---------------------------------------------------------------------------------------------
 ! Key Mappings
 !---------------------------------------------------------------------------------------------
-
+#Win
 i3-wm.binding.mod: Mod4
+#Alt
 i3-wm.binding.alt: Mod1
 
+#Number Keys
 ! Main Monitor switching keys
 i3-wm.binding.monitor.main.01.select: 1
 i3-wm.binding.monitor.main.02.select: 2
@@ -200,6 +202,6 @@ i3-wm.workspace.top.10.name: 40:
 ! Application mappings
 !---------------------------------------------------------------------------------------------
 
-i3-wm.program.polybar: $HOME/.config/polybar/launch.sh
+i3-wm.program.polybar: $HOME/.config/polybar/launch.sh --shapes
 i3-wm.program.help: /usr/bin/remontoire-toggle
 i3-wm.program.refresh: /usr/bin/regolith-look refresh

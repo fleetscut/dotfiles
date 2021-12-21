@@ -102,14 +102,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #export EDITOR=/usr/bin/vim
 #export VISUAL=/usr/bin/vim
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
+export EDITOR=nvim
+export VISUAL=nvim
 
 alias vi=vim
-alias cdtor='cd /mnt/whitebase/Torrents'
-alias cdnas='cd /mnt/whitebase'
+alias cdtor='cd /mnt/freenas/Torrents/completed'
+alias cdnas='cd /mnt/freenas'
 alias gitdot='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias ytdmp3='youtube-dl --extract-audio --audio-format mp3 -i -o "%(title)s.%(ext)s"'
+alias ls='lsd'
 
 citrix() {
     if [[ ! -z $1 ]]; then

@@ -2,29 +2,23 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     "Plug 'morhetz/gruvbox'
     Plug 'gruvbox-community/gruvbox'
-    "Plug 'jremmen/vim-ripgrep'
     Plug 'tpope/vim-fugitive'
-    "Plug 'leafgarland/typescript-vim'
-    Plug 'vim-utils/vim-man'
-    "Plug 'lyuts/vim-rtags'
-    "Plug 'kien/ctrlp.vim'
-    " Plug 'git@github.com:Valloric/YouCompleteMe.git'
     Plug 'mbbill/undotree'
-"    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"    Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
     Plug 'vim-airline/vim-airline'
-    "Plug 'preservim/nerdtree'
     Plug 'dhruvasagar/vim-table-mode'
-    "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    "Plug 'junegunn/fzf.vim'
-    "Plug 'dense-analytics/ale'
     Plug 'christoomey/vim-tmux-navigator'
-    "Plug 'posva/vim-vue'
-    Plug 'prettier/vim-prettier'
+    Plug 'prettier/vim-prettier', {'do': 'yarn install'}
+    Plug 'sbdchd/neoformat'
+    
     "Autocomplete
-    Plug 'hrsh7th/nvim-compe'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-vsnip'
+
     "Sane Brackets
     Plug 'jiangmiao/auto-pairs'
+
     "LSP
     Plug 'neovim/nvim-lspconfig'
     Plug 'hrsh7th/vim-vsnip'
@@ -41,5 +35,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
+    "Ranger
+    Plug 'francoiscabrol/ranger.vim'
+    Plug 'rbgrouleff/bclose.vim'
+
+    "Treesitter
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+    "Comments
+    Plug 'numToStr/Comment.nvim'
 
 call plug#end()
