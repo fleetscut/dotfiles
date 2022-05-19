@@ -27,8 +27,8 @@ inoremap <C-c> <Esc>
 vnoremap < <gv
 vnoremap > >gv
 
-"Nerdtree
-"nnoremap <silent><leader>b :NERDTreeToggle<CR>
+"nvim-tree
+nnoremap <silent><leader>n :NvimTreeToggle<CR>
 
 "Table Mode
 nnoremap <leader>t :TableModeToggle<CR>

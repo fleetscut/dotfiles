@@ -1,4 +1,14 @@
 require('telescope').setup{
+    extensions = {
+        file_browser = {
+            theme = "ivy",
+          mappings = {
+            i = {
+              ['<C-f>'] = function () print("C-f overriden") end,
+            }
+          },
+        },
+      },
   defaults = {
     vimgrep_arguments = {
       'rg',
@@ -27,6 +37,7 @@ require('telescope').setup{
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {
         ".class",
+        "node_modules",
     },
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
@@ -46,3 +57,4 @@ require('telescope').setup{
 }
 
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('file_browser')

@@ -12,9 +12,10 @@ local on_attach = settings.on_attach
 local capabilities = settings.capabilities
 
 cfg = {
+    log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log",
     bind = true, -- This is mandatory, otherwise border config won't get registered.
     -- If you want to hook lspsaga or other signature handler, pls set to false
-    doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
+    doc_lines = 10, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
     -- set to 0 if you DO NOT want any API comments be shown
     -- This setting only take effect in insert mode, it does not affect signature help in normal
     -- mode, 10 by default
@@ -24,7 +25,6 @@ cfg = {
     hint_enable = true, -- virtual hint enable
     hint_prefix = "🐼 ",  -- Panda for parameter
     hint_scheme = "String",
-    use_lspsaga = false,  -- set to true if you want to use lspsaga popup
     hi_parameter = "Search", -- how your parameter will be highlight
     max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
     -- to view the hiding contents
@@ -33,9 +33,6 @@ cfg = {
         border = "shadow"   -- double, single, shadow, none
     },
     extra_trigger_chars = {} -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
-    -- deprecate !!
-    -- decorator = {"`", "`"}  -- this is no longer needed as nvim give me a handler and it allow me to highlight active parameter in floating_window
-
 }
 
 require'lsp_signature'.setup(cfg)
@@ -79,7 +76,10 @@ require('jdtls.ui').pick_one_async = function(items, prompt, label_fn, cb)
 end
 
 nvim_lsp.pyright.setup{ on_attach = on_attach, capabilities = capabilities}
-nvim_lsp.tsserver.setup{ on_attach = on_attach, capabilities = capabilities}
+nvim_lsp.tsserver.setup{
+    on_attach = on_attach,
+    capabilities = vim.lsp.protocol.make_client_capabilities()
+}
 nvim_lsp.clangd.setup{ 
     on_attach = on_attach,
     capabilities = capabilities
@@ -147,7 +147,7 @@ nvim_lsp.sumneko_lua.setup{
 
 
 
-vim.o.completeopt = "menu,menuone,noselect"
+vim.opt.completeopt = {"menu","menuone","noselect"}
 
 local cmp = require'cmp'
 
@@ -155,28 +155,34 @@ cmp.setup({
     snippet = {
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body)
+            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
         end,
     },
     mapping = {
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm{
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = true,
-        },
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     },
-    sources = {
-        { name = 'nvim_lsp' },
-
-        -- For vsnip user.
-        { name = 'vsnip' },
-        { name = 'buffer' },
-    },
-    experimental = {
-        native_menu = false,
-
-    }
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    }),
+    -- experimental = {
+    --     native_menu = false,
+    --
+    -- }
 })
 

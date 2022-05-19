@@ -59,9 +59,20 @@ let g:neoformat_java_clangcustom = {
             \ 'stdin': 1,
             \ }
 
+let g:neoformat_javascript_jsbeautify_custom = {
+            \ 'exe': 'js-beautify',
+            \ 'args': ['--indent-size ' .shiftwidth(), '--brace-style collapse,preserve-inline', '--break-chained-methods'],
+            \ 'stdin': 1,
+            \ 'try_node_exe': 1,
+            \ }
+
 let g:neoformat_enabled_java = ['clangcustom']
+let g:neoformat_enabled_javascript = ['jsbeautify_custom']
 
 augroup fmt
   autocmd!
   autocmd BufWritePre *.java Neoformat
+  autocmd BufWritePre *.js Neoformat
 augroup END
+
+au BufNewFile,BufRead *.ejs set filetype=html

@@ -4,16 +4,24 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.workspace = {
     configuration = true
 }
-capabilities.textDocument = {
-    completion = {
-        completionTime = {
-            snippetSupport = true
-        }
-    }
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
 }
+
 M.capabilities = capabilities
 
-function M.on_attach()
+function M.on_attach(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -22,30 +30,35 @@ function M.on_attach()
     end
 
     local opts = { noremap=true, silent=true }
+    local new_opts = {noremap=true, silent=true, buffer=bufnr}
 
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, new_opts)
+    vim.keymap.set('n', 'gpd', ':Lspsaga preview_definition<CR>', new_opts)
+    vim.keymap.set('n', 'gT', vim.lsp.buf.type_definition, new_opts)
     buf_set_keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
     buf_set_keymap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     buf_set_keymap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', 'gp', '<Cmd>lua vim.lsp.buf.PeekDefinition()<CR>', opts)
     buf_set_keymap('n', 'cja', "<Cmd>lua require('jdtls').code_action(true)<CR>", opts)
     --    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
     --    vim.cmd "nnoremap <silent> <C-p> :lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = lvim.lsp.popup_border}})<CR>"
     --    vim.cmd "nnoremap <silent> <C-n> :lua vim.lsp.diagnostic.goto_next({popup_opts = {border = lvim.lsp.popup_border}})<CR>"
-    --    vim.cmd "nnoremap <silent> <tab> <cmd>lua vim.lsp.buf.signature_help()<CR>"
     --
     buf_set_keymap('n', 'cd', ':Lspsaga preview_definition<CR>', opts)
     buf_set_keymap('n', 'ca', ':Lspsaga code_action<CR>', opts)
     buf_set_keymap('v', 'cra', '<C-U>:Lspsaga range_code_action<CR>', opts)
     buf_set_keymap('n', 'clf', ':Lspsaga lsp_finder<CR>', opts)
     buf_set_keymap('n', 'crn', ':Lspsaga rename<CR>', opts)
-    buf_set_keymap('n', 'K', ':Lspsaga hover_doc<CR>', opts)
-    buf_set_keymap('n', '<C-p>', ':Lspsaga diagnostic_jump_prev<CR>', opts)
-    buf_set_keymap('n', '<C-n>', ':Lspsaga diagnostic_jump_next<CR>', opts)
+    --buf_set_keymap('n', 'K', ':Lspsaga hover_doc<CR>', opts)
+    vim.keymap.set('n', 'K', ':Lspsaga hover_doc<CR>', new_opts)
+    vim.keymap.set('n', '<leader>df', ':Lspsaga diagnostic_jump_prev<CR>', new_opts)
+    --vim.keymap.set('n', '<leader>df', vim.diagnostic.goto_prev, new_opts)
+    vim.keymap.set('n', '<leader>dn', ':Lspsaga diagnostic_jump_next<CR>', new_opts)
+    --vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, new_opts)
     buf_set_keymap('n', '<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', opts)
     buf_set_keymap('n', '<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', opts)
-    --    buf_set_keymap('n', '<tab>', ':Lspsaga signature_help<CR>', opts)
+
+    --vim.keymap.set('n', '<leader>fd', require("telescope.builtin").diagnostics, new_opts)
+
 end
 
 local comment_config = {
