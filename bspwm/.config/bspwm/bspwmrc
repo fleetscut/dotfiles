@@ -1,0 +1,75 @@
+#! /bin/sh
+
+#Fix the cursor
+xsetroot -cursor_name left_ptr &
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+#nitrogen --restore &
+
+# add guard to only load at login
+# $HOME/.screenlayout/bspwm-layout.sh
+
+pkill gnome-flashback
+pkill gsd-xsettings
+pkill polkit-gnome-authentication-agent-1
+
+# Gnome integrations
+gnome-flashback
+/usr/libexec/gsd-xsettings
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+$HOME/.config/polybar/launch.sh --shapes
+
+bspc monitor DP-0 -d 1 2 3 4 5 6 7 8 9
+bspc monitor DP-3 -d 1 2 3 4 5 6 7 8 9
+bspc monitor DP-4 -d 1 2 3 4 5 6 7 8 9
+
+bspc config border_width         2
+bspc config window_gap          12
+bspc config top_padding                   0
+bspc config bottom_padding                0
+bspc config left_padding                  0
+bspc config right_padding                 0
+bspc config single_monocle                false
+bspc config click_to_focus                true
+bspc config split_ratio                   0.50
+bspc config borderless_monocle            true
+bspc config gapless_monocle               true
+bspc config focus_by_distance             true
+bspc config focus_follows_pointer         true
+bspc config history_aware_focus           true
+bspc config remove_disabled_monitors      true
+bspc config merge_overlapping_monitors    true
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+
+#### BSPWM coloring ####
+bspc config normal_border_color		      "#4c566a"
+bspc config active_border_color	          "#1e1e1e"
+bspc config focused_border_color	      "#5e81ac"
+bspc config presel_feedback_color	      "#5e81ac"
+bspc config urgent_border_color 	      "#dd2727"
+
+# bspc rule -a Gimp desktop='^8' state=floating follow=on
+# bspc rule -a Chromium desktop='^2'
+# bspc rule -a mplayer2 state=floating
+# bspc rule -a Kupfer.py focus=on
+# bspc rule -a Screenkey manage=off
+
+bspc rule -a discord desktop='^1:^1'
+bspc rule -a Deluge-gtk desktop='^3:^5'
+bspc rule -a Synergy desktop='^3:^9'
+bspc rule -a Virt-manager desktop='^3:^9'
+
+bspc rule -a smplayer state=floating
+bspc rule -a Pavucontrol state=floating
+bspc rule -a Gnome-control-center state=floating
+
+bspc rule -a Wfica desktop='^2:^9' state=floating
+bspc rule -a "Windows Security" desktop='^2:^9' state=floating
+bspc rule -a "Remote Desktop Connection":"Remote Desktop Connection" desktop='^2:^9' state=floating
+bspc rule -a "Remote Desktop Connection" desktop='^2:^9' state=pseudo_tiled
