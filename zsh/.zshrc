@@ -115,6 +115,22 @@ alias cdnas='cd /mnt/freenas'
 alias gitdot='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias ytdmp3='youtube-dl --extract-audio --audio-format mp3 -i -o "%(title)s.%(ext)s"'
 alias ls='lsd'
+alias luamake=/home/fleetscut/.config/nvim/lua-language-server/3rd/luamake/luamake
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^v' edit-command-line
+bindkey -s "^g" "lf-cd\n"
+
+lf-cd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
 
 citrix() {
     if [[ ! -z $1 ]]; then
@@ -128,4 +144,3 @@ citrix() {
     fi
 }
 
-alias luamake=/home/fleetscut/.config/nvim/lua-language-server/3rd/luamake/luamake

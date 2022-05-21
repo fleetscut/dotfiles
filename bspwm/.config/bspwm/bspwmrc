@@ -5,21 +5,6 @@ xsetroot -cursor_name left_ptr &
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-#nitrogen --restore &
-
-# add guard to only load at login
-# $HOME/.screenlayout/bspwm-layout.sh
-
-pkill gnome-flashback
-pkill gsd-xsettings
-pkill polkit-gnome-authentication-agent-1
-
-# Gnome integrations
-gnome-flashback
-/usr/libexec/gsd-xsettings
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 $HOME/.config/polybar/launch.sh --shapes
 
 bspc monitor DP-0 -d 1 2 3 4 5 6 7 8 9
