@@ -9,7 +9,7 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 export NPM_PACKAGES=$HOME/.npm-packages/bin
 
 export PATH=$NPM_PACKAGES:$PATH
-export PATH="$PATH:$HOME/.spicetify"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
