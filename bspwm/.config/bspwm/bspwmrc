@@ -7,9 +7,9 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 $HOME/.config/polybar/launch.sh --shapes
 
-bspc monitor DP-0 -d 1 2 3 4 5 6 7 8 9
-bspc monitor DP-3 -d 1 2 3 4 5 6 7 8 9
-bspc monitor DP-4 -d 1 2 3 4 5 6 7 8 9
+bspc monitor DP-0 -d 1 2 3 4 5 6 7 8 9 10
+bspc monitor DP-3 -d 1 2 3 4 5 6 7 8 9 10
+bspc monitor DP-4 -d 1 2 3 4 5 6 7 8 9 10
 
 bspc config border_width         2
 bspc config window_gap          12
@@ -47,8 +47,8 @@ bspc config urgent_border_color 	      "#dd2727"
 
 bspc rule -a discord desktop='^1:^1'
 bspc rule -a Deluge-gtk desktop='^3:^5'
-bspc rule -a Synergy desktop='^3:^9'
-bspc rule -a Virt-manager desktop='^3:^9'
+bspc rule -a Synergy desktop='^3:^10'
+bspc rule -a Virt-manager desktop='^3:^10'
 
 bspc rule -a smplayer state=floating
 bspc rule -a Pavucontrol state=floating

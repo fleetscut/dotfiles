@@ -138,12 +138,18 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus or send to the given desktop
-super + shift + {1-3}; {1-9}
-    bspc node -d {DP-3,DP-0,DP-4}:^{1-9} --follow
+super + shift + {1-3}; {1-9,0}
+    bspc node -d {DP-3,DP-0,DP-4}:^{1-9,10} --follow
 
-super + {1-3}; {1-9}
-    bspc desktop -f {DP-3,DP-0,DP-4}:^{1-9}
+super + {1-3}; {1-9,0}
+    bspc desktop -f {DP-3,DP-0,DP-4}:^{1-9,10}
 
+#super + {1-9}
+#    index={1-9};\
+#    bspc desktop -f DP-3:^${index} && \
+#    bspc desktop -f DP-0:^${index} && \
+#    bspc desktop -f DP-4:^${index}
+    
 # Change window size
 super + alt + {h,j,k,l}
     STEP=20; SELECTION={1,2,3,4}; \
