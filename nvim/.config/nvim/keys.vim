@@ -50,6 +50,10 @@ nnoremap <leader>O O<C-c>j
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 
+"Paste from system clipboard
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
+
 "Yank whole file
 nnoremap <leader>Y gg"+yG
 

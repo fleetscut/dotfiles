@@ -2,7 +2,7 @@ local nvim_lsp = require("lspconfig")
 local saga = require('lspsaga')
 
 local sumneko_root_path = vim.fn.getenv("HOME").."/dev/lua/lua-language-server"
-local sumneko_binary = sumneko_root_path.. '/bin/Linux/lua-language-server'
+local sumneko_binary = sumneko_root_path.. '/bin/lua-language-server'
 
 --local capabilities = vim.lsp.protocol.make_client_capabilities()
 --local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())

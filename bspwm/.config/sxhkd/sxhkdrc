@@ -3,8 +3,10 @@
 #
 
 # terminal emulator
+# super + Return
+# 	gnome-terminal
 super + Return
-	gnome-terminal
+	kitty
 
 # program launcher
 super + @space

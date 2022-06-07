@@ -75,7 +75,7 @@ ZSH_THEME="simonoff"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,44 +83,25 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#export EDITOR=/usr/bin/vim
-#export VISUAL=/usr/bin/vim
 export EDITOR=nvim
 export VISUAL=nvim
 
-alias vi=vim
-alias cdtor='cd /mnt/freenas/Torrents/completed'
-alias cdnas='cd /mnt/freenas'
-alias gitdot='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-alias ytdmp3='youtube-dl --extract-audio --audio-format mp3 -i -o "%(title)s.%(ext)s"'
-alias ls='lsd'
-alias luamake=/home/fleetscut/.config/nvim/lua-language-server/3rd/luamake/luamake
+alias vim=nvim
 
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^v' edit-command-line
 bindkey -s "^g" "lf-cd\n"
+
+if [[ "$(hostname)" == "sazabi" ]]; then
+    script_prefix="desktop"
+fi
+
+source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
+source $HOME/.config/machine_configs/${script_prefix}_funcs.sh
 
 lf-cd () {
     tmp="$(mktemp)"
@@ -132,15 +113,4 @@ lf-cd () {
     fi
 }
 
-citrix() {
-    if [[ ! -z $1 ]]; then
-        if [[ -f $1 ]]; then
-            /opt/Citrix/ICAClient/wfica.sh $1
-        else
-            echo "Connection file does not exist"
-        fi
-    else
-        echo "Missing file name"    
-    fi
-}
-
+unset $script_prefix
