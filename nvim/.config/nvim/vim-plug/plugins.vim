@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     "Plug 'morhetz/gruvbox'
     Plug 'gruvbox-community/gruvbox'
+    Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
     "Plug 'tpope/vim-fugitive'
     Plug 'mbbill/undotree'
     Plug 'dhruvasagar/vim-table-mode'

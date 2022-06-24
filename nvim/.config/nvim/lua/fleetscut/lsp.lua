@@ -75,7 +75,8 @@ require('jdtls.ui').pick_one_async = function(items, prompt, label_fn, cb)
     }):find()
 end
 
-nvim_lsp.pyright.setup{ on_attach = on_attach, capabilities = capabilities}
+-- nvim_lsp.pyright.setup{ on_attach = on_attach, capabilities = capabilities}
+nvim_lsp.jedi_language_server.setup{ on_attach = on_attach, capabilities = capabilities }
 nvim_lsp.tsserver.setup{
     on_attach = on_attach,
     capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -25,14 +25,14 @@ set splitright
 set colorcolumn=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-set background=dark
-colorscheme gruvbox
+" set background=dark
+" colorscheme gruvbox
+let g:tokyonight_style = "night"
+colorscheme tokyonight
 set termguicolors
-hi Normal guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
 
-"hi NonText guibg=NONE ctermbg=NONE
 " Fix python issues by forcing python3 to load first
-
 if has('python3')
 endif
 
