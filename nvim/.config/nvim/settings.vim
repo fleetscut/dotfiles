@@ -28,6 +28,8 @@ set colorcolumn=80
 " set background=dark
 " colorscheme gruvbox
 let g:tokyonight_style = "night"
+let g:tokyonight_dark_sidebar = "true"
+let g:tokyonight_lualine_bold = "true"
 colorscheme tokyonight
 set termguicolors
 " hi Normal guibg=NONE ctermbg=NONE

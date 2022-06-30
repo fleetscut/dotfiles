@@ -102,17 +102,6 @@ super + {Left,Down,Up,Right}
 super + BackSpace
     dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock
 
-
-# Add focused window to a tabbed instance in given direction
-super + q; {h,j,k,l}
-    tabc.sh $(bspc query -N -n {west,south,north,east}) add $(bspc query -N -n focused)
-
-# Remove one tab from tabbed
-super + q; r
-    tabbed=$(bspc query -N -n focused); \
-    child=$(tabc list $tabbed | head -n1); \
-    tabc remove $child
-
 ########## CUSTOM BINDINGS ##########
 
 # Rotate tree
@@ -132,8 +121,8 @@ super + alt + {q,r}
 	bspc {quit,wm -r}
 
 # alternate between the tiled and monocle layout
-super + z
-	bspc desktop -l next
+# super + z
+# 	bspc desktop -l next
 
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
@@ -170,3 +159,18 @@ alt + v
         -theme-str '* \{ font: 10px; \}' \
         -theme-str 'listview \{ spacing: 0; \}' \
         -theme-str 'window \{ width: 20em; \}'
+
+# add to tabbed container
+ctrl + alt + {Left,Down,Up,Right}
+    tabc attach $(bspc query -N -n) {$(bspc query -N -n west),$(bspc query -N -n south),$(bspc query -N -n north),$(bspc query -N -n east)}
+
+# create/remove from tabbed container
+super + z 
+    id=$(bspc query -N -n); \
+    [[ "$(tabc printclass $id)" == "tabbed" ]] \
+    && tabc detach $id \
+    || tabc create $id 
+
+# toggle autoattach in tabbed container
+super + shift + z 
+    tabc autoattach $(bspc query -N -n) 
