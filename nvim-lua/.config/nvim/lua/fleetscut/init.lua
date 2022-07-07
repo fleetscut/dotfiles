@@ -1,1 +1,2 @@
-print('hello from inside lua fleetscut')
+require("fleetscut.packer")
+require("fleetscut.lsp")
