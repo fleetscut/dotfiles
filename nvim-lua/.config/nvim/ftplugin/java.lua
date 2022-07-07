@@ -4,9 +4,19 @@ if not status then
 end
 
 local home = os.getenv("HOME")
+local jdtls_dir = home .. "/.local/share/nvim/lsp/jdtls/"
 
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+
+JAVA_DAP_ACTIVE = true
+
+local bundles = {}
+
+if JAVA_DAP_ACTIVE then
+  vim.list_extend( bundles, vim.split( vim.fn.glob( jdtls_dir .. "/vscode-java-test/server/*.jar"), "\n"))
+  vim.list_extend( bundles, vim.split( vim.fn.glob( jdtls_dir .. "/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"), "\n"))
+end
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -31,7 +41,7 @@ local config = {
 
     -- 💀
     '-jar',
-    vim.fn.glob( home .. '/.local/share/nvim/lsp/jdtls/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar' ),
+    vim.fn.glob( jdtls_dir .. 'eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar' ),
 	               -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                                  ^^^^^^^^^^^^^^
 	               -- Must point to the                                                                Change this to
 	               -- eclipse.jdt.ls installation                                                      the actual version
@@ -39,7 +49,7 @@ local config = {
 
     -- 💀
     '-configuration', 
-    vim.fn.glob( home .. '/.local/share/nvim/lsp/jdtls/eclipse.jdt.ls/config_linux' ),
+    vim.fn.glob( jdtls_dir .. '/eclipse.jdt.ls/config_linux' ),
                        -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                    ^^^^^^
                        -- Must point to the                                  Change to one of `linux`, `win` or `mac`
                        -- eclipse.jdt.ls installation                        Depending on your system.
@@ -51,8 +61,8 @@ local config = {
     vim.fn.glob( home .. '/workspace/' )
   },
 
-  -- on_attach = require("fleetscut.lsp.settings").on_attach,
-  -- capabilities = require("fleetscut.lsp.settings").capabilities,
+  on_attach = require("fleetscut.lsp").on_attach,
+  capabilities = require("fleetscut.lsp").capabilities,
 
   -- 💀
   -- This is the default if not provided, you can remove it. Or adjust as needed.
@@ -110,7 +120,7 @@ local config = {
   --
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
-    bundles = {}
+    bundles = bundles,
   },
 }
 -- This starts a new client & server,
@@ -123,3 +133,11 @@ vim.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_co
 vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
 vim.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
 vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
+
+local opts = { noremap=true, silent=true, buffer=bufnr }
+vim.keymap.set("n", "<Leader>jo", ":lua require('jdtls').organize_imports()<CR>", opt)
+vim.keymap.set({"n", "v"}, "<Leader>jv", ":lua require('jdtls').extract_variable()<CR>", opt)
+vim.keymap.set({"n", "v"}, "<Leader>jc", ":lua require('jdtls').extract_constant()<CR>", opt)
+vim.keymap.set("v", "<Leader>jm", ":lua require('jdtls').extract_method()<CR>", opt)
+vim.keymap.set("n", "<Leader>jt", ":lua require('jdtls').test_nearest_method()<CR>", opt)
+vim.keymap.set("n", "<Leader>jT", ":lua require('jdtls').test_class()<CR>", opt)

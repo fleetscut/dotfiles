@@ -3,10 +3,14 @@
 return require('packer').startup(function()
   -- Packer can manage itself
   use('wbthomason/packer.nvim')
+  --
+  -- Theme
+  use('folke/tokyonight.nvim')
 
   -- LSP
   use('neovim/nvim-lspconfig')
   use('mfussenegger/nvim-dap')
+  use("rcarriga/nvim-dap-ui")
 
   -- Simple plugins can be specified as strings
   use('jiangmiao/auto-pairs')

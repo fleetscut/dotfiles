@@ -1,0 +1,10 @@
+local opts = { noremap=true, silent=true, buffer=bufnr }
+vim.keymap.set("n", "<Leader>db", ":lua require('dap').toggle_breakpoint()<CR>", opt)
+vim.keymap.set("n", "<Leader>dc", ":lua require('dap').continue()<CR>", opt)
+vim.keymap.set("n", "<Leader>di", ":lua require('dap').step_into()<CR>", opt)
+vim.keymap.set("n", "<Leader>do", ":lua require('dap').step_over()<CR>", opt)
+vim.keymap.set("n", "<Leader>dO", ":lua require('dap').step_out()<CR>", opt)
+vim.keymap.set("n", "<Leader>dl", ":lua require('dap').run_last()<CR>", opt)
+vim.keymap.set("n", "<Leader>du", ":lua require('dapui').toggle()<CR>", opt)
+vim.keymap.set("n", "<Leader>dt", ":lua require('dap').toggle()<CR>", opt)
+vim.keymap.set("n", "<Leader>dx", ":lua require('dap').terminate()<CR>", opt)
