@@ -8,7 +8,8 @@ if not cmp_status then
     return
 end
 
-local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
 autopairs.setup{
     check_ts = true,
     ts_config = {
@@ -32,5 +33,5 @@ autopairs.setup{
 
 cmp.event:on(
     'confirm_done',
-    require('nvim-autopairs.completion.cmp')
+    cmp_autopairs.on_confirm_done()
 )

@@ -55,6 +55,7 @@ return packer.startup(function()
 
   --use('jiangmiao/auto-pairs')
   use("windwp/nvim-autopairs")
+  use("numToStr/Comment.nvim")
 
   -- Java LSP
   use('mfussenegger/nvim-jdtls')
