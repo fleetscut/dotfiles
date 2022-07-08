@@ -50,6 +50,8 @@ return packer.startup(function()
 
   -- Snippets
   use("L3MON4D3/LuaSnip")
+  use("saadparwaiz1/cmp_luasnip")
+  use("rafamadriz/friendly-snippets")
 
   -- Simple plugins can be specified as strings
   use('jiangmiao/auto-pairs')
