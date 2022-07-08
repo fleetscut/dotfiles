@@ -7,6 +7,7 @@ local actions = require("telescope.actions")
 
 require('telescope').setup{
   defaults = {
+
     prompt_pefix = "> ",
     selection_caret = "> ",
     path_display = { "smart" },
@@ -126,6 +127,16 @@ require('telescope').setup{
             ["<PageDown>"] = actions.results_scrolling_down,
 
         },
+    },
+    vimgrep_arguments = {
+          "rg",
+          --"--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
     },
   },
   pickers = {
