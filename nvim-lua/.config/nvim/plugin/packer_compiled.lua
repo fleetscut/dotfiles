@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -138,6 +143,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,

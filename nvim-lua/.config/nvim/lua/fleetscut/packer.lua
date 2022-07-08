@@ -34,6 +34,12 @@ return packer.startup(function()
 
   -- Theme
   use('folke/tokyonight.nvim')
+  --
+  -- Line
+  use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+}
 
   -- LSP
   use('neovim/nvim-lspconfig')

@@ -8,6 +8,7 @@ require("fleetscut.illuminate")
 require("fleetscut.tokyonight")
 require("fleetscut.autopairs")
 require("fleetscut.comment")
+require("fleetscut.lualine")
 
 require("fleetscut.keymaps").telescope_keymap(bufnr)
 require("fleetscut.keymaps").general_keymap(bufnr)
