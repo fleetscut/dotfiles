@@ -1,9 +1,37 @@
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
 --vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function()
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
+-- Have packer use a popup window
+packer.init {
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+  },
+}
+
+return packer.startup(function()
   -- Packer can manage itself
   use('wbthomason/packer.nvim')
-  --
+
+  -- Coconut Oil
+  use("nvim-lua/plenary.nvim")
+  use("nvim-telescope/telescope.nvim")
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+  use("nvim-telescope/telescope-file-browser.nvim")
+
   -- Theme
   use('folke/tokyonight.nvim')
 
@@ -12,12 +40,25 @@ return require('packer').startup(function()
   use('mfussenegger/nvim-dap')
   use("rcarriga/nvim-dap-ui")
 
+  -- Completion
+  use("hrsh7th/cmp-nvim-lsp")
+  use("hrsh7th/cmp-buffer")
+  use("hrsh7th/cmp-path")
+  --use("hrsh7th/cmp-cmdline")
+  use("hrsh7th/nvim-cmp")
+
+  -- Snippets
+  use("L3MON4D3/LuaSnip")
+
   -- Simple plugins can be specified as strings
   use('jiangmiao/auto-pairs')
 
 
   -- Java LSP
   use('mfussenegger/nvim-jdtls')
+  --
+  -- Highlighting
+  use("RRethy/vim-illuminate")
 
   ---- Lazy loading:
   ---- Load on specific commands

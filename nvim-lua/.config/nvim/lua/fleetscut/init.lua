@@ -1,9 +1,10 @@
 require("fleetscut.set")
 require("fleetscut.packer")
 require("fleetscut.lsp")
+require("fleetscut.cmp")
+require("fleetscut.telescope")
 require("fleetscut.dap")
+require("fleetscut.illuminate")
+require("fleetscut.tokyonight")
 
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_dark_sidebar = "true"                                                                                                                                                                                                    
-vim.g.tokyonight_lualine_bold = "true"
-vim.cmd[[colorscheme tokyonight]]
+require("fleetscut.keymaps").telescope_keymap(bufnr)

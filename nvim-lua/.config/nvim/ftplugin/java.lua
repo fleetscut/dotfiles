@@ -141,3 +141,4 @@ vim.keymap.set({"n", "v"}, "<Leader>jc", ":lua require('jdtls').extract_constant
 vim.keymap.set("v", "<Leader>jm", ":lua require('jdtls').extract_method()<CR>", opt)
 vim.keymap.set("n", "<Leader>jt", ":lua require('jdtls').test_nearest_method()<CR>", opt)
 vim.keymap.set("n", "<Leader>jT", ":lua require('jdtls').test_class()<CR>", opt)
+vim.keymap.set("n", "<Leader>ja", ":lua require('jdtls').code_action(true)<CR>", opt)

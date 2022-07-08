@@ -1,8 +1,38 @@
 local M = {}
 
+local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_cmp_ok then
+  return
+end
+
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.textDocument.completion.completionItem.snippetSupport = True
---M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+
+M.setup = function()
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "rounded",
+        width = 60,
+        -- height = 30,
+    })
+
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = "rounded",
+        width = 60,
+        -- height = 30,
+    })
+
+end
+
+local function lsp_highlight_document(client)
+  -- if client.server_capabilities.document_highlight then
+  local status_ok, illuminate = pcall(require, "illuminate")
+  if not status_ok then
+    return
+  end
+  illuminate.on_attach(client)
+  -- end
+end
 
 M.on_attach = function(client, bufnr)
 
@@ -17,7 +47,7 @@ M.on_attach = function(client, bufnr)
     vim.lsp.codelens.refresh()
   end
 
-  lsp_keymaps(bufnr)
+  require("fleetscut.keymaps").lsp_keymap(bufnr)
   lsp_highlight_document(client)
 end
 
