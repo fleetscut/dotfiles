@@ -37,8 +37,9 @@ return packer.startup(function()
 
   -- LSP
   use('neovim/nvim-lspconfig')
-  use('mfussenegger/nvim-dap')
+  use("mfussenegger/nvim-dap")
   use("rcarriga/nvim-dap-ui")
+  use("ray-x/lsp_signature.nvim")
 
   -- Completion
   use("hrsh7th/cmp-nvim-lsp")

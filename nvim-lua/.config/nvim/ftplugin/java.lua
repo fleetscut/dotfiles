@@ -74,14 +74,30 @@ local config = {
   -- for a list of options
   settings = {
 	  java = {
+          signatureHelp = { enabled = true, },
 		  eclipse = { downloadSources = true, },
 		  configuration = { updateBuildConfiguration = "interactive", },
 		  maven = { downloadSources = true, },
 		  implementationsCodeLens = { enabled = true, },
 		  referencesCodeLens = { enabled = true, },
 		  format = { enabled = false, },
+          configuration = {                                                                                                                                                                                                                   
+              runtimes = {                                                                                                                                                                                                                      
+                  --{                                                                                                                                                                                                                               
+                  --    name = "JavaSE-1.8",                                                                                                                                                                                                           
+                  --    path = "/usr/lib/jvm/java-8-openjdk",                                                                                                                                                                                 
+                  --},                                                                                                                                                                                                                              
+                  {                                                                                                                                                                                                                               
+                      name = "JavaSE-11",                                                                                                                                                                                                           
+                      path = "/usr/lib/jvm/java-11-openjdk-amd64/",                                                                                                                                                                                 
+                  },                                                                                                                                                                                                                              
+                  {                                                                                                                                                                                                                               
+                      name = "JavaSE-17",                                                                                                                                                                                                           
+                      path = "/usr/lib/jvm/java-17-openjdk-amd64/",                                                                                                                                                                                 
+                  },                                                                                                                                                                                                                              
+              }                                                                                                                                                                                                                                 
+          },
 	  },
-	  signatureHelp = { enabled = true, },
 	  completion = {
 		  favoriteStaticMembers = {
 			  "org.hamcrest.MatcherAssert.assertThat",
@@ -106,9 +122,9 @@ local config = {
 			  template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
 		  },
 		  useBlocks = true,
-	  }
-
+	  },
   },
+
   flags = { allow_incremental_sync = true },
 
 
