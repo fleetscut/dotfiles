@@ -53,15 +53,16 @@ return packer.startup(function()
   use("saadparwaiz1/cmp_luasnip")
   use("rafamadriz/friendly-snippets")
 
-  -- Simple plugins can be specified as strings
-  use('jiangmiao/auto-pairs')
-
+  --use('jiangmiao/auto-pairs')
+  use("windwp/nvim-autopairs")
 
   -- Java LSP
   use('mfussenegger/nvim-jdtls')
   --
   -- Highlighting
   use("RRethy/vim-illuminate")
+
+  use("christoomey/vim-tmux-navigator")
 
   ---- Lazy loading:
   ---- Load on specific commands

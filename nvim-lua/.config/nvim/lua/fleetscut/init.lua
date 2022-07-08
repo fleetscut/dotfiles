@@ -1,6 +1,6 @@
 require("fleetscut.set")
 require("fleetscut.packer")
-require("fleetscut.lsp")
+require("fleetscut.lsp").setup()
 require("fleetscut.cmp")
 require("fleetscut.telescope")
 require("fleetscut.dap")

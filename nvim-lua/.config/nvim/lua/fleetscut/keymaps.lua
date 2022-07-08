@@ -2,6 +2,18 @@ local M = {}
 
 local opts = { noremap = true, silent = true, buffer = bufnr }
 
+M.java_keymap = function(bufnr)
+
+    vim.keymap.set("n", "<Leader>jo", ":lua require('jdtls').organize_imports()<CR>", opts)
+    vim.keymap.set({"n", "v"}, "<Leader>jv", ":lua require('jdtls').extract_variable()<CR>", opts)
+    vim.keymap.set({"n", "v"}, "<Leader>jc", ":lua require('jdtls').extract_constant()<CR>", opts)
+    vim.keymap.set("v", "<Leader>jm", ":lua require('jdtls').extract_method()<CR>", opts)
+    vim.keymap.set("n", "<Leader>jt", ":lua require('jdtls').test_nearest_method()<CR>", opts)
+    vim.keymap.set("n", "<Leader>jT", ":lua require('jdtls').test_class()<CR>", opts)
+    vim.keymap.set("n", "<Leader>ja", ":lua require('jdtls').code_action()<CR>", opts)
+
+end
+
 M.lsp_keymap = function(bufnr)
 
     vim.keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
@@ -10,8 +22,9 @@ M.lsp_keymap = function(bufnr)
     -- type definition
     vim.keymap.set("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
     vim.keymap.set("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
-    vim.keymap.set("n", "ga", ":lua vim.lsp.buf.code_action(true)<CR>", opts)
+    vim.keymap.set("n", "ga", ":lua vim.lsp.buf.code_action()<CR>", opts)
     vim.keymap.set("n", "gs", ":lua vim.lsp.buf.signature_help(true)<CR>", opts)
+    vim.keymap.set("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opts)
     
 
 end
@@ -19,7 +32,8 @@ end
 M.telescope_keymap = function(bufnr)
 
     --vim.keymap.set("n", "<Leader>tt", ":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<CR>", opts)
-    vim.keymap.set("n", "<Leader>tt", ":lua require('telescope.builtin').find_files()<CR>", opts)
+    --vim.keymap.set("n", "<Leader>tt", ":lua require('telescope.builtin').find_files({hidden=truea})<CR>", opts)
+    vim.keymap.set("n", "<Leader>tt", ":Telescope find_files hidden=true<CR>", opts)
     vim.keymap.set("n", "<Leader>tr", ":Telescope resume<CR>", opts)
     vim.keymap.set("n", "<Leader>tc", ":Telescope commands<CR>", opts)
     vim.keymap.set("n", "<Leader>ts", ":Telescope live_grep<CR>", opts)

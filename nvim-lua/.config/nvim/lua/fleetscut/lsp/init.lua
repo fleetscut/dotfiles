@@ -65,6 +65,6 @@ M.on_attach = function(client, bufnr)
   lsp_highlight_document(client)
 end
 
-M.setup()
+--M.setup()
 
 return M
