@@ -87,4 +87,17 @@ M.general_keymap = function(bufnr)
     vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 end
 
+M.harpoon_keymap = function(bufnr)
+
+vim.keymap.set("n","<leader>a", ":lua require('harpoon.mark').add_file()<CR>", opts)
+vim.keymap.set("n","<C-m>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
+vim.keymap.set("n","<leader>tc", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", opts)
+
+vim.keymap.set("n","<C-n>", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
+vim.keymap.set("n","<C-e>", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
+vim.keymap.set("n","<C-i>", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
+vim.keymap.set("n","<C-o>", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
+
+end
+
 return M

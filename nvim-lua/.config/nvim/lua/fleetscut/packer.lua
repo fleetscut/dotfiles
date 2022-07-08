@@ -34,7 +34,9 @@ return packer.startup(function()
 
   -- Theme
   use('folke/tokyonight.nvim')
-  --
+  use("lukas-reineke/indent-blankline.nvim")
+  use('norcalli/nvim-colorizer.lua')
+
   -- Line
   use {
   'nvim-lualine/lualine.nvim',
@@ -53,6 +55,7 @@ return packer.startup(function()
   use("hrsh7th/cmp-path")
   --use("hrsh7th/cmp-cmdline")
   use("hrsh7th/nvim-cmp")
+  use("hrsh7th/cmp-nvim-lua")
 
   -- Snippets
   use("L3MON4D3/LuaSnip")
@@ -70,6 +73,8 @@ return packer.startup(function()
   use("RRethy/vim-illuminate")
 
   use("christoomey/vim-tmux-navigator")
+  use("ThePrimeagen/harpoon")
+  -- use "tversteeg/registers.nvim"
 
   ---- Lazy loading:
   ---- Load on specific commands
