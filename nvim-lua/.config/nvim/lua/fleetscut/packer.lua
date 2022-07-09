@@ -48,6 +48,7 @@ return packer.startup(function()
   use("mfussenegger/nvim-dap")
   use("rcarriga/nvim-dap-ui")
   use("ray-x/lsp_signature.nvim")
+  use("jose-elias-alvarez/null-ls.nvim")
 
   -- Completion
   use("hrsh7th/cmp-nvim-lsp")
