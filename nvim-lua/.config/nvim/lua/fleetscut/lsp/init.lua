@@ -1,74 +1,43 @@
-local M = {}
-
-local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_cmp_ok then
+local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status then
 	return
 end
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
-M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities.textDocument.completion.completionItem.preselectSupport = true
-M.capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-M.capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-M.capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-M.capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-M.capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-M.capabilities.textDocument.completion.completionItem.resolveSupport = {
-	properties = {
-		"documentation",
-		"detail",
-		"additionalTextEdits",
-	},
+local lsphandlers_status, lsphandlers = pcall(require, "fleetscut.lsp.handlers")
+if not lsphandlers_status then
+	return
+end
+
+local capabilities = lsphandlers.capabilities
+local on_attach = lsphandlers.on_attach
+
+local servers = {
+	"jedi_language_server",
+	"sumneko_lua",
+	-- "pyright",
+	-- "pyls",
 }
 
-M.setup = function()
-	require("fleetscut.lsp.lsp-signature")
+local config = {}
 
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
-		width = 60,
-		-- height = 30,
-	})
-
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
-		width = 60,
-		-- height = 30,
-	})
-end
-
-local function lsp_highlight_document(client)
-	-- if client.server_capabilities.document_highlight then
-	local status_ok, illuminate = pcall(require, "illuminate")
-	if not status_ok then
-		return
+for _, server in pairs(servers) do
+	if server == "jedi_language_server" then
+		PYTHON_DAP_ACTIVE = true
+		config = require("fleetscut.lsp.python").config
 	end
-	illuminate.on_attach(client)
-	-- end
-end
-
-M.on_attach = function(client, bufnr)
-	if client.name == "jdt.ls" then
-		if JAVA_DAP_ACTIVE then
-			require("jdtls").setup_dap({ hotcodereplace = "auto" })
-			require("jdtls.dap").setup_dap_main_class_configs()
-		end
-		--M.capabilities.textDocument.completion.completionItem.snippetSupport = false
-		--client.resolved_capabilities.document_formatting = false
-		vim.lsp.codelens.refresh()
-	end
-	if client.name == "jedi_language_server" then
-		if PYTHON_DAP_ACTIVE then
-			require("dap-python").setup("/usr/bin/python3")
-		end
-		-- vim.lsp.codelens.refresh()
+	if server == "sumneko_lua" then
+		config = require("fleetscut.lsp.lua-ls").config
 	end
 
-	require("fleetscut.keymaps").lsp_keymap(bufnr)
-	lsp_highlight_document(client)
+	config = vim.tbl_deep_extend("force", { on_attach = on_attach, capabilities = capabilities }, config)
+
+	lspconfig[server].setup(config)
 end
 
---M.setup()
+-- lspconfig.jedi_language_server.setup({ on_attach = on_attach, capabilities = capabilities })
+-- lspconfig.pyright.setup{ on_attach = on_attach, capabilities = capabilities }
 
-return M
+lsphandlers.setup()
+
+require("fleetscut.lsp.null-ls")
+require("fleetscut.lsp.lsp-signature")

@@ -94,4 +94,16 @@ M.harpoon_keymap = function(bufnr)
 	-- vim.keymap.set("n","<C-o>", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
 end
 
+M.dap_keymap = function(bufnr)
+	vim.keymap.set("n", "<Leader>db", ":lua require('dap').toggle_breakpoint()<CR>", opts)
+	vim.keymap.set("n", "<Leader>dc", ":lua require('dap').continue()<CR>", opts)
+	vim.keymap.set("n", "<Leader>di", ":lua require('dap').step_into()<CR>", opts)
+	vim.keymap.set("n", "<Leader>do", ":lua require('dap').step_over()<CR>", opts)
+	vim.keymap.set("n", "<Leader>dO", ":lua require('dap').step_out()<CR>", opts)
+	vim.keymap.set("n", "<Leader>dl", ":lua require('dap').run_last()<CR>", opts)
+	vim.keymap.set("n", "<Leader>du", ":lua require('dapui').toggle()<CR>", opts)
+	vim.keymap.set("n", "<Leader>dt", ":lua require('dap').toggle()<CR>", opts)
+	vim.keymap.set("n", "<Leader>dx", ":lua require('dap').terminate()<CR>", opts)
+end
+
 return M

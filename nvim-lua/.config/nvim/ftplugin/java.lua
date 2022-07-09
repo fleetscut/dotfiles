@@ -1,5 +1,10 @@
-local status, jdtls = pcall(require, "jdtls")
-if not status then
+local jdtls_status, jdtls = pcall(require, "jdtls")
+if not jdtls_status then
+	return
+end
+
+local lsphandlers_status, lsphandlers = pcall(require, "fleetscut.lsp.handlers")
+if not lsphandlers_status then
 	return
 end
 
@@ -8,6 +13,9 @@ local jdtls_dir = home .. "/.local/share/nvim/lsp/jdtls/"
 
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+
+local on_attach = lsphandlers.on_attach
+local capabilities = lsphandlers.capabilities
 
 JAVA_DAP_ACTIVE = true
 
@@ -69,8 +77,8 @@ local config = {
 		vim.fn.glob(home .. "/workspace/"),
 	},
 
-	on_attach = require("fleetscut.lsp").on_attach,
-	capabilities = require("fleetscut.lsp").capabilities,
+	on_attach = on_attach,
+	capabilities = capabilities,
 
 	-- 💀
 	-- This is the default if not provided, you can remove it. Or adjust as needed.
@@ -150,8 +158,12 @@ local config = {
 -- or attaches to an existing client & server depending on the `root_dir`.
 require("jdtls").start_or_attach(config)
 
-vim.cmd("command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)")
-vim.cmd("command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)")
+vim.cmd(
+	"command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
+)
+vim.cmd(
+	"command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)"
+)
 vim.cmd("command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()")
 vim.cmd("command! -buffer JdtJol lua require('jdtls').jol()")
 vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
