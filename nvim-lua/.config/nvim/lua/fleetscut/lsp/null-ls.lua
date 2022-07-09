@@ -11,8 +11,11 @@ null_ls.setup({
 	sources = {
 		formatting.stylua,
 		formatting.black,
+		formatting.prettier,
 		-- formatting.clang_format.with({ extra_args = {'-style','"{IndentWidth: 4, ColumnLimit: 0}"'} }),
 		formatting.google_java_format.with({ extra_args = { "--aosp" } }),
+		diagnostics.ansiblelint.with({ extra_filetypes = { "yml" } }),
+		diagnostics.yamllint,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

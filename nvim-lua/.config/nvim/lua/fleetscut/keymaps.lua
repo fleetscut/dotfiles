@@ -23,7 +23,6 @@ M.lsp_keymap = function(bufnr)
 	vim.keymap.set("n", "gs", ":lua vim.lsp.buf.signature_help(true)<CR>", opts)
 	vim.keymap.set("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opts)
 
-	vim.keymap.set("n", "<Leader>lf", ":lua vim.lsp.buf.format()<CR>", opts)
 	vim.keymap.set("n", "<Leader>so", ":SymbolsOutline<CR>", opts)
 end
 
@@ -80,6 +79,8 @@ M.general_keymap = function(bufnr)
 	-- Move lines up/down
 	vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 	vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
+
+	vim.keymap.set("n", "<Leader>lf", ":lua vim.lsp.buf.format({ async = true })<CR>", opts)
 end
 
 M.harpoon_keymap = function(bufnr)

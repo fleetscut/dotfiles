@@ -22,7 +22,7 @@ packer.init({
 	},
 })
 
-return packer.startup(function()
+return packer.startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
@@ -48,10 +48,12 @@ return packer.startup(function()
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
-	use("mfussenegger/nvim-dap")
-	use("rcarriga/nvim-dap-ui")
 	use("ray-x/lsp_signature.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
+	-- DAP
+	use("mfussenegger/nvim-dap")
+	use("rcarriga/nvim-dap-ui")
+	use("mfussenegger/nvim-dap-python")
 
 	-- treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

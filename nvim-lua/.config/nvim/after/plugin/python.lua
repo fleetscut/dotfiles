@@ -1,14 +1,16 @@
-local lspconfig_status, lspconfig = pcall(require,"lspconfig")
+local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
-    return
+	return
 end
 
-local lsphandlers_status, lsphandlers = pcall(require,"fleetscut.lsp")
+local lsphandlers_status, lsphandlers = pcall(require, "fleetscut.lsp")
 if not lsphandlers_status then
-    return
+	return
 end
 local capabilities = lsphandlers.capabilities
 local on_attach = lsphandlers.on_attach
 
-lspconfig.jedi_language_server.setup{ on_attach = on_attach, capabilities = capabilities }
+PYTHON_DAP_ACTIVE = true
+
+lspconfig.jedi_language_server.setup({ on_attach = on_attach, capabilities = capabilities })
 -- lspconfig.pyright.setup{ on_attach = on_attach, capabilities = capabilities }
