@@ -6,8 +6,13 @@ end
 local sumneko_root_path = vim.fn.getenv("HOME").."/.local/share/nvim/lsp/lua/lua-language-server"                                                 
 local sumneko_binary = sumneko_root_path.. '/bin/lua-language-server'
 
-local capabilities = require("fleetscut.lsp").capabilities
-local on_attach = require("fleetscut.lsp").on_attach
+local lsphandlers_status, lsphandlers = pcall(require,"fleetscut.lsp")
+if not lsphandlers_status then
+    print("lsp config not loaded")
+    return
+end
+local capabilities = lsphandlers.capabilities
+local on_attach = lsphandlers.on_attach
 
 lspconfig.sumneko_lua.setup {
     cmd = { sumneko_binary, "-E", sumneko_root_path .. "main.lua"},

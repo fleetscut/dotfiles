@@ -5,7 +5,6 @@ if not status_cmp_ok then
   return
 end
 
-require("fleetscut.lsp.lsp-signature")
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
@@ -25,6 +24,8 @@ M.capabilities.textDocument.completion.completionItem.resolveSupport = {
      }
 
 M.setup = function()
+    require("fleetscut.lsp.lsp-signature")
+
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = "rounded",
         width = 60,
