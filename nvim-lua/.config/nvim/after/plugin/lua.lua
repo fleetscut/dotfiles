@@ -3,12 +3,11 @@ if not lspconfig_status then
     return
 end
 
-local sumneko_root_path = vim.fn.getenv("HOME").."/.local/share/nvim/lsp/lua/lua-language-server"                                                 
+local sumneko_root_path = vim.fn.getenv("HOME").."/.local/share/nvim/lsp/lua/lua-language-server/"
 local sumneko_binary = sumneko_root_path.. '/bin/lua-language-server'
 
 local lsphandlers_status, lsphandlers = pcall(require,"fleetscut.lsp")
 if not lsphandlers_status then
-    print("lsp config not loaded")
     return
 end
 local capabilities = lsphandlers.capabilities

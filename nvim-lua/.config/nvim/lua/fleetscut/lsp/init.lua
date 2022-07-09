@@ -5,7 +5,6 @@ if not status_cmp_ok then
   return
 end
 
-
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -51,7 +50,6 @@ local function lsp_highlight_document(client)
 end
 
 M.on_attach = function(client, bufnr)
-
   if client.name == "jdt.ls" then
     if JAVA_DAP_ACTIVE then
       require("jdtls").setup_dap({ hotcodereplace = 'auto' })
