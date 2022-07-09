@@ -1,142 +1,155 @@
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-  return
+	return
 end
 
 --vim.cmd [[packadd packer.nvim]]
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
+vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
-]]
+]])
 
 -- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
-}
+packer.init({
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "rounded" })
+		end,
+	},
+})
 
 return packer.startup(function()
-  -- Packer can manage itself
-  use('wbthomason/packer.nvim')
+	-- Packer can manage itself
+	use("wbthomason/packer.nvim")
 
-  -- Coconut Oil
-  use("nvim-lua/plenary.nvim")
-  use("nvim-telescope/telescope.nvim")
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-  use("nvim-telescope/telescope-file-browser.nvim")
+	-- Coconut Oil
+	use("nvim-lua/plenary.nvim")
+	use("nvim-telescope/telescope.nvim")
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	})
+	use("nvim-telescope/telescope-file-browser.nvim")
 
-  -- Theme
-  use('folke/tokyonight.nvim')
-  use("lukas-reineke/indent-blankline.nvim")
-  use('norcalli/nvim-colorizer.lua')
+	-- Theme
+	use("folke/tokyonight.nvim")
+	use("lukas-reineke/indent-blankline.nvim")
+	use("norcalli/nvim-colorizer.lua")
 
-  -- Line
-  use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-}
+	-- Line
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
 
-  -- LSP
-  use('neovim/nvim-lspconfig')
-  use("mfussenegger/nvim-dap")
-  use("rcarriga/nvim-dap-ui")
-  use("ray-x/lsp_signature.nvim")
-  use("jose-elias-alvarez/null-ls.nvim")
+	-- LSP
+	use("neovim/nvim-lspconfig")
+	use("mfussenegger/nvim-dap")
+	use("rcarriga/nvim-dap-ui")
+	use("ray-x/lsp_signature.nvim")
+	use("jose-elias-alvarez/null-ls.nvim")
 
-  -- Completion
-  use("hrsh7th/cmp-nvim-lsp")
-  use("hrsh7th/cmp-buffer")
-  use("hrsh7th/cmp-path")
-  --use("hrsh7th/cmp-cmdline")
-  use("hrsh7th/nvim-cmp")
-  use("hrsh7th/cmp-nvim-lua")
+	-- treesitter
+	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use("nvim-treesitter/nvim-treesitter-context")
+	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use("p00f/nvim-ts-rainbow")
+	use("nvim-treesitter/playground")
+	use("windwp/nvim-ts-autotag")
+	use("drybalka/tree-climber.nvim")
 
-  -- Snippets
-  use("L3MON4D3/LuaSnip")
-  use("saadparwaiz1/cmp_luasnip")
-  use("rafamadriz/friendly-snippets")
+	-- Completion
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+	--use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-nvim-lua")
 
-  --use('jiangmiao/auto-pairs')
-  use("windwp/nvim-autopairs")
-  use("numToStr/Comment.nvim")
+	-- Snippets
+	use("L3MON4D3/LuaSnip")
+	use("saadparwaiz1/cmp_luasnip")
+	use("rafamadriz/friendly-snippets")
 
-  -- Java LSP
-  use('mfussenegger/nvim-jdtls')
-  --
-  -- Highlighting
-  use("RRethy/vim-illuminate")
+	--use('jiangmiao/auto-pairs')
+	use("windwp/nvim-autopairs")
+	use("numToStr/Comment.nvim")
 
-  use("christoomey/vim-tmux-navigator")
-  use("ThePrimeagen/harpoon")
-  -- use "tversteeg/registers.nvim"
+	-- Java LSP
+	use("mfussenegger/nvim-jdtls")
+	--
+	-- Highlighting
+	use("RRethy/vim-illuminate")
 
-  ---- Lazy loading:
-  ---- Load on specific commands
-  --use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
+	use("christoomey/vim-tmux-navigator")
+	use("ThePrimeagen/harpoon")
+	use("simrat39/symbols-outline.nvim")
+	-- use "tversteeg/registers.nvim"
 
-  ---- Load on an autocommand event
-  --use {'andymass/vim-matchup', event = 'VimEnter'}
+	---- Lazy loading:
+	---- Load on specific commands
+	--use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
 
-  ---- Load on a combination of conditions: specific filetypes or commands
-  ---- Also run code after load (see the "config" key)
-  --use {
-  --  'w0rp/ale',
-  --  ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
-  --  cmd = 'ALEEnable',
-  --  config = 'vim.cmd[[ALEEnable]]'
-  --}
+	---- Load on an autocommand event
+	--use {'andymass/vim-matchup', event = 'VimEnter'}
 
-  ---- Plugins can have dependencies on other plugins
-  --use {
-  --  'haorenW1025/completion-nvim',
-  --  opt = true,
-  --  requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
-  --}
+	---- Load on a combination of conditions: specific filetypes or commands
+	---- Also run code after load (see the "config" key)
+	--use {
+	--  'w0rp/ale',
+	--  ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
+	--  cmd = 'ALEEnable',
+	--  config = 'vim.cmd[[ALEEnable]]'
+	--}
 
-  ---- Plugins can also depend on rocks from luarocks.org:
-  --use {
-  --  'my/supercoolplugin',
-  --  rocks = {'lpeg', {'lua-cjson', version = '2.1.0'}}
-  --}
+	---- Plugins can have dependencies on other plugins
+	--use {
+	--  'haorenW1025/completion-nvim',
+	--  opt = true,
+	--  requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
+	--}
 
-  ---- You can specify rocks in isolation
-  --use_rocks 'penlight'
-  --use_rocks {'lua-resty-http', 'lpeg'}
+	---- Plugins can also depend on rocks from luarocks.org:
+	--use {
+	--  'my/supercoolplugin',
+	--  rocks = {'lpeg', {'lua-cjson', version = '2.1.0'}}
+	--}
 
-  ---- Local plugins can be included
-  --use '~/projects/personal/hover.nvim'
+	---- You can specify rocks in isolation
+	--use_rocks 'penlight'
+	--use_rocks {'lua-resty-http', 'lpeg'}
 
-  ---- Plugins can have post-install/update hooks
-  --use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
+	---- Local plugins can be included
+	--use '~/projects/personal/hover.nvim'
 
-  ---- Post-install/update hook with neovim command
-  --use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	---- Plugins can have post-install/update hooks
+	--use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
 
-  ---- Post-install/update hook with call of vimscript function with argument
-  --use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
+	---- Post-install/update hook with neovim command
+	--use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-  ---- Use specific branch, dependency and run lua file after load
-  --use {
-  --  'glepnir/galaxyline.nvim', branch = 'main', config = function() require'statusline' end,
-  --  requires = {'kyazdani42/nvim-web-devicons'}
-  --}
+	---- Post-install/update hook with call of vimscript function with argument
+	--use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
 
-  ---- Use dependency and run lua function after load
-  --use {
-  --  'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
-  --  config = function() require('gitsigns').setup() end
-  --}
+	---- Use specific branch, dependency and run lua file after load
+	--use {
+	--  'glepnir/galaxyline.nvim', branch = 'main', config = function() require'statusline' end,
+	--  requires = {'kyazdani42/nvim-web-devicons'}
+	--}
 
-  ---- You can specify multiple plugins in a single call
-  --use {'tjdevries/colorbuddy.vim', {'nvim-treesitter/nvim-treesitter', opt = true}}
+	---- Use dependency and run lua function after load
+	--use {
+	--  'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
+	--  config = function() require('gitsigns').setup() end
+	--}
 
-  ---- You can alias plugin names
-  --use {'dracula/vim', as = 'dracula'}
+	---- You can specify multiple plugins in a single call
+	--use {'tjdevries/colorbuddy.vim', {'nvim-treesitter/nvim-treesitter', opt = true}}
+
+	---- You can alias plugin names
+	--use {'dracula/vim', as = 'dracula'}
 end)
