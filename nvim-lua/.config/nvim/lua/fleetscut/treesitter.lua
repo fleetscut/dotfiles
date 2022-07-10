@@ -57,8 +57,8 @@ treesitter.setup({
 		colors = {
 			"#68a0b0",
 			"#946EaD",
-			"#c7aA6D",
 			"#8F0000",
+			"#c7aA6D",
 		},
 		disable = { "" },
 	},

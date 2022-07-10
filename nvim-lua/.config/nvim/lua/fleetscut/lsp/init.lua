@@ -16,6 +16,9 @@ local servers = {
 	"sumneko_lua",
 	-- "pyright",
 	-- "pyls",
+	"yamlls",
+	"jsonls",
+	"tsserver",
 }
 
 local config = {}
@@ -27,6 +30,15 @@ for _, server in pairs(servers) do
 	end
 	if server == "sumneko_lua" then
 		config = require("fleetscut.lsp.lua-ls").config
+	end
+	if server == "yamlls" then
+		config = require("fleetscut.lsp.yaml").config
+	end
+	if server == "jsonls" then
+		config = require("fleetscut.lsp.json").config
+	end
+	if server == "tsserver" then
+		config = require("fleetscut.lsp.javascript").config
 	end
 
 	config = vim.tbl_deep_extend("force", { on_attach = on_attach, capabilities = capabilities }, config)

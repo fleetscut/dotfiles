@@ -56,6 +56,7 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-dap")
 	use("rcarriga/nvim-dap-ui")
 	use("mfussenegger/nvim-dap-python")
+	use("theHamsta/nvim-dap-virtual-text")
 
 	-- treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -92,6 +93,8 @@ return packer.startup(function(use)
 	use("christoomey/vim-tmux-navigator")
 	use("ThePrimeagen/harpoon")
 	use("simrat39/symbols-outline.nvim")
+	use("b0o/SchemaStore.nvim")
+
 	-- use "tversteeg/registers.nvim"
 
 	---- Lazy loading:
