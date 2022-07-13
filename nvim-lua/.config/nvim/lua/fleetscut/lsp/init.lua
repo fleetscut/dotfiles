@@ -19,6 +19,7 @@ local servers = {
 	"yamlls",
 	"jsonls",
 	"tsserver",
+	"clangd",
 }
 
 local config = {}
@@ -39,6 +40,9 @@ for _, server in pairs(servers) do
 	end
 	if server == "tsserver" then
 		config = require("fleetscut.lsp.javascript").config
+	end
+	if server == "clangd" then
+		config = require("fleetscut.lsp.cpp").config
 	end
 
 	config = vim.tbl_deep_extend("force", { on_attach = on_attach, capabilities = capabilities }, config)
