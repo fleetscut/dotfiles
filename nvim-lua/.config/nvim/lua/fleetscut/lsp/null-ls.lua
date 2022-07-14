@@ -6,6 +6,7 @@ end
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	debug = false,
 	sources = {
@@ -16,6 +17,7 @@ null_ls.setup({
 		formatting.google_java_format.with({ extra_args = { "--aosp" } }),
 		diagnostics.ansiblelint.with({ extra_filetypes = { "yml" } }),
 		diagnostics.yamllint,
+		-- diagnostics.eslint_d,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
@@ -25,7 +27,7 @@ null_ls.setup({
 				buffer = bufnr,
 				callback = function()
 					vim.lsp.buf.format({
-						async = true,
+						-- async = true,
 						bufnr = bufnr,
 						filter = function(client)
 							return client.name == "null-ls"

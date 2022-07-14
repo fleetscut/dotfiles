@@ -6,6 +6,7 @@ if not store_status then
 end
 
 M.config = {
+	cmd = { "jsonls", "--stdio" },
 	init_options = {
 		privideFormatter = false,
 	},

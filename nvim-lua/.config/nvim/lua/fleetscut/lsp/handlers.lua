@@ -38,6 +38,14 @@ M.setup = function()
 		width = 60,
 		-- height = 30,
 	})
+
+	vim.lsp.handlers["textDocument/diagnostic"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+		border = "rounded",
+		width = 60,
+		-- height = 30,
+	})
+
+	-- vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.lsp.buf.hover(nil, {focus=false})]])
 end
 
 local function lsp_highlight_document(client)
