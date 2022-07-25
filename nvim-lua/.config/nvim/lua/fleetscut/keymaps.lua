@@ -13,7 +13,7 @@ M.java_keymap = function(bufnr)
 end
 
 M.lsp_keymap = function(bufnr)
-	vim.keymap.set("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>", opts)
+	vim.keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
 	vim.keymap.set("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
 	-- preview definition
 	-- type definition

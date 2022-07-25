@@ -8,9 +8,41 @@ if not context_status then
 	return
 end
 
+local checkOS = require("fleetscut.osver").checkOS
+
+local packages = ""
+if checkOS() then
+	packages = {
+		"python",
+		"cpp",
+		"css",
+		"html",
+		"json5",
+		"vim",
+		"lua",
+		"java",
+		"javascript",
+		"typescript",
+		"dockerfile",
+		"make",
+		"http",
+		"jsdoc",
+		"help",
+		"cmake",
+		"bash",
+		"tsx",
+		"sql",
+		"c",
+		"regex",
+		"markdown",
+	}
+else
+	packages = "all"
+end
+
 treesitter.setup({
 	-- A list of parser names, or "all"
-	ensure_installed = "all",
+	ensure_installed = packages,
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
