@@ -86,10 +86,12 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=vim
+export VISUAL=vim
 
 alias vim=nvim
+alias sudo='sudo '
+alias apt=nala
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -99,9 +101,13 @@ bindkey -s "^g" "lf-cd\n"
 if [[ "$(hostname)" == "sazabi" ]]; then
     script_prefix="desktop"
 fi
+if [[ "$(hostname)" == "WBBCEAD93931RL" ]]; then
+    script_prefix="work"
+fi
 
 source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
 source $HOME/.config/machine_configs/${script_prefix}_funcs.sh
+source $HOME/.config/machine_configs/${script_prefix}_env.sh
 
 lf-cd () {
     tmp="$(mktemp)"
