@@ -95,6 +95,9 @@ alias apt=nala
 
 autoload -U edit-command-line
 zle -N edit-command-line
+
+# The mode of the Gods
+bindkey -v
 bindkey '^v' edit-command-line
 bindkey -s "^g" "lf-cd\n"
 
