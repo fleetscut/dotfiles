@@ -11,7 +11,7 @@ vim.opt.hidden = true
 vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir= os.getenv("HOME") .. "/.nvim/undodir"
+vim.opt.undodir = os.getenv("HOME") .. "/.nvim/undodir"
 vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.opt.scrolloff = 10
@@ -30,3 +30,7 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
 vim.g.mapleader = " "
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevelstart = 20
