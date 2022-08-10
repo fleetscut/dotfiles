@@ -13,6 +13,7 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.black,
 		formatting.prettier,
+		formatting.rustfmt,
 		-- formatting.clang_format.with({ extra_args = {'-style','"{IndentWidth: 4, ColumnLimit: 0}"'} }),
 		formatting.google_java_format.with({ extra_args = { "--aosp" } }),
 		diagnostics.ansiblelint.with({ extra_filetypes = { "yml" } }),

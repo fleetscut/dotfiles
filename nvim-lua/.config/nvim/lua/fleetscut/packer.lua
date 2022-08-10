@@ -52,6 +52,7 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig")
 	use("ray-x/lsp_signature.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
+	-- use("nvim-lua/lsp_extensions.nvim")
 
 	-- DAP
 	use("mfussenegger/nvim-dap")
@@ -87,6 +88,9 @@ return packer.startup(function(use)
 
 	-- Java LSP
 	use("mfussenegger/nvim-jdtls")
+
+	-- Rust
+	use("simrat39/rust-tools.nvim")
 	--
 	-- Highlighting
 	use("RRethy/vim-illuminate")

@@ -20,6 +20,7 @@ local servers = {
 	"jsonls",
 	"tsserver",
 	"clangd",
+	-- "rust_analyzer",
 }
 
 local config = {}
@@ -44,7 +45,9 @@ for _, server in pairs(servers) do
 	if server == "clangd" then
 		config = require("fleetscut.lsp.cpp").config
 	end
-
+	-- if server == "rust_analyzer" then
+	-- 	config = require("fleetscut.lsp.rust").config
+	-- end
 	config = vim.tbl_deep_extend("force", { on_attach = on_attach, capabilities = capabilities }, config)
 
 	lspconfig[server].setup(config)
