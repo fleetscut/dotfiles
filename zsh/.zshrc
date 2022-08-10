@@ -112,6 +112,9 @@ source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
 source $HOME/.config/machine_configs/${script_prefix}_funcs.sh
 source $HOME/.config/machine_configs/${script_prefix}_env.sh
 
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
 lf-cd () {
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
