@@ -2,3 +2,4 @@ nvim/.config/nvim/autoload/
 nvim/.config/nvim/.netrwhist
 zsh/.oh-my-zsh
 polybar/.config/polybar/polybar/
+nvim-lua/.config/nvim/plugin/packer_compiled.lua
