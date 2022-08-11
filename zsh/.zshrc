@@ -107,6 +107,9 @@ fi
 if [[ "$(hostname)" == "WBBCEAD93931RL" ]]; then
     script_prefix="work"
 fi
+if [[ "$(hostname)" == "tablet" ]]; then
+    script_prefix="tablet"
+fi
 
 source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
 source $HOME/.config/machine_configs/${script_prefix}_funcs.sh
