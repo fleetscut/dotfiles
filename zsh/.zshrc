@@ -107,7 +107,7 @@ fi
 if [[ "$(hostname)" == "WBBCEAD93931RL" ]]; then
     script_prefix="work"
 fi
-if [[ "$(hostname)" == "tablet" ]]; then
+if [[ "$(uname -r | grep -i android)" ]]; then
     script_prefix="tablet"
 fi
 
