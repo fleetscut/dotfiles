@@ -35,6 +35,7 @@ return packer.startup(function(use)
 	})
 	use("nvim-telescope/telescope-file-browser.nvim")
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
+	use("nvim-telescope/telescope-symbols.nvim")
 
 	-- Theme
 	use("folke/tokyonight.nvim")
@@ -50,7 +51,7 @@ return packer.startup(function(use)
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
-	use("ray-x/lsp_signature.nvim")
+	-- use("ray-x/lsp_signature.nvim")
 	use("jose-elias-alvarez/null-ls.nvim")
 	-- use("nvim-lua/lsp_extensions.nvim")
 
@@ -76,6 +77,7 @@ return packer.startup(function(use)
 	--use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lua")
+	use("hrsh7th/cmp-nvim-lsp-signature-help")
 
 	-- Snippets
 	use("L3MON4D3/LuaSnip")

@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-nvim-lsp-signature-help"] = {
+    loaded = true,
+    path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
+  },
   ["cmp-nvim-lua"] = {
     loaded = true,
     path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
@@ -123,11 +128,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
-  },
-  ["lsp_signature.nvim"] = {
-    loaded = true,
-    path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
-    url = "https://github.com/ray-x/lsp_signature.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
@@ -253,6 +253,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+  },
+  ["telescope-symbols.nvim"] = {
+    loaded = true,
+    path = "/home/fleetscut/.local/share/nvim/site/pack/packer/start/telescope-symbols.nvim",
+    url = "https://github.com/nvim-telescope/telescope-symbols.nvim"
   },
   ["telescope-ui-select.nvim"] = {
     loaded = true,

@@ -90,6 +90,7 @@ vim.o.completeopt =
 			{ name = "path" }, --, group_index = 2},
 			{ name = "luasnip" }, --, group_index = 1}, -- For luasnip users.
 			{ name = "buffer" }, --, group_index = 2},
+			{ name = "nvim_lsp_signature_help" },
 		},
 		confirm_opts = {
 			behavior = cmp.ConfirmBehavior.Replace,

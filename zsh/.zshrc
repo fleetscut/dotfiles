@@ -90,8 +90,8 @@ export EDITOR=vim
 export VISUAL=vim
 
 alias vim=nvim
+#make aliases work with sudo
 alias sudo='sudo '
-alias apt=nala
 
 autoload -U edit-command-line
 zle -N edit-command-line
