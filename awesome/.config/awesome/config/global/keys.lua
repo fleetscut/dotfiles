@@ -6,6 +6,9 @@ local gears = require("gears")
 local modkey = require("config.global.mod").modkey
 local altkey = require("config.global.mod").altkey
 
+local apps = require("config.apps")
+local menus = require("widgets.menus")
+
 local globalkeys = gears.table.join(
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
@@ -19,7 +22,7 @@ local globalkeys = gears.table.join(
 		awful.client.focus.byidx(-1)
 	end, { description = "focus previous by index", group = "client" }),
 	awful.key({ modkey }, "w", function()
-		mymainmenu:show()
+		menus.mymainmenu:show()
 	end, { description = "show main menu", group = "awesome" }),
 	awful.key({ modkey }, "BackSpace", function()
 		awful.util.spawn_with_shell(
@@ -50,7 +53,7 @@ local globalkeys = gears.table.join(
 
 	-- Standard program
 	awful.key({ modkey }, "Return", function()
-		awful.spawn(terminal)
+		awful.spawn(apps.terminal)
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", _G.awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "q", _G.awesome.quit, { description = "quit awesome", group = "awesome" }),
