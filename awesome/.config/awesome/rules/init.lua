@@ -2,8 +2,8 @@ local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 
-local clientkeys = require("config.client.keys")
-local clientbuttons = require("config.client.buttons")
+local clientkeys = require("bindings").client.keys
+local clientbuttons = require("rules.buttons")
 --
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).

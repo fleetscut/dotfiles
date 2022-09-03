@@ -10,12 +10,13 @@ beautiful.useless_gap = 5
 
 require("layout")
 
-require("config.client")
-require("config.signals")
+require("rules")
+require("signals")
+
 -- Mouse bindings
-_G.root.buttons(require("config.global.mouse"))
+_G.root.buttons(require("bindings").global.mouse)
 -- Set keys
-_G.root.keys(require("config.global.keys"))
+_G.root.keys(require("bindings").global.keys)
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 -- local function set_wallpaper(s)

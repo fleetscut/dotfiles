@@ -3,10 +3,10 @@ require("awful.autofocus")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local gears = require("gears")
 
-local modkey = require("config.global.mod").modkey
-local altkey = require("config.global.mod").altkey
+local modkey = require("bindings.mods").modkey
+local altkey = require("bindings.mods").altkey
 
-local apps = require("config.apps")
+local apps = require("config").apps
 local menus = require("widgets.menus")
 
 local globalkeys = gears.table.join(

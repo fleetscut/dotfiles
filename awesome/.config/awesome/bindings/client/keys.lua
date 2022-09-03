@@ -1,9 +1,8 @@
 local awful = require("awful")
 local gears = require("gears")
-require("awful.autofocus")
 
-local modkey = require("config.global.mod").modkey
-local altkey = require("config.global.mod").altkey
+local modkey = require("bindings.mods").modkey
+local altkey = require("bindings.mods").altkey
 
 return gears.table.join(
 	awful.key({ modkey }, "f", function(c)

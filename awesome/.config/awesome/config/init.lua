@@ -1,3 +1,3 @@
 return {
-	keys = require("config.global"),
+	apps = require("config.apps"),
 }
