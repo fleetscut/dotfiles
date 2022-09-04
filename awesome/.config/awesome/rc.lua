@@ -8,8 +8,6 @@ require("awful.hotkeys_popup.keys")
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.useless_gap = 5
 
-require("layout")
-
 require("rules")
 require("signals")
 
