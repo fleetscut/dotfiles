@@ -43,3 +43,5 @@ _G.root.keys(require("bindings").global.keys)
 -- themes
 -- tag icons
 --
+------ TEST ------
+-- require("test.test")

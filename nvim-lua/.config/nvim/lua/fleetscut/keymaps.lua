@@ -73,7 +73,7 @@ M.general_keymap = function(bufnr)
 	vim.keymap.set("v", "<Leader>y", '"+y', opts)
 
 	-- Paste from clipboard
-	vim.keymap.set("n", "<Leader>p", '"+p', opts)
+	vim.keymap.set("n", "<Leader>P", '"+p', opts)
 
 	-- Yank file
 	vim.keymap.set("n", "<Leader>Y", 'ggVG"+y', opts)
