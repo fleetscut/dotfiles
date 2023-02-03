@@ -17,8 +17,8 @@ M.lsp_keymap = function(bufnr)
 	vim.keymap.set("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
 	-- preview definition
 	-- type definition
-	vim.keymap.set("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
-	vim.keymap.set("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
+	vim.keymap.set("n", "gR", ":lua vim.lsp.buf.references()<CR>", opts)
+	vim.keymap.set("n", "gr", ":lua vim.lsp.buf.rename()<CR>", opts)
 	vim.keymap.set("n", "ga", ":lua vim.lsp.buf.code_action()<CR>", opts)
 	vim.keymap.set("n", "gs", ":lua vim.lsp.buf.signature_help(true)<CR>", opts)
 	vim.keymap.set("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opts)
@@ -42,8 +42,6 @@ M.telescope_keymap = function(bufnr)
 end
 
 M.general_keymap = function(bufnr)
-	--vim.keymap.set("n", "<Leader>ut", ":UndotreeToggle<CR>", opts)
-	--vim.keymap.set("n", "<Leader>nt", ":NvimTreeToggle<CR>", opts)
 	--vim.keymap.set("n", "<Leader>h", ":wincmd h<CR>", opts)
 	--vim.keymap.set("n", "<Leader>l", ":wincmd l<CR>", opts)
 	--vim.keymap.set("n", "<Leader>k", ":wincmd k<CR>", opts)
@@ -52,6 +50,12 @@ M.general_keymap = function(bufnr)
 	vim.keymap.set("n", "<M-k>", ":resize +2<CR>", opts)
 	vim.keymap.set("n", "<M-h>", ":vertical resize -2<CR>", opts)
 	vim.keymap.set("n", "<M-l>", ":vertical resize +2<CR>", opts)
+
+	vim.keymap.set("n", "J", "mzJ`z", opts)
+	vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
+	vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
+	vim.keymap.set("n", "n", "nzzzv", opts)
+	vim.keymap.set("n", "N", "Nzzzv", opts)
 
 	-- Gods gift to vim
 	vim.keymap.set("i", "<C-c>", "<Esc>", opts)
@@ -87,13 +91,13 @@ end
 
 M.harpoon_keymap = function(bufnr)
 	vim.keymap.set("n", "<leader>a", ":lua require('harpoon.mark').add_file()<CR>", opts)
-	vim.keymap.set("n", "<C-y>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
-	vim.keymap.set("n", "<leader>hc", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", opts)
+	vim.keymap.set("n", "<leader>hy", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
+	-- vim.keymap.set("n", "<leader>hc", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", opts)
 
-	-- vim.keymap.set("n", "<C-n>", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
-	-- vim.keymap.set("n", "<C-e>", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
-	-- vim.keymap.set("n","<C-i>", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
-	-- vim.keymap.set("n","<C-o>", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
+	vim.keymap.set("n", "<leader>hh", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
+	vim.keymap.set("n", "<leader>h,", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
+	vim.keymap.set("n", "<leader>h.", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
+	vim.keymap.set("n", "<leader>h/", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
 end
 
 M.dap_keymap = function(bufnr)
@@ -107,6 +111,24 @@ M.dap_keymap = function(bufnr)
 	vim.keymap.set("n", "<Leader>du", ":lua require('dapui').toggle()<CR>", opts)
 	vim.keymap.set("n", "<Leader>dt", ":lua require('dap').toggle()<CR>", opts)
 	vim.keymap.set("n", "<Leader>dx", ":lua require('dap').terminate()<CR>", opts)
+end
+
+M.noice_keymap = function(bufnr)
+	vim.keymap.set("n", "<c-f>", function()
+		if not require("noice.lsp").scroll(4) then
+			return "<c-f>"
+		end
+	end, { silent = true, expr = true })
+
+	vim.keymap.set("n", "<c-b>", function()
+		if not require("noice.lsp").scroll(-4) then
+			return "<c-b>"
+		end
+	end, { silent = true, expr = true })
+end
+
+M.undootree_keymap = function(bufnr)
+	vim.keymap.set("n", "<Leader>u", ":UndotreeToggle<CR>", opts)
 end
 
 return M

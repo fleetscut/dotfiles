@@ -35,7 +35,7 @@ vim.o.completeopt =
 				c = cmp.mapping.close(),
 			}),
 			-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-			["<CR>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
+			["<C-s>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
