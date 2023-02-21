@@ -102,6 +102,19 @@ return packer.startup(function(use)
 	use("simrat39/symbols-outline.nvim")
 	use("b0o/SchemaStore.nvim")
 
+	use("mbbill/undotree")
+
+	use({
+		"folke/noice.nvim",
+		requires = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+	})
 	-- use "tversteeg/registers.nvim"
 
 	---- Lazy loading:

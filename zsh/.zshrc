@@ -129,3 +129,5 @@ lf-cd () {
 }
 
 unset $script_prefix
+
+eval "$(starship init zsh)"
