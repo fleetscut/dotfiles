@@ -1,12 +1,16 @@
-[submodule "awesome/.config/awesome/layout-machi"]
-	path = awesome/.config/awesome/layout-machi
-	url = https://github.com/xinhaoyuan/layout-machi
-[submodule "awesome/.config/awesome/awesome-cyclefocus"]
-	path = awesome/.config/awesome/awesome-cyclefocus
+[submodule "awesome-fw/.config/awesome/cyclefocus"]
+	path = awesome-fw/.config/awesome/cyclefocus
 	url = https://github.com/blueyed/awesome-cyclefocus
-[submodule "awesome/.config/awesome/lain"]
-	path = awesome/.config/awesome/lain
+	ignore = dirty
+[submodule "awesome-fw/.config/awesome/layout-machi"]
+	path = awesome-fw/.config/awesome/layout-machi
+	url = https://github.com/xinhaoyuan/layout-machi
+	ignore = dirty
+[submodule "awesome-fw/.config/awesome/lain"]
+	path = awesome-fw/.config/awesome/lain
 	url = https://github.com/lcpz/lain
-[submodule "awesome/.config/awesome/awesome-wm-nice"]
-	path = awesome/.config/awesome/awesome-wm-nice
+	ignore = dirty
+[submodule "awesome-fw/.config/awesome/nice"]
+	path = awesome-fw/.config/awesome/nice
 	url = https://github.com/mut-ex/awesome-wm-nice
+	ignore = dirty
