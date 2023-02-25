@@ -111,9 +111,13 @@ if [[ "$(uname -r | grep -i android)" ]]; then
     script_prefix="tablet"
 fi
 
-source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
-source $HOME/.config/machine_configs/${script_prefix}_funcs.sh
-source $HOME/.config/machine_configs/${script_prefix}_env.sh
+if [[ $script_prefix ]]; then
+	source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
+	source $HOME/.config/machine_configs/${script_prefix}_funcs.sh
+	source $HOME/.config/machine_configs/${script_prefix}_env.sh
+
+	unset $script_prefix
+fi
 
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
@@ -127,7 +131,5 @@ lf-cd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
-
-unset $script_prefix
 
 eval "$(starship init zsh)"
