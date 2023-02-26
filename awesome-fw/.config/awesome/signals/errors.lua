@@ -1,16 +1,15 @@
-local awful = require("awful")
 local naughty = require("naughty")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
-if _G.awesome.startup_errors then
-	naughty.notify({
-		preset = naughty.config.presets.critical,
-		title = "Oops, there were errors during startup!",
-		text = awesome.startup_errors,
-	})
-end
+naughty.connect_signal("request::display_error", function(message, startup)
+	naughty.notification {
+		urgency = "critical",
+		title = "Oops, an error happened"..(startup and " during startup!" or "!"),
+		message = message
+	}
+end)
 
 -- Handle runtime errors after startup
 do
@@ -31,3 +30,12 @@ do
 	end)
 end
 -- }}}
+
+naughty.connect_signal("debug::deprication", function(hint,see,asgs)
+	naughty.notification {
+		urgency = "critical",
+		title = "Depricated API Call.",
+		message = hint
+	}
+end)
+

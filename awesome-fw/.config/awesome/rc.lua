@@ -5,8 +5,22 @@ local awful = require("awful")
 require("awful.autofocus")
 local beautiful = require("beautiful")
 require("awful.hotkeys_popup.keys")
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+
+local themeName = "multicolor"
+--beautiful.init(gears.filesystem.get_configuration_dir() .. "/themes/"..themeName.."/theme.lua")
+beautiful.init("/home/fleetscut/.config/awesome/themes/multicolor/theme.lua")
+--beautiful.init({
+--	icon_font = "FiraCode",
+--})
+
 beautiful.useless_gap = 5
+
+--local naughty = require("naughty")
+--naughty.notification{
+--    urgency = "critical",
+--    title = "Hey",
+--    message = "Listen "..beautiful.icon_font,
+--}
 
 require("rules")
 require("signals")
@@ -55,28 +69,35 @@ local machi = require("layout-machi")
 local lain = require("lain")
 local dpi = require("beautiful.xresources").apply_dpi
 local nice = require("nice")
+local bling = require("bling")
 
-awful.layout.layouts = {
-	awful.layout.suit.floating,
-	awful.layout.suit.tile,
-	machi.default_layout,
-	lain.layout.centerwork,
-	lain.layout.termfair.center,
-	-- awful.layout.suit.tile.left,
-	-- awful.layout.suit.tile.bottom,
-	-- awful.layout.suit.tile.top,
-	-- awful.layout.suit.fair,
-	-- awful.layout.suit.fair.horizontal,
-	-- awful.layout.suit.spiral,
-	-- awful.layout.suit.spiral.dwindle,
-	-- awful.layout.suit.max,
-	-- awful.layout.suit.max.fullscreen,
-	-- awful.layout.suit.magnifier,
-	-- awful.layout.suit.corner.nw,
-	-- awful.layout.suit.corner.ne,
-	-- awful.layout.suit.corner.sw,
-	-- awful.layout.suit.corner.se,
-}
+local dashboard = require("fishlive.widget.dashboard")()
+
+tag.connect_signal("request::default_layouts", function()
+	awful.layout.append_default_layouts({
+		awful.layout.suit.floating,
+		awful.layout.suit.tile,
+		machi.default_layout,
+		lain.layout.centerwork,
+		lain.layout.termfair.center,
+		bling.layout.mstab,
+		-- awful.layout.suit.tile.left,
+		-- awful.layout.suit.tile.bottom,
+		-- awful.layout.suit.tile.top,
+		-- awful.layout.suit.fair,
+		-- awful.layout.suit.fair.horizontal,
+		-- awful.layout.suit.spiral,
+		-- awful.layout.suit.spiral.dwindle,
+		-- awful.layout.suit.max,
+		-- awful.layout.suit.max.fullscreen,
+		-- awful.layout.suit.magnifier,
+		-- awful.layout.suit.corner.nw,
+		-- awful.layout.suit.corner.ne,
+		-- awful.layout.suit.corner.sw,
+		-- awful.layout.suit.corner.se,
+	
+	})
+end)
 
 lain.layout.termfair.nmaster           = 3
 lain.layout.termfair.ncol              = 1
@@ -164,4 +185,28 @@ awful.keyboard.append_global_keybindings({
 
     awful.key({ modkey, ctrlkey }, "-", function () lain.util.useless_gaps_resize(-1) end,
               {description="decrease gaps between windows", group="awesome"}),
+
+	-- Bling
+	awful.key ({
+		modifiers = { modkey, "Control" },
+		keygroup = "numrow",
+		description = "tabbed features",
+		group = "client",
+		on_press = function(index)
+			if index == 1 then bling.module.tabbed.pick_with_dmenu()
+		    	elseif index == 2 then bling.module.tabbed.pick_by_direction("down")
+		    	elseif index == 4 then bling.module.tabbed.pick_by_direction("left")
+		    	elseif index == 5 then bling.module.tabbed.iter()
+		    	elseif index == 6 then bling.module.tabbed.pick_by_direction("right")
+		    	elseif index == 7 then bling.module.tabbed.pick()
+		    	elseif index == 8 then bling.module.tabbed.pick_by_direction("up")
+		    	elseif index == 9 then bling.module.tabbed.pop()
+			end
+		end
+	
+	}),
+
+	-- Dashboard
+	awful.key( { modkey }, "z", function() awesome.emit_signal("dashboard::toggle") end,
+		{ description = "Dashboard toggle", group = "awesome"}),
 })
