@@ -26,9 +26,6 @@ require("rules")
 require("signals")
 
 
--- NEW
-local cyclefocus = require("cyclefocus")
-
 -- Mouse bindings
 _G.root.buttons(require("bindings").global.mouse)
 -- Set keys
@@ -65,13 +62,17 @@ _G.root.keys(require("bindings").global.keys)
 -- require("test.test")
 
 
+-- NEW
+local cyclefocus = require("cyclefocus")
+
+
 local machi = require("layout-machi")
 local lain = require("lain")
 local dpi = require("beautiful.xresources").apply_dpi
 local nice = require("nice")
 local bling = require("bling")
 
-local dashboard = require("fishlive.widget.dashboard")()
+--local dashboard = require("fishlive.widget.dashboard")()
 
 tag.connect_signal("request::default_layouts", function()
 	awful.layout.append_default_layouts({
@@ -98,6 +99,7 @@ tag.connect_signal("request::default_layouts", function()
 	
 	})
 end)
+require("fleetscut.themes.default.theme")
 
 lain.layout.termfair.nmaster           = 3
 lain.layout.termfair.ncol              = 1
