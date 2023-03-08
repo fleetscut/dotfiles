@@ -13,7 +13,7 @@ local on_attach = lsphandlers.on_attach
 
 local servers = {
 	"jedi_language_server",
-	"sumneko_lua",
+	"lua_ls",
 	-- "pyright",
 	-- "pyls",
 	"yamlls",
@@ -30,7 +30,7 @@ for _, server in pairs(servers) do
 		PYTHON_DAP_ACTIVE = true
 		config = require("fleetscut.lsp.python").config
 	end
-	if server == "sumneko_lua" then
+	if server == "lua_ls" then
 		config = require("fleetscut.lsp.lua-ls").config
 	end
 	if server == "yamlls" then
