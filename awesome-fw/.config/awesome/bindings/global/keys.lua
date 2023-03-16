@@ -9,8 +9,32 @@ local altkey = require("bindings.mods").altkey
 local apps = require("config").apps
 local menus = require("widgets.menus")
 
-local globalkeys = gears.table.join(
+local bling = require("bling")
+local machi = require("layout-machi")
+local lain = require("lain")
+
+local cyclefocus = require("cyclefocus")
+cyclefocus.centered = true
+
+awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
+	awful.key({ modkey }, "w", function()
+		menus.mymainmenu:show()
+	end, { description = "show main menu", group = "awesome" }),
+	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
+	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
+	-- awful.key({ modkey }, "x", function()
+	-- 	awful.prompt.run({
+	-- 		prompt = "Run Lua code: ",
+	-- 		textbox = awful.screen.focused().mypromptbox.widget,
+	-- 		exe_callback = awful.util.eval,
+	-- 		history_path = awful.util.get_cache_dir() .. "/history_eval",
+	-- 	})
+	-- end, { description = "lua execute prompt", group = "awesome" }),
+	awful.key({ modkey }, "Return", function()
+		awful.spawn(apps.terminal)
+	end, { description = "open a terminal", group = "launcher" }),
+
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
@@ -21,9 +45,6 @@ local globalkeys = gears.table.join(
 	awful.key({ modkey }, "p", function()
 		awful.client.focus.byidx(-1)
 	end, { description = "focus previous by index", group = "client" }),
-	awful.key({ modkey }, "w", function()
-		menus.mymainmenu:show()
-	end, { description = "show main menu", group = "awesome" }),
 	awful.key({ modkey }, "BackSpace", function()
 		awful.util.spawn_with_shell(
 			"dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock"
@@ -44,19 +65,12 @@ local globalkeys = gears.table.join(
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
-	awful.key({ modkey }, "Tab", function()
-		awful.client.focus.history.previous()
-		if _G.client.focus then
-			_G.client.focus:raise()
-		end
-	end, { description = "go back", group = "client" }),
-
-	-- Standard program
-	awful.key({ modkey }, "Return", function()
-		awful.spawn(apps.terminal)
-	end, { description = "open a terminal", group = "launcher" }),
-	awful.key({ modkey, "Control" }, "r", _G.awesome.restart, { description = "reload awesome", group = "awesome" }),
-	awful.key({ modkey, "Shift" }, "q", _G.awesome.quit, { description = "quit awesome", group = "awesome" }),
+	-- awful.key({ modkey }, "Tab", function()
+	-- 	awful.client.focus.history.previous()
+	-- 	if _G.client.focus then
+	-- 		_G.client.focus:raise()
+	-- 	end
+	-- end, { description = "go back", group = "client" }),
 
 	awful.key({ modkey }, "k", function()
 		awful.client.incwfact(-0.01)
@@ -98,70 +112,122 @@ local globalkeys = gears.table.join(
 	end, { description = "restore minimized", group = "client" }),
 
 	-- Prompt
--- 	awful.key({ modkey }, "space", function()
--- 		-- awful.screen.focused().mypromptbox:run()
--- 		awful.util.spawn("rofi -show drun -theme /home/fleetscut/.config/polybar/shapes/scripts/rofi/launcher.rasi")
--- 	end, { description = "run rofi app launcher", group = "launcher" }),
--- 	awful.key({ modkey, "Shift" }, "space", function()
--- 		-- awful.screen.focused().mypromptbox:run()
--- 		awful.util.spawn("rofi -show run -theme /home/fleetscut/.config/polybar/shapes/scripts/rofi/launcher.rasi")
--- 	end, { description = "run rofi command launcher", group = "launcher" }),
+	awful.key({ modkey }, "space", function()
+		awful.util.spawn("rofi -show drun -theme /home/fleetscut/.config/rofi/launcher.rasi")
+	end, { description = "run rofi app launcher", group = "launcher" }),
+	awful.key({ modkey, "Shift" }, "space", function()
+		awful.util.spawn("rofi -show run -theme /home/fleetscut/.config/rofi/launcher.rasi")
+	end, { description = "run rofi command launcher", group = "launcher" }),
 
-	awful.key({ modkey }, "x", function()
-		awful.prompt.run({
-			prompt = "Run Lua code: ",
-			textbox = awful.screen.focused().mypromptbox.widget,
-			exe_callback = awful.util.eval,
-			history_path = awful.util.get_cache_dir() .. "/history_eval",
-		})
-	end, { description = "lua execute prompt", group = "awesome" })
+	-- Alt-Tab like function
+	awful.key({ altkey }, "Tab", function(c)
+		cyclefocus.cycle({ modifier = "Alt_R" })
+	end, { description = "Cycle through all clients", group = "client" }),
+	awful.key({ altkey, "Shift" }, "Tab", function(c)
+		cyclefocus.cycle({ modifier = "Alt_R" })
+	end, { description = "Cycle through all clients backwards", group = "client" }),
+
+	-- Machi
+	awful.key({ modkey }, ".", function()
+		machi.default_editor.start_interactive()
+	end, { description = "machi: edit the current machi layout", group = "layout" }),
+	awful.key({ modkey }, "/", function()
+		machi.switcher.start(client.focus)
+	end, { description = "machi: switch between windows", group = "layout" }),
+
+	--Lain
+	awful.key({ modkey, ctrlkey }, "=", function()
+		lain.util.useless_gaps_resize(1)
+	end, { description = "increase gaps between windows", group = "awesome" }),
+
+	awful.key({ modkey, ctrlkey }, "-", function()
+		lain.util.useless_gaps_resize(-1)
+	end, { description = "decrease gaps between windows", group = "awesome" }),
+
+	-- Bling
+	awful.key({
+		modifiers = { modkey, "Control" },
+		keygroup = "numrow",
+		description = "tabbed features",
+		group = "client",
+		on_press = function(index)
+			if index == 1 then
+				bling.module.tabbed.pick_with_dmenu()
+			elseif index == 2 then
+				bling.module.tabbed.pick_by_direction("down")
+			elseif index == 4 then
+				bling.module.tabbed.pick_by_direction("left")
+			elseif index == 5 then
+				bling.module.tabbed.iter()
+			elseif index == 6 then
+				bling.module.tabbed.pick_by_direction("right")
+			elseif index == 7 then
+				bling.module.tabbed.pick()
+			elseif index == 8 then
+				bling.module.tabbed.pick_by_direction("up")
+			elseif index == 9 then
+				bling.module.tabbed.pop()
+			end
+		end,
+	}),
+
 	-- Menubar
 	-- awful.key({ modkey }, "p", function()
 	-- 	menubar.show()
 	-- end, { description = "show the menubar", group = "launcher" })
-)
 
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
-	globalkeys = gears.table.join(
-		globalkeys,
-		-- View tag only.
-		awful.key({ modkey }, "#" .. i + 9, function()
+	awful.key({
+		modifiers = { modkey },
+		keygroup = "numrow",
+		description = "only view tag",
+		group = "tag",
+		on_press = function(index)
 			local screen = awful.screen.focused()
-			local tag = screen.tags[i]
+			local tag = screen.tags[index]
 			if tag then
 				tag:view_only()
 			end
-		end, { description = "view tag #" .. i, group = "tag" }),
-		-- Toggle tag display.
-		awful.key({ modkey, "Control" }, "#" .. i + 9, function()
+		end,
+	}),
+	awful.key({
+		modifiers = { modkey, "Control" },
+		keygroup = "numrow",
+		description = "toggle tag",
+		group = "tag",
+		on_press = function(index)
 			local screen = awful.screen.focused()
-			local tag = screen.tags[i]
+			local tag = screen.tags[index]
 			if tag then
 				awful.tag.viewtoggle(tag)
 			end
-		end, { description = "toggle tag #" .. i, group = "tag" }),
-		-- Move client to tag.
-		awful.key({ modkey, "Shift" }, "#" .. i + 9, function()
+		end,
+	}),
+	awful.key({
+		modifiers = { modkey, "Shift" },
+		keygroup = "numrow",
+		description = "move focused client on tag",
+		group = "tag",
+		on_press = function(index)
 			if client.focus then
-				local tag = client.focus.screen.tags[i]
+				local tag = client.focus.screen.tags[index]
 				if tag then
 					client.focus:move_to_tag(tag)
 				end
 			end
-		end, { description = "move focused client to tag #" .. i, group = "tag" }),
-		-- Toggle tag on focused client.
-		awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9, function()
+		end,
+	}),
+	awful.key({
+		modifiers = { modkey, "Control", "Shift" },
+		keygroup = "numrow",
+		description = "toggle focused client on tag",
+		group = "tag",
+		on_press = function(index)
 			if client.focus then
-				local tag = client.focus.screen.tags[i]
+				local tag = client.focus.screen.tags[index]
 				if tag then
 					client.focus:toggle_tag(tag)
 				end
 			end
-		end, { description = "toggle focused client on tag #" .. i, group = "tag" })
-	)
-end
-
-return globalkeys
+		end,
+	}),
+})
