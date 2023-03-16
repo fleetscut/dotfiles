@@ -12,14 +12,14 @@ local capabilities = lsphandlers.capabilities
 local on_attach = lsphandlers.on_attach
 
 local servers = {
-	"jedi_language_server",
+	-- "jedi_language_server",
 	"lua_ls",
-	-- "pyright",
 	-- "pyls",
 	"yamlls",
 	"jsonls",
 	"tsserver",
 	"clangd",
+	"pyright",
 	-- "rust_analyzer",
 }
 
@@ -27,6 +27,10 @@ local config = {}
 
 for _, server in pairs(servers) do
 	if server == "jedi_language_server" then
+		PYTHON_DAP_ACTIVE = true
+		config = require("fleetscut.lsp.python").config
+	end
+	if server == "pyright" then
 		PYTHON_DAP_ACTIVE = true
 		config = require("fleetscut.lsp.python").config
 	end
