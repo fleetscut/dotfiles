@@ -74,7 +74,7 @@ treesitter.setup({
 	},
 	indent = {
 		enable = true,
-		disable = { "" },
+		disable = { "python" },
 	},
 	content_commentstring = {
 		enable = true,
