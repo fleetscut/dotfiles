@@ -35,6 +35,7 @@ if checkOS() then
 		"c",
 		"regex",
 		"markdown",
+		"kdl",
 	}
 else
 	packages = "all"

@@ -104,7 +104,7 @@ bindkey -s "^g" "lf-cd\n"
 if [[ "$(hostname)" == "sazabi" ]]; then
     script_prefix="desktop"
 fi
-if [[ "$(hostname)" == "WBBCEAD93931RL" ]]; then
+if [[ "$(hostname)" == "TOCONALF3QT2CC" ]]; then
     script_prefix="work"
 fi
 if [[ "$(uname -r | grep -i android)" ]]; then
