@@ -11,6 +11,7 @@ $nodejs\
 $rust\
 $golang\
 $php\
+$python\
 [](fg:#212736 bg:#1d2230)\
 $time\
 [ ](fg:#1d2230)\
@@ -163,6 +164,7 @@ symbol = " "
 
 [python]
 symbol = " "
+format = '[[ $symbol ($virtualenv) ](fg:#769ff0 bg:#212736)]($style)'
 
 [rlang]
 symbol = "ﳒ "
