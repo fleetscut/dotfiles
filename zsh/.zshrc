@@ -92,6 +92,8 @@ export VISUAL=vim
 alias vim=nvim
 #make aliases work with sudo
 alias sudo='sudo '
+alias bat=batcat
+alias ls=lsd
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -137,3 +139,7 @@ eval "$(starship init zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# fnm
+export PATH="/home/fleetscut/.local/share/fnm:$PATH"
+eval "`fnm env`"

@@ -23,7 +23,7 @@ vim.opt.splitright = true
 
 vim.opt.cmdheight = 1
 vim.opt.updatetime = 50
-vim.opt.colorcolumn = "80"
+--vim.opt.colorcolumn = "80"
 
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
@@ -34,3 +34,5 @@ vim.g.mapleader = " "
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 20
+
+--vim.opt.cmdheight = 0
