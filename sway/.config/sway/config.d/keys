@@ -1,0 +1,92 @@
+set $term kitty
+set $menu wofi --show=drun --lines=5 --prompt=""
+set $runmenu wofi --show=run --lines=5 --prompt=""
+
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start your launcher
+bindsym $mod+space exec $menu
+bindsym $mod+Shift+space exec $runmenu
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes.' 'swaymsg exit'
+
+# Move your focus around
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Focus the next/prev workspace
+bindsym $mod+Right workspace next_on_output
+bindsym $mod+Left workspace prev_on_output
+
+# Choose split direction
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+r layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+$alt+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+tab focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Alt Tab like window switcher
+bindsym $alt+Tab exec ~/.config/sway/scripts/switcher.sh
+#
+# Scratchpad:
+#
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+bindsym $mod+BackSpace exec ~/.config/sway/scripts/lock.sh
+#
+# Resizing containers:
+#
+mode "resize" {
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+r mode "resize"
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
