@@ -13,13 +13,13 @@ local on_attach = lsphandlers.on_attach
 
 local servers = {
 	-- "jedi_language_server",
+	"pyright", -- config options https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+	-- "pylsp",
 	"lua_ls",
-	-- "pyls",
 	"yamlls",
 	"jsonls",
 	"tsserver",
 	"clangd",
-	"pyright",
 	-- "rust_analyzer",
 }
 
@@ -31,6 +31,10 @@ for _, server in pairs(servers) do
 		config = require("fleetscut.lsp.python").config
 	end
 	if server == "pyright" then
+		PYTHON_DAP_ACTIVE = true
+		config = require("fleetscut.lsp.python").config
+	end
+	if server == "pylsp" then
 		PYTHON_DAP_ACTIVE = true
 		config = require("fleetscut.lsp.python").config
 	end
