@@ -38,5 +38,7 @@ exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always killall swayidle
 exec_always bash $HOME/.config/sway/scripts/swayidle.sh
 exec_always dunst
+exec mpd
+exec nm-applet --indicator
 
 include /etc/sway/config.d/*
