@@ -3,3 +3,10 @@ nvim/.config/nvim/.netrwhist
 zsh/.oh-my-zsh
 polybar/.config/polybar/polybar/
 nvim-lua/.config/nvim/plugin/packer_compiled.lua
+
+mpd/.config/mpd/state
+mpd/.config/mpd/database
+mpd/.config/mpd/mpd.log
+mpd/.config/mpd/pid
+mpd/.config/mpd/sticker.sql
+mpd/.config/mpd/playlists/*
