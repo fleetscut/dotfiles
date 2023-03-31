@@ -3,14 +3,6 @@
 #    export PATH=$HOME/.local/bin/:$PATH
 #fi
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
-export NPM_PACKAGES=$HOME/.npm-packages/bin
-
-export PATH="$PATH:$NPM_PACKAGES"
-export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.yarn/bin"
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -77,31 +69,36 @@ ZSH_THEME="simonoff"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions)
 
-source $ZSH/oh-my-zsh.sh
+# Exports
+export ZSH=$HOME/.oh-my-zsh
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+export NPM_PACKAGES=$HOME/.npm-packages/bin
+export PATH="$PATH:$NPM_PACKAGES"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.yarn/bin"
 
-# User configuration
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# fnm
+export PATH="/home/fleetscut/.local/share/fnm:$PATH"
+eval "`fnm env`"
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# ~/.tmux/plugins
+export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+# ~/.config/tmux/plugins
+export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--reverse"
 
 export EDITOR=vim
 export VISUAL=vim
-
-alias vim=nvim
-#make aliases work with sudo
-alias sudo='sudo '
-alias bat=batcat
-alias ls=lsd
-
-autoload -U edit-command-line
-zle -N edit-command-line
-
-# The mode of the Gods
-bindkey -v
-bindkey '^v' edit-command-line
-bindkey -s "^g" "lf-cd\n"
 
 if [[ "$(hostname)" == "sazabi" ]]; then
     script_prefix="desktop"
@@ -113,6 +110,13 @@ if [[ "$(uname -r | grep -i android)" ]]; then
     script_prefix="tablet"
 fi
 
+alias vim=nvim
+alias sudo='sudo '
+alias bat=batcat
+alias ls=lsd
+
+source $ZSH/oh-my-zsh.sh
+
 if [[ $script_prefix ]]; then
 	source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
 	source $HOME/.config/machine_configs/${script_prefix}_funcs.sh
@@ -121,8 +125,13 @@ if [[ $script_prefix ]]; then
 	unset $script_prefix
 fi
 
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+
+autoload -U edit-command-line
+zle -N edit-command-line
+
+bindkey -v
+bindkey '^v' edit-command-line
+bindkey -s "^g" "lf-cd\n"
 
 lf-cd () {
     tmp="$(mktemp)"
@@ -135,11 +144,4 @@ lf-cd () {
 }
 
 eval "$(starship init zsh)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# fnm
-export PATH="/home/fleetscut/.local/share/fnm:$PATH"
-eval "`fnm env`"
+eval "$(zoxide init zsh)"
