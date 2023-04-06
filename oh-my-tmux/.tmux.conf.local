@@ -381,6 +381,7 @@ set -g detach-on-destroy off
  unbind C-b
  set -g prefix C-a
  bind C-a send-prefix
+ bind \? list-keys
 
 bind -r p previous-window # select previous window
 bind -r n next-window     # select next window
