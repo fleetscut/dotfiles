@@ -30,7 +30,7 @@ end
 M.telescope_keymap = function(bufnr)
 	--vim.keymap.set("n", "<Leader>tt", ":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<CR>", opts)
 	--vim.keymap.set("n", "<Leader>tt", ":lua require('telescope.builtin').find_files({hidden=truea})<CR>", opts)
-	vim.keymap.set("n", "<Leader>tt", ":Telescope find_files hidden=true<CR>", opts)
+	vim.keymap.set("n", "<Leader>tt", ":Telescope find_files hidden=true no_ignore=true<CR>", opts)
 	vim.keymap.set("n", "<Leader>tr", ":Telescope resume<CR>", opts)
 	vim.keymap.set("n", "<Leader>tc", ":Telescope commands<CR>", opts)
 	vim.keymap.set("n", "<Leader>ts", ":Telescope live_grep<CR>", opts)

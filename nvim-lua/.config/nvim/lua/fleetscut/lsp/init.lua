@@ -20,6 +20,7 @@ local servers = {
 	"jsonls",
 	"tsserver",
 	"clangd",
+	"html",
 	-- "rust_analyzer",
 }
 
@@ -52,6 +53,9 @@ for _, server in pairs(servers) do
 	end
 	if server == "clangd" then
 		config = require("fleetscut.lsp.cpp").config
+	end
+	if server == "html" then
+		config = require("fleetscut.lsp.html").config
 	end
 	-- if server == "rust_analyzer" then
 	-- 	config = require("fleetscut.lsp.rust").config
