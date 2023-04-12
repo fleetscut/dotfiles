@@ -68,9 +68,9 @@ M.general_keymap = function(bufnr)
 	vim.keymap.set("n", "<Leader>pv", ":Ex<CR>", opts)
 
 	-- Black Hole register delete
-	vim.keymap.set("x", "<Leader>p", "_ddP", opts)
-	vim.keymap.set("n", "<Leader>d", "_dd", opts)
-	vim.keymap.set("v", "<Leader>d", "_dd", opts)
+	vim.keymap.set("x", "<Leader>p", '"_dP', opts)
+	vim.keymap.set("n", "<Leader>d", '"_dd', opts)
+	vim.keymap.set("v", "<Leader>d", '"_dd', opts)
 
 	-- Yank to clipboard
 	vim.keymap.set("n", "<Leader>y", '"+y', opts)
@@ -94,10 +94,10 @@ M.harpoon_keymap = function(bufnr)
 	vim.keymap.set("n", "<leader>hy", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
 	-- vim.keymap.set("n", "<leader>hc", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>", opts)
 
-	vim.keymap.set("n", "<leader>hh", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
-	vim.keymap.set("n", "<leader>h,", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
-	vim.keymap.set("n", "<leader>h.", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
-	vim.keymap.set("n", "<leader>h/", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
+	vim.keymap.set("n", "<M-n>", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
+	vim.keymap.set("n", "<M-e>", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
+	vim.keymap.set("n", "<M-i>", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
+	vim.keymap.set("n", "<M-o>", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
 end
 
 M.dap_keymap = function(bufnr)

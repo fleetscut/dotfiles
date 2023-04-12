@@ -16,8 +16,7 @@ end
 require("luasnip.loaders.from_vscode").lazy_load()
 
 vim.o.completeopt =
-	"menu,menuone",
-	cmp.setup({
+	"menu,menuone", cmp.setup({
 		snippet = {
 			-- REQUIRED - you must specify a snippet engine
 			expand = function(args)
@@ -36,7 +35,7 @@ vim.o.completeopt =
 			}),
 			-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 			["<C-s>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
-			["<Tab>"] = cmp.mapping(function(fallback)
+			["<C-Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
 				elseif luasnip.jumpable(1) then
@@ -52,7 +51,7 @@ vim.o.completeopt =
 					fallback()
 				end
 			end, { "i", "s" }),
-			["<S-Tab>"] = cmp.mapping(function(fallback)
+			["<C-S-Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
 				elseif luasnip.jumpable(-1) then
