@@ -11,7 +11,7 @@
 #   - true
 #   - false (default)
 #   - disabled (do not modify new-window bindings)
-tmux_conf_new_window_retain_current_path=false
+tmux_conf_new_window_retain_current_path=disabled
 
 # new pane retains current path, possible values are:
 #   - true (default)
@@ -384,6 +384,7 @@ set -g detach-on-destroy off
  bind \? list-keys
  bind C-p previous-window
  bind C-n next-window
+ bind C new-window -c "#{pane_current_path}"
 
 bind -r p previous-window # select previous window
 bind -r n next-window     # select next window
