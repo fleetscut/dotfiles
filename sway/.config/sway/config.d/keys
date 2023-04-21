@@ -62,12 +62,19 @@ bindsym $alt+Tab exec ~/.config/sway/scripts/switcher.sh
 #
 # Move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
-for_window [con_mark="sp1"] move scratchpad, scratchpad show
-for_window [con_mark="sp2"] move scratchpad, scratchpad show
-for_window [con_mark="sp3"] move scratchpad, scratchpad show
-bindsym $mod+$alt+Ctrl+1 exec swaymsg [con_mark="sp1"] scratchpad show ||exec swaymsg mark "sp1"
-bindsym $mod+$alt+Ctrl+2 exec swaymsg [con_mark="sp2"] scratchpad show ||exec swaymsg mark "sp2"
-bindsym $mod+$alt+Ctrl+3 exec swaymsg [con_mark="sp3"] scratchpad show ||exec swaymsg mark "sp3"
+for_window [con_mark="sp1"] move to scratchpad, scratchpad show
+for_window [con_mark="sp2"] move to scratchpad, scratchpad show
+for_window [con_mark="sp3"] move to scratchpad, scratchpad show
+bindsym $mod+$alt+Ctrl+1 exec swaymsg [con_mark="sp1"] scratchpad show ||exec swaymsg 'mark "sp1", move scratchpad'
+bindsym $mod+$alt+Ctrl+2 exec swaymsg [con_mark="sp2"] scratchpad show ||exec swaymsg 'mark "sp2", move scratchpad'
+bindsym $mod+$alt+Ctrl+3 exec swaymsg [con_mark="sp3"] scratchpad show ||exec swaymsg 'mark "sp3", move scratchpad'
+
+bindsym $mod+$alt+Ctrl+Shift+1 floating toggle,unmark sp1
+bindsym $mod+$alt+Ctrl+Shift+2 floating toggle,unmark sp2
+bindsym $mod+$alt+Ctrl+Shift+3 floating toggle,unmark sp3
+
+bindsym $mod+$alt+b border toggle
+
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
