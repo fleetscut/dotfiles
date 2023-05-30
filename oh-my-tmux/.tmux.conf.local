@@ -449,8 +449,6 @@ tmux_conf_uninstall_plugins_on_reload=false
 set -g @plugin 'joshmedeski/t-smart-tmux-session-manager'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 
-run '~/.tmux/plugins/tpm/tpm'
-
 # -- custom variables ----------------------------------------------------------
 
 # to define a custom #{foo} variable, define a POSIX shell function between the
