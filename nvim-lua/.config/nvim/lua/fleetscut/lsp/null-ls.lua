@@ -18,6 +18,7 @@ null_ls.setup({
 		formatting.google_java_format.with({ extra_args = { "--aosp" } }),
 		diagnostics.ansiblelint.with({ extra_filetypes = { "yml" } }),
 		diagnostics.yamllint,
+		formatting.tidy.with({ extra_args = { "--input-xml", "1", "--indent-attributes", "1" } }),
 		-- diagnostics.pylint.with({}),
 		-- diagnostics.eslint_d,
 	},
