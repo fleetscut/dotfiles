@@ -69,6 +69,8 @@ ZSH_THEME="simonoff"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions)
 
+source $ZSH/oh-my-zsh.sh
+
 # Exports
 export ZSH=$HOME/.oh-my-zsh
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
@@ -115,8 +117,6 @@ alias sudo='sudo '
 alias bat=batcat
 alias ls=lsd
 
-source $ZSH/oh-my-zsh.sh
-
 if [[ $script_prefix ]]; then
 	source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
 	source $HOME/.config/machine_configs/${script_prefix}_funcs.sh
@@ -124,7 +124,6 @@ if [[ $script_prefix ]]; then
 
 	unset $script_prefix
 fi
-
 
 autoload -U edit-command-line
 zle -N edit-command-line

@@ -86,12 +86,8 @@ treesitter.setup({
 	},
 	rainbow = {
 		enable = true,
-		colors = {
-			"#68a0b0",
-			"#946EaD",
-			"#8F0000",
-			"#c7aA6D",
-		},
+		query = "rainbow-parens",
+		strategy = require("ts-rainbow").strategy.global,
 		disable = { "" },
 	},
 	playground = {
