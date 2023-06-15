@@ -69,10 +69,11 @@ ZSH_THEME="simonoff"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions)
 
+
+export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # Exports
-export ZSH=$HOME/.oh-my-zsh
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 export NPM_PACKAGES=$HOME/.npm-packages/bin
 export PATH="$PATH:$NPM_PACKAGES"

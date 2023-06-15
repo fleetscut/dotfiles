@@ -13,6 +13,7 @@ require("fleetscut.lualine")
 require("fleetscut.indentline")
 require("fleetscut.colorizer")
 require("fleetscut.treesitter")
+require("fleetscut.luasnip")
 -- require("fleetscut.noice")
 -- require("fleetscut.autocmds")
 
