@@ -131,4 +131,10 @@ M.undootree_keymap = function(bufnr)
 	vim.keymap.set("n", "<Leader>u", ":UndotreeToggle<CR>", opts)
 end
 
+M.dadbod_ui_keymap = function(bufnr)
+	vim.keymap.set("n", "<Leader>du", ":DBUI<CR>", opts)
+	vim.keymap.set("n", "<Leader>dq", ":DBUIToggle<CR>", opts)
+	vim.keymap.set("n", "<Leader>dr", "V<Plug>(DBUI_ExecuteQuery)<CR>", opts)
+end
+
 return M

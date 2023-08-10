@@ -85,6 +85,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "nvim_lsp_signature_help" },
+		{ name = "vim-dadbod-completion" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

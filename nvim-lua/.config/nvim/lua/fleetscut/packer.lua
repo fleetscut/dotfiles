@@ -118,6 +118,10 @@ return packer.startup(function(use)
 	})
 
 	use("tpope/vim-fugitive")
+	use("tpope/vim-dadbod")
+	use("kristijanhusak/vim-dadbod-ui")
+	use("kristijanhusak/vim-dadbod-completion")
+
 	-- use "tversteeg/registers.nvim"
 
 	---- Lazy loading:
