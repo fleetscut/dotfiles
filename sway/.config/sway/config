@@ -28,6 +28,7 @@ for_window [app_id="pavucontrol"] floating enable, resize set 1000 px 500 px
 for_window [title="^ss1"] move container to output $mainMonitor, fullscreen enable
 for_window [title="^ss2"] move container to output $laptopMonitor, fullscreen enable
 for_window [title="^ss3"] move container to output $sideMonitor, fullscreen enable
+for_window [title="^Oracle VM VirtualBox Manager$"] shortcuts_inhibitor disable
 
 # Status Bar:
 bar {

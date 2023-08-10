@@ -84,8 +84,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # fnm
-export PATH="/home/fleetscut/.local/share/fnm:$PATH"
-eval "`fnm env`"
+which fnm &> /dev/null
+if [[ $? ]] then;
+    export PATH="/home/fleetscut/.local/share/fnm:$PATH"
+    eval "`fnm env`"
+fi
 
 # ~/.tmux/plugins
 export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
