@@ -377,17 +377,31 @@ set -g detach-on-destroy off
 
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
+
+# Clear defaults
  unbind C-a
  unbind C-b
+ unbind C-c
+
  set -g prefix C-a
  bind C-a send-prefix
  bind \? list-keys
- bind C-p previous-window
- bind C-n next-window
+
  bind C new-window -c "#{pane_current_path}"
 
-bind -r p previous-window # select previous window
-bind -r n next-window     # select next window
+# What to do with this?
+bind M-c new-session
+
+# Yuck repeats
+bind p previous-window # select previous window
+bind n next-window     # select next window
+ bind C-p previous-window
+ bind C-n next-window
+
+bind h select-pane -L  # move left
+bind j select-pane -D  # move down
+bind k select-pane -U  # move up
+bind l select-pane -R  # move right
 
 unbind Left
 unbind Right
