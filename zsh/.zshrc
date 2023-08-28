@@ -116,10 +116,26 @@ if [[ "$(uname -r | grep -i android)" ]]; then
     script_prefix="tablet"
 fi
 
+#ALTERNATES
+# cat -> bat
+# find -> fd
+# ps -> procs
+# sed -> sd
+# du -> dust
+# grep -> rg (ripgrep)
+# bandwhich
+# grex
+# dig -> dog
+# uniq -> huniq
+# jq -> jql
+# lazygit -> gitui
+
 alias vim=nvim
 alias sudo='sudo '
-alias bat=batcat
+#alias bat=batcat
+alias cat=batcat
 alias ls=lsd
+alias src="source ~/.zshrc"
 
 if [[ $script_prefix ]]; then
 	source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
