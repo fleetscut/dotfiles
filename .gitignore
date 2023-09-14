@@ -13,3 +13,5 @@ mpd/.config/mpd/sticker.sql
 mpd/.config/mpd/playlists/*
 
 oh-my-tmux/.config/tmux/plugins/
+
+zellij/.config/zellij/cached

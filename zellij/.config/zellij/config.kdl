@@ -79,6 +79,7 @@ keybinds clear-defaults=true {
         bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
+        bind "q" { SwitchToMode "Normal"; }
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
@@ -114,6 +115,10 @@ keybinds clear-defaults=true {
         bind "Alt o" { Write 27 7023; SwitchToMode "Normal"; }
         bind "Ctrl s" { SwitchToMode "Scroll"; }
         bind "d" { Detach; }
+        bind "t" { 
+            Detach;
+            Run "echo" "test"
+        }
         bind "w" {
             LaunchOrFocusPlugin "zellij:session-manager" {
                 floating true
@@ -145,7 +150,7 @@ keybinds clear-defaults=true {
         bind "Space" { NextSwapLayout; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
     }
-    shared {
+    shared_except "locked" {
         bind "Alt n" { NewPane; }
         bind "Alt d" { NewPane "Down"; }
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
