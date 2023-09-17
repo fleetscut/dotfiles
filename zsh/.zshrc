@@ -137,6 +137,8 @@ alias cat=batcat
 alias ls=lsd
 alias src="source ~/.zshrc"
 alias ssh="TERM=xterm-256color ssh"
+alias zz="zellij"
+alias zv='zellij --layout vim'
 
 if [[ $script_prefix ]]; then
 	source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
