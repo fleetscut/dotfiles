@@ -38,10 +38,11 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope-symbols.nvim")
 
 	-- Theme
-	use("folke/tokyonight.nvim")
+	-- use("folke/tokyonight.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("norcalli/nvim-colorizer.lua")
 	use("onsails/lspkind-nvim")
+	use({ "rose-pine/neovim", as = "rose-pine" })
 
 	-- Line
 	use({

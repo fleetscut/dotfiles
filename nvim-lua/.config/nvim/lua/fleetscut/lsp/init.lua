@@ -12,8 +12,8 @@ local capabilities = lsphandlers.capabilities
 local on_attach = lsphandlers.on_attach
 
 local servers = {
-	"jedi_language_server",
-	-- "pyright", -- config options https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+	--"jedi_language_server",
+	"pyright", -- config options https://github.com/microsoft/pyright/blob/main/docs/configuration.md
 	-- "pylsp",
 	"lua_ls",
 	"yamlls",

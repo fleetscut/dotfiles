@@ -29,6 +29,7 @@ for_window [title="^ss1"] move container to output $mainMonitor, fullscreen enab
 for_window [title="^ss2"] move container to output $laptopMonitor, fullscreen enable
 for_window [title="^ss3"] move container to output $sideMonitor, fullscreen enable
 for_window [title="^Oracle VM VirtualBox Manager$"] shortcuts_inhibitor disable
+for_window [title="Virtual Console"] floating enable
 
 # Status Bar:
 bar {
