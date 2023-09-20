@@ -361,7 +361,7 @@ tmux_conf_copy_to_os_clipboard=false
 
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
-set -sa terminal-features ',xterm-kitty:RGB'
+set -sa terminal-features ',xterm-256color:RGB'
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 set -g detach-on-destroy off
 
@@ -441,13 +441,13 @@ set -g @rose_pine_right_separator ' < ' # Accepts both normal chars & nerdfont i
 set -g @rose_pine_field_separator ' | ' # Again, 1-space padding, it updates with prefix + I
 #
 # # These are not padded
-# set -g @rose_pine_session_icon '' # Changes the default icon to the left of the session name
-# set -g @rose_pine_current_window_icon '' # Changes the default icon to the left of the active window name
-# set -g @rose_pine_folder_icon '' # Changes the default icon to the left of the current directory folder
-# set -g @rose_pine_username_icon '' # Changes the default icon to the right of the hostname
-# set -g @rose_pine_hostname_icon '󰒋' # Changes the default icon to the right of the hostname
-# set -g @rose_pine_date_time_icon '󰃰' # Changes the default icon to the right of the date module
-# set -g @rose_pine_window_status_separator "  " # Changes the default icon that appears between window names
+set -g @rose_pine_session_icon '' # Changes the default icon to the left of the session name
+set -g @rose_pine_current_window_icon '' # Changes the default icon to the left of the active window name
+set -g @rose_pine_folder_icon '' # Changes the default icon to the left of the current directory folder
+set -g @rose_pine_username_icon '' # Changes the default icon to the right of the hostname
+set -g @rose_pine_hostname_icon '' # Changes the default icon to the right of the hostname
+set -g @rose_pine_date_time_icon '' # Changes the default icon to the right of the date module
+set -g @rose_pine_window_status_separator "  " # Changes the default icon that appears between window names
 #
 # # Very beta and specific opt-in settings, tested on v3.2a, look at issue #10
 # set -g @rose_pine_prioritize_windows 'on' # Disables the right side functionality in a certain window count / terminal width
