@@ -1,0 +1,229 @@
+format = """
+[](iris)\
+$os\
+[ ](bg:love fg:iris)\
+$username\
+[](bg:overlay fg:love)\
+$directory\
+[](fg:overlay bg:rose)\
+$git_branch\
+$git_status\
+[ ](bg:rose)\
+[](bg:subtle fg:rose)\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+$docker_context\
+[ ](fg:subtle)\
+"""
+
+right_format = """
+[ ]()\
+$time\
+"""
+
+add_newline = true
+palette='rosepine'
+
+[os]
+style = "bg:iris fg:base"
+disabled = false # Disabled by default
+
+[username]
+show_always = true
+style_user = "bg:love fg:base bold"
+style_root = "bg:root fg:base"
+format = '[$user ]($style)'
+disabled = false
+
+[directory]
+style = "bg:overlay fg:iris"
+read_only = " "
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Order matters
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:love fg:base bold"
+format = '[  $time ]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:rose fg:base"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:love fg:base bold"
+format = '[($all_status$ahead_behind)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:subtle fg:base"
+format = '[[ $symbol ($version) ]]($style)'
+
+[golang]
+symbol = "ﳑ"
+style = "bg:#212736"
+format = '[[ $symbol ($version) ]]($style)'
+
+[php]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ]]($style)'
+
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = "⌘ "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[meson]
+symbol = "喝 "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[os.symbols]
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "﯑ "
+Gentoo = " "
+HardenedBSD = "ﲊ "
+Illumos = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+OracleLinux = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = " "
+Solus = "ﴱ "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "
+
+[package]
+symbol = " "
+
+[python]
+symbol = " "
+style = "bg:#212736"
+format = '[[ $symbol ($virtualenv) ]]($style)'
+
+[rlang]
+symbol = "ﳒ "
+
+[ruby]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[spack]
+symbol = "🅢 "
+
+[palettes.rosepine]
+nc = "#1f1d30"
+base = "#232136"
+surface = "#2a273f"
+overlay = "#393552"
+muted = "#6e6a86"
+subtle = "#908caa"
+text = "#e0def4"
+love = "#eb6f92"
+gold = "#f6c177"
+rose = "#ea9a97"
+pine = "#3e8fb0"
+foam = "#9ccfd8"
+iris = "#c4a7e7"
+highlight_low = "#2a283e"
+highlight_med = "#44415a"
+highlight_high = "#56526e"

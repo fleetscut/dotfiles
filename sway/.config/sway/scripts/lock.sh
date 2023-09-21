@@ -13,11 +13,11 @@
 # #   [blurred][logo] overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2 [out]" \
 # #   logo-ed_screen.png
 # source "$HOME/.cache/wal/colors.sh"
-kitty -T ss1 tmatrix &
+kitty -c "" -T ss1 tmatrix &
 pid1=$!
-kitty -T ss2 tmatrix &
+kitty -c "" -T ss2 tmatrix &
 pid2=$!
-kitty -T ss3 tmatrix &
+kitty -c "" -T ss3 tmatrix &
 pid3=$!
 
 swaylock \

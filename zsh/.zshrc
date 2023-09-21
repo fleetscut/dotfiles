@@ -78,6 +78,7 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 export NPM_PACKAGES=$HOME/.npm-packages/bin
 export PATH="$PATH:$NPM_PACKAGES"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.yarn/bin"
+export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -163,6 +164,10 @@ lf-cd () {
         rm -f "$tmp"
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
+}
+
+cpicker () {
+    slurp -p | grim -g - - | convert - txt: | tail -n 1
 }
 
 eval "$(starship init zsh)"
