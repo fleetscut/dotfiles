@@ -45,6 +45,8 @@ require("rose-pine").setup({
 		-- Blend colours against the "base" background
 		CursorLine = { bg = "foam", blend = 10 },
 		StatusLine = { fg = "love", bg = "love", blend = 10 },
+		Visual = { fg = "nc", bg = "rose" },
+		Cursor = { fg = "base", bg = "pine" },
 
 		-- By default each group adds to the existing config.
 		-- If you only want to set what is written in this config exactly,
