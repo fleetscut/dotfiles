@@ -86,7 +86,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # fnm
 which fnm &> /dev/null
-if [[ $? ]] then;
+if [[ ! $? ]] then;
     export PATH="/home/fleetscut/.local/share/fnm:$PATH"
     eval "`fnm env`"
 fi

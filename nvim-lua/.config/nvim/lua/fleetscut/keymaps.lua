@@ -38,6 +38,7 @@ M.telescope_keymap = function(bufnr)
 	vim.keymap.set("n", "<Leader>th", ":Telescope help_tags<CR>", opts)
 	vim.keymap.set("n", "<Leader>tf", ":Telescope file_browser<CR>", opts)
 	vim.keymap.set("n", "<Leader>tw", ":Telescope file_browser path=%:p:h<CR>", opts)
+	vim.keymap.set("n", "<Leader>tp", ":Telescope file_browser path=$HOME<CR>", opts)
 	vim.keymap.set("n", "<Leader>td", ":Telescope diagnostics<CR>", opts)
 end
 
