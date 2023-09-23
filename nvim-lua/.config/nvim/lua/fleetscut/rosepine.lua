@@ -39,6 +39,7 @@ require("rose-pine").setup({
 
 	-- Change specific vim highlight groups
 	-- https://github.com/rose-pine/neovim/wiki/Recipes
+	-- ":Inspect" - Look for treesitter group or Extmarks
 	highlight_groups = {
 		ColorColumn = { bg = "rose" },
 
@@ -52,6 +53,9 @@ require("rose-pine").setup({
 		-- If you only want to set what is written in this config exactly,
 		-- you can set the inherit option:
 		Search = { bg = "gold", inherit = false },
+
+		-- treesitter groups
+		["@text.literal.xml"] = { fg = "white" },
 	},
 })
 
