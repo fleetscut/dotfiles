@@ -10,39 +10,53 @@ end
 
 local checkOS = require("fleetscut.osver").checkOS
 
-local packages = ""
-if checkOS() then
-	packages = {
-		"python",
-		"cpp",
-		"css",
-		"html",
-		"json5",
-		"vim",
-		"lua",
-		"java",
-		"javascript",
-		"typescript",
-		"dockerfile",
-		"make",
-		"http",
-		"jsdoc",
-		"help",
-		"cmake",
-		"bash",
-		"tsx",
-		"sql",
-		"c",
-		"regex",
-		"markdown",
-	}
-else
-	packages = "all"
-end
-
 treesitter.setup({
 	-- A list of parser names, or "all"
-	ensure_installed = packages,
+	ensure_installed = {
+		"awk",
+		"bash",
+		"c",
+		"cmake",
+		"comment",
+		"cpp",
+		"css",
+		"csv",
+		"diff",
+		"dockerfile",
+		"git_config",
+		"git_rebase",
+		"gitattributes",
+		"gitcommit",
+		"gitignore",
+		"glsl",
+		"gpg",
+		"graphql",
+		"html",
+		"http",
+		"ini",
+		"java",
+		"javascript",
+		"jq",
+		"jsdoc",
+		"json",
+		"json5",
+		"latex",
+		"lua",
+		"make",
+		"markdown",
+		"markdown_inline",
+		"ninja",
+		"passwd",
+		"python",
+		"regex",
+		"rust",
+		"sql",
+		"tsx",
+		"typescript",
+		"vim",
+		"vimdoc",
+		"xml",
+	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
@@ -84,12 +98,12 @@ treesitter.setup({
 		enable = true,
 		disable = { "" },
 	},
-	rainbow = {
-		enable = true,
-		query = "rainbow-parens",
-		strategy = require("ts-rainbow").strategy.global,
-		disable = { "" },
-	},
+	-- rainbow = {
+	-- 	enable = true,
+	-- 	query = "rainbow-parens",
+	-- 	strategy = require("ts-rainbow").strategy.global,
+	-- 	disable = { "" },
+	-- },
 	playground = {
 		enable = true,
 	},
