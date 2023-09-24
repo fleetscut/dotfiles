@@ -35,3 +35,5 @@ vim.opt.foldlevelstart = 20
 
 --vim.opt.cmdheight = 0
 
+vim.opt.list = true
+vim.opt.listchars:append("eol:↴")

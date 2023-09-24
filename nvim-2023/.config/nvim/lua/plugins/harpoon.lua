@@ -1,3 +1,8 @@
 return {
-   	"ThePrimeagen/harpoon"
+	{
+		"ThePrimeagen/harpoon",
+		init = function()
+			require("fleetscut.keymaps").harpoon_keymap()
+		end,
+	},
 }

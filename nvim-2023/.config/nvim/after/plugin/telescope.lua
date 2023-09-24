@@ -144,6 +144,13 @@ require("telescope").setup({
 		builtin = {
 			previewer = false,
 		},
+		buffers = {
+			mappings = {
+				i = {
+					["<A-d>"] = actions.delete_buffer,
+				},
+			},
+		},
 		-- Now the picker_config_key will be applied every time you call this
 		-- builtin picker
 	},
@@ -178,4 +185,4 @@ telescope.load_extension("fzf")
 telescope.load_extension("file_browser")
 telescope.load_extension("ui-select")
 
-require("fleetscut.keymaps").telescope_keymap(bufnr)
+require("fleetscut.keymaps").telescope_keymap()

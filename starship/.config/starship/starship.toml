@@ -82,7 +82,7 @@ format = '[ $symbol ($version) ]($style)'
 [rust]
 symbol = ""
 style = "bg:subtle fg:base"
-format = '[[ $symbol ($version) ]]($style)'
+format = '[ $symbol ($version) ]($style)'
 
 [golang]
 symbol = "ﳑ"

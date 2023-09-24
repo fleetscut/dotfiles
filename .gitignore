@@ -17,3 +17,4 @@ oh-my-tmux/.config/tmux/plugins/
 zellij/.config/zellij/cached
 
 *.luarc.json
+lazy-lock.json

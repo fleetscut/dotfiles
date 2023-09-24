@@ -12,4 +12,5 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("fleetscut.keymaps").leader()
+require("fleetscut.keymaps").general_keymap()
 require("lazy").setup("plugins")
