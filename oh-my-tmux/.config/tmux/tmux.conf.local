@@ -400,6 +400,7 @@ unbind Down
  bind T clock-mode
 
  bind g run-shell ~/.config/tmux/scripts/popuptmux.sh
+ bind G kill-window \; detach
 
  bind C new-window -c "#{pane_current_path}"
 
