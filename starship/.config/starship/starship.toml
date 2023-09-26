@@ -86,71 +86,109 @@ format = '[ $symbol ($version) ]($style)'
 
 [golang]
 symbol = "ﳑ"
-style = "bg:#212736"
-format = '[[ $symbol ($version) ]]($style)'
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [php]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ]]($style)'
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 
 [aws]
 symbol = "  "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [buf]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [c]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [conda]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [dart]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [elixir]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [elm]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [guix_shell]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [haxe]
 symbol = "⌘ "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [hg_branch]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [lua]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [memory_usage]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [meson]
 symbol = "喝 "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [nix_shell]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [os.symbols]
 Alpine = " "
@@ -192,6 +230,8 @@ Windows = " "
 
 [package]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [python]
 symbol = " "
@@ -200,15 +240,23 @@ format = '[[ $symbol ($virtualenv) ]]($style)'
 
 [rlang]
 symbol = "ﳒ "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [ruby]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [scala]
 symbol = " "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [spack]
 symbol = "🅢 "
+style = "bg:subtle fg:base"
+format = '[ $symbol ($version) ]($style)'
 
 [palettes.rosepine]
 nc = "#1f1d30"

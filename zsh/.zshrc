@@ -174,5 +174,17 @@ cpicker () {
     slurp -p | grim -g - - | convert - txt: | tail -n 1
 }
 
+cu () {
+    if [[ -z $1 ]]; then
+        local num=1
+    else
+        local num=$1
+    fi
+    while [[ $num != 0 ]]; do
+        cd ..
+        num=$((num-1))
+    done
+}
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
