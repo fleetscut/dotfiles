@@ -133,6 +133,7 @@ fi
 # uniq -> huniq
 # jq -> jql
 # lazygit -> gitui
+# less -> moar
 
 alias vim=nvim
 alias sudo='sudo '
@@ -144,6 +145,7 @@ alias ssh="TERM=xterm-256color ssh"
 alias zz="zellij"
 alias zv='zellij --layout vim'
 alias fd='fdfind'
+alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=/opt/apps/'
 
 if [[ $script_prefix ]]; then
 	source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
