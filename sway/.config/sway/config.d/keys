@@ -89,6 +89,7 @@ bindsym $mod+o exec swaymsg [class="obsidian"] scratchpad show || exec flatpak r
 
 #Notifications
 bindsym $mod+d exec dunstctl history-pop
+bindsym $mod+Shift+D exec dunstctl close all
 
 
 # Show the next scratchpad window or hide the focused scratchpad window.
