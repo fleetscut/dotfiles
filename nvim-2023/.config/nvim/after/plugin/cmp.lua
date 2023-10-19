@@ -99,6 +99,7 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "vim-dadbod-completion" },
+		{ name = "orgmode" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
