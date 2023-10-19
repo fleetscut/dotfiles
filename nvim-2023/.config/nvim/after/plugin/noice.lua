@@ -11,7 +11,22 @@ noice_config.setup({
 	messages = {
 		enabled = true,
 	},
+
 	routes = {
+		{
+			filter = {
+				event = "msg_show",
+				find = "agenda command",
+			},
+			view = "popup",
+		},
+		{
+			filter = {
+				event = "msg_show",
+				find = "capture template",
+			},
+			view = "popup",
+		},
 		{
 			filter = {
 				event = "msg_show",
