@@ -1,1 +1,1 @@
-require('fleetscut')
+require("fleetscut")
