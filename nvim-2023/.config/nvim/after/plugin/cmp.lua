@@ -42,7 +42,9 @@ cmp.setup({
 		["<C-s>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.select_next_item()
+				cmp.confirm({ behaviour = cmp.ConfirmBehavior.Replace, select = true })
+			elseif require("copilot.suggestion").is_visible() then
+				require("copilot.suggestion").accept()
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
 			elseif has_words_before() then

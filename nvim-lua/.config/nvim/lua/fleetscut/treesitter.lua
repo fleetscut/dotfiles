@@ -27,7 +27,7 @@ if checkOS() then
 		"make",
 		"http",
 		"jsdoc",
-		"help",
+		-- "help",
 		"cmake",
 		"bash",
 		"tsx",

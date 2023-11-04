@@ -20,10 +20,16 @@ return {
 					description = "Nest 2",
 					template = "* %? Nest 2",
 				},
+				s = "SECM",
+				sj = require("fleetscut.work.orgmode").capture_jira,
+				st = require("fleetscut.work.orgmode").capture_workitem,
 			},
 			mappings = {
 				capture = {
 					org_capture_finalize = "<Leader>w",
+				},
+				org = {
+					org_toggle_checkbox = "<leader><Space>",
 				},
 			},
 		})
