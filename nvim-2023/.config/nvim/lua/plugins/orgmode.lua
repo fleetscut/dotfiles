@@ -20,9 +20,9 @@ return {
 					description = "Nest 2",
 					template = "* %? Nest 2",
 				},
-				s = "SECM",
-				sj = require("fleetscut.work.orgmode").capture_jira,
-				st = require("fleetscut.work.orgmode").capture_workitem,
+				-- s = "SECM",
+				-- sj = require("fleetscut.work.orgmode").capture_jira,
+				-- st = require("fleetscut.work.orgmode").capture_workitem,
 			},
 			mappings = {
 				capture = {
