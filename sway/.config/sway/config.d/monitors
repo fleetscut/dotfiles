@@ -1,11 +1,13 @@
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 set $laptopMonitor "eDP-1"
-set $mainMonitor "DP-2"
-set $sideMonitor "DP-1"
+# set $mainMonitor "DP-5"
+ set $mainMonitor "Unknown AORUS FV43U 21340B000071"
+#set $sideMonitor "DP-6"
+set $sideMonitor "<Unknown> <Unknown> "
 
-output $mainMonitor mode 3840x2160 pos 0,600 scale 1.0 bg /usr/share/backgrounds/pop/kate-hazen-pop-retro2.png stretch
-output $sideMonitor mode 3440x1440 transform 90 pos 3840,0 scale 1.0 bg /usr/share/backgrounds/pop/kate-hazen-pop-retro2.png stretch
+output $sideMonitor mode --custom 3440x1440 transform 90 pos 3840,0 scale 1.0 bg /usr/share/backgrounds/pop/kate-hazen-pop-retro2.png stretch
 output $laptopMonitor mode 2256x1504 position 1169,2760 scale 1.0 bg /usr/share/backgrounds/pop/kate-hazen-pop-retro2.png stretch
+output $mainMonitor mode 3840x2160 pos 0,600 scale 1.0 bg /usr/share/backgrounds/pop/kate-hazen-pop-retro2.png stretch
 
 # output $mainMonitor bg /usr/share/backgrounds/pop/kate-hazen-pop-retro2.png stretch
 # output $sideMonitor bg /usr/share/backgrounds/pop/kate-hazen-pop-retro2.png stretch

@@ -9,7 +9,7 @@ workspaces=( $(swaymsg -t get_workspaces | jq '.[] | select(.name|test("0-.")) |
 close () {
     dunstify "Clamshell mode" "Laptop screen off"
     for i in ${workspaces[@]}; do
-        swaymsg [workspace=$i] move workspace to output "DP-2"
+        swaymsg [workspace=$i] move workspace to output "Unknown AORUS FV43U 21340B000071"
     done
     swaymsg "output eDP-1 disable"
 }
