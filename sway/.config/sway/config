@@ -19,6 +19,7 @@ input type:touchpad {
 }
 
 seat * hide_cursor when-typing enable
+seat * shortcuts_inhibitor disable
 
 # WORKSPACES
 include ~/.config/sway/config.d/workspaces
@@ -31,8 +32,18 @@ for_window [app_id="pavucontrol"] floating enable, resize set 1000 px 500 px
 for_window [title="^ss1"] move container to output $mainMonitor, fullscreen enable
 for_window [title="^ss2"] move container to output $laptopMonitor, fullscreen enable
 for_window [title="^ss3"] move container to output $sideMonitor, fullscreen enable
-for_window [title="^Oracle VM VirtualBox Manager$"] shortcuts_inhibitor disable
+# for_window [title="^Oracle VM VirtualBox Manager$"] shortcuts_inhibitor enable
 for_window [title="Virtual Console"] floating enable
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+
+# mode: hotkeygrab
+set $mode_hotkeygrab Hotkey grab: mod+Shift+z to exit
+bindsym $mod+Shift+z mode "$mode_hotkeygrab"
+mode "$mode_hotkeygrab" {
+
+  # back to normal: mod+Shift+z
+  bindsym $mod+Shift+z mode "default"
+}
 
 # This is a if/else statement: [ outputs_count == 1 ] && true || false
 # bindswitch --reload --locked lid:on exec '[ $(swaymsg -t get_outputs | grep name | wc -l) == 1 ] && ($sleep) || \
@@ -48,6 +59,10 @@ bar {
     position top
     swaybar_command waybar
 }
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always killall swayidle
