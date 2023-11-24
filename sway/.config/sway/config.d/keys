@@ -49,6 +49,10 @@ bindsym $mod+r layout toggle split
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
 
+bindsym $mod+Shift+f exec flameshot gui --raw | wl-copy
+
+bindsym $mod+Shift+v workspace $mainws5; exec VBoxManage startvm "kali-linux-2023.2-virtualbox-amd64"
+
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+$alt+space floating toggle
 
