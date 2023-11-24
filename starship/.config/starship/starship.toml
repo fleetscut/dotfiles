@@ -22,6 +22,7 @@ $nodejs\
 $nim\
 $rust\
 $scala\
+$python\
 $docker_context\
 [ ](fg:subtle)\
 """
@@ -236,7 +237,7 @@ format = '[ $symbol ($version) ]($style)'
 [python]
 symbol = " "
 style = "bg:#212736"
-format = '[[ $symbol ($virtualenv) ]]($style)'
+format = '[ $symbol ($virtualenv) ]($style)'
 
 [rlang]
 symbol = "ﳒ "

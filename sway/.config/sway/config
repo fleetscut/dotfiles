@@ -70,5 +70,6 @@ exec_always bash $HOME/.config/sway/scripts/swayidle.sh
 exec_always dunst
 exec mpd
 exec nm-applet --indicator
+exec flameshot
 
 include /etc/sway/config.d/*
