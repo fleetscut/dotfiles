@@ -1,6 +1,7 @@
 return {
 	{
 		"https://github.com/zbirenbaum/copilot.lua",
+		enabled = false,
 		config = function()
 			-- vim.g.copilot_proxy = "localhost:3128"
 			-- vim.g.copilot_proxy_strict_ssl = false
