@@ -71,5 +71,6 @@ exec_always dunst
 exec mpd
 exec nm-applet --indicator
 exec flameshot
+exec for i in $(ps -ef | grep python | grep media | tr -s ' ' | cut -d' ' -f2); kill -9 $i ; done
 
 include /etc/sway/config.d/*

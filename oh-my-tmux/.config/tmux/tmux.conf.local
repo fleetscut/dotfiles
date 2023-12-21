@@ -78,23 +78,23 @@ tmux_conf_theme=disabled
 # tmux_conf_theme_colour_17="#e4e4e4"   # white
 
 # Custom Theme
-tmux_conf_theme_colour_1="#16161e"
-tmux_conf_theme_colour_2="#3b4261"
-tmux_conf_theme_colour_3="#8a8a8a"    # light gray
-tmux_conf_theme_colour_4="#7aa2f7"
-tmux_conf_theme_colour_5="#e0af68"
-tmux_conf_theme_colour_6="#16161e"
-tmux_conf_theme_colour_7="#9ece6a"
-tmux_conf_theme_colour_8="#16161e"
-tmux_conf_theme_colour_9="#9ece6a"
-tmux_conf_theme_colour_10="#3b4261"
-tmux_conf_theme_colour_11="#5fff00"   # green
-tmux_conf_theme_colour_12="#8a8a8a"   # light gray
-tmux_conf_theme_colour_13="#7aa2f7"
-tmux_conf_theme_colour_14="#3b4261"
-tmux_conf_theme_colour_15="#16161e"   # dark gray
-tmux_conf_theme_colour_16="#3b4261"
-tmux_conf_theme_colour_17="#7aa2f7"
+# tmux_conf_theme_colour_1="#16161e"
+# tmux_conf_theme_colour_2="#3b4261"
+# tmux_conf_theme_colour_3="#8a8a8a"    # light gray
+# tmux_conf_theme_colour_4="#7aa2f7"
+# tmux_conf_theme_colour_5="#e0af68"
+# tmux_conf_theme_colour_6="#16161e"
+# tmux_conf_theme_colour_7="#9ece6a"
+# tmux_conf_theme_colour_8="#16161e"
+# tmux_conf_theme_colour_9="#9ece6a"
+# tmux_conf_theme_colour_10="#3b4261"
+# tmux_conf_theme_colour_11="#5fff00"   # green
+# tmux_conf_theme_colour_12="#8a8a8a"   # light gray
+# tmux_conf_theme_colour_13="#7aa2f7"
+# tmux_conf_theme_colour_14="#3b4261"
+# tmux_conf_theme_colour_15="#16161e"   # dark gray
+# tmux_conf_theme_colour_16="#3b4261"
+# tmux_conf_theme_colour_17="#7aa2f7"
 
 # default theme (ansi)
 #tmux_conf_theme_colour_1="colour0"
@@ -381,6 +381,9 @@ set -g detach-on-destroy off
 # set -gu prefix2
 
 ##### CUSTOM CONFIG #####
+
+run-shell "tmux source-file ~/.config/tmux/themes/solarized-osaka_night.tmux"
+# run-shell "tmux source-file ~/.config/tmux/themes/tokyonight_night.tmux"
 # Clear defaults
 unbind C-a
 unbind C-b
@@ -392,8 +395,13 @@ unbind Right
 unbind Up
 unbind Down
 
- set -g prefix C-a
- set -g @t-bind t
+set -g prefix C-a
+set -g @t-bind t
+# set -g @sessionx-bind t
+# set -g @sessionx-x-path "~/.dotfiles"
+# set -g @sessionx-preview-location "top"
+# set -g @sessionx-zoxide-mode "on"
+# set -g @sessionx-custom-paths "~"
 
  bind C-a send-prefix
  bind \? list-keys
@@ -503,11 +511,11 @@ tmux_conf_uninstall_plugins_on_reload=false
 #set -g @plugin 'tmux-plugins/tmux-resurrect'
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
-# set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'joshmedeski/t-smart-tmux-session-manager'
 set -g @plugin 'christoomey/vim-tmux-navigator'
+# set -g @plugin 'omerxx/tmux-sessionx'
 
-set -g @plugin 'rose-pine/tmux'
+# set -g @plugin 'rose-pine/tmux'
 
 # -- custom variables ----------------------------------------------------------
 
