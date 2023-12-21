@@ -7,5 +7,6 @@ return {
 				picker = "telescope",
 			})
 		end,
+		require("fleetscut.keymaps").zk_keymap(),
 	},
 }

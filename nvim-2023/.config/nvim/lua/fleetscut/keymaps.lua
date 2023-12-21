@@ -156,4 +156,8 @@ M.dadbod_ui_keymap = function(bufnr)
 	vim.keymap.set("v", "<Leader>dr", "<Plug>(DBUI_ExecuteQuery)<CR>", opts)
 end
 
+M.zk_keymap = function()
+	vim.keymap.set("n", "<Leader>zz", ":ZkNotes<CR>", opts)
+end
+
 return M
