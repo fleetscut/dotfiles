@@ -23,3 +23,5 @@ lazy-lock.json
 nvim-test
 
 *test.sh
+
+**/work
