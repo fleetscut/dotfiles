@@ -70,7 +70,6 @@ ZSH_THEME="simonoff"
 plugins=(git zsh-autosuggestions)
 
 
-export PROFILE="work"
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
