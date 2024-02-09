@@ -396,12 +396,19 @@ unbind Up
 unbind Down
 
 set -g prefix C-a
-set -g @t-bind t
-# set -g @sessionx-bind t
-# set -g @sessionx-x-path "~/.dotfiles"
-# set -g @sessionx-preview-location "top"
-# set -g @sessionx-zoxide-mode "on"
-# set -g @sessionx-custom-paths "~"
+
+# sesh session manager
+bind t run-shell "sesh connect $(
+	sesh list -tz | fzf-tmux -p 55%,60% \
+		--no-sort --border-label ' sesh ' --prompt '⚡  ' \
+		--header '  ^a all ^t tmux ^x zoxide ^f find' \
+		--bind 'tab:down,btab:up' \
+		--bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list)' \
+		--bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t)' \
+		--bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z)' \
+		--bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)'
+)"
+
 
  bind C-a send-prefix
  bind \? list-keys
@@ -511,7 +518,7 @@ tmux_conf_uninstall_plugins_on_reload=false
 #set -g @plugin 'tmux-plugins/tmux-resurrect'
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
-set -g @plugin 'joshmedeski/t-smart-tmux-session-manager'
+
 set -g @plugin 'christoomey/vim-tmux-navigator'
 # set -g @plugin 'omerxx/tmux-sessionx'
 
