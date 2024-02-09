@@ -126,7 +126,7 @@ M.dap_keymap = function(bufnr)
 	vim.keymap.set("n", "<F5>", ":lua require('dap').continue()<CR>", opts)
 	vim.keymap.set("n", "<F6>", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
 	vim.keymap.set("n", "<Leader>dl", ":lua require('dap').run_last()<CR>", opts)
-	vim.keymap.set("n", "<Leader>du", ":lua require('dapui').toggle()<CR>", opts)
+	--vim.keymap.set("n", "<Leader>du", ":lua require('dapui').toggle()<CR>", opts)
 	vim.keymap.set("n", "<Leader>dt", ":lua require('dap').toggle()<CR>", opts)
 	vim.keymap.set("n", "<Leader>dx", ":lua require('dap').terminate()<CR>", opts)
 end
