@@ -34,9 +34,6 @@ ZSH_THEME="simonoff"
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
@@ -85,11 +82,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # fnm
-which fnm &> /dev/null
-if [[ ! $? ]] then;
-    export PATH="/home/fleetscut/.local/share/fnm:$PATH"
-    eval "`fnm env`"
-fi
+# export PATH="/home/fleetscut/.local/share/fnm:$PATH"
+eval "$(fnm env --use-on-cd)"
 
 # ~/.tmux/plugins
 export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
@@ -98,7 +92,9 @@ export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND="fdfind --hidden --follow --exclude '.git' --exclude 'node_modules' --no-ignore"
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules' --no-ignore"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 export FZF_DEFAULT_OPTS=" \
@@ -107,13 +103,13 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 --reverse"
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
-if [[ "$(hostname)" == "sazabi" ]]; then
+if [[ "$(uname -n)" == "sazabi" ]]; then
     script_prefix="desktop"
 fi
-if [[ "$(hostname)" == "TOCONALF3QT2CC" ]]; then
+if [[ "$(uname -n)" == "TOCONALF3QT2CC" ]]; then
     script_prefix="work"
 fi
 if [[ "$(uname -r | grep -i android)" ]]; then
@@ -138,13 +134,14 @@ fi
 alias vim=nvim
 alias sudo='sudo '
 #alias bat=batcat
-alias cat=batcat
+alias cat=bat
 alias ls=lsd
 alias src="source ~/.zshrc"
+alias crc="vim ~/.zshrc"
 alias ssh="TERM=xterm-256color ssh"
 alias zz="zellij"
 alias zv='zellij --layout vim'
-alias fd='fdfind'
+#alias fd='fdfind'
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=/opt/apps/'
 
 if [[ $script_prefix ]]; then
@@ -197,4 +194,4 @@ eval "$(zoxide init zsh)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export ZK_NOTEBOOK_DIR="$HOME/Documents/zk/notes/"
+export ZK_NOTEBOOK_DIR="$HOME/Documents/notes/zk/"
