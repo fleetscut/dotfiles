@@ -83,17 +83,15 @@ export NVM_DIR="$HOME/.nvm"
 
 # fnm
 # export PATH="/home/fleetscut/.local/share/fnm:$PATH"
-eval "$(fnm env --use-on-cd)"
+if command -v fnm; then
+    eval "$(fnm env --use-on-cd)"
+fi
 
-# ~/.tmux/plugins
-export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
-# ~/.config/tmux/plugins
-export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+if [[ -d /usr/share/fzf ]]; then
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
+fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules' --no-ignore"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
