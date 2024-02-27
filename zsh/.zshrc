@@ -186,7 +186,7 @@ cu () {
 }
 
 eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
 # bun completions
 [ -s "/home/loschiav/.bun/_bun" ] && source "/home/loschiav/.bun/_bun"
