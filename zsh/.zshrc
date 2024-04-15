@@ -66,7 +66,6 @@ ZSH_THEME="simonoff"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions)
 
-
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -89,12 +88,6 @@ source /usr/share/fzf/completion.zsh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# fnm
-# export PATH="/home/fleetscut/.local/share/fnm:$PATH"
-if command -v fnm; then
-    eval "$(fnm env --use-on-cd)"
-fi
 
 if [[ -d /usr/share/fzf ]]; then
     source /usr/share/fzf/key-bindings.zsh
@@ -201,7 +194,9 @@ eval "$(starship init zsh)"
 
 # fnm
 # export PATH="/home/fleetscut/.local/share/fnm:$PATH"
-eval "$(fnm env --use-on-cd)"
+if command -v -- fnm > /dev/null 2>&1; then
+    eval "$(fnm env --use-on-cd)"
+fi
 
 # bun completions
 [ -s "/home/loschiav/.bun/_bun" ] && source "/home/loschiav/.bun/_bun"
