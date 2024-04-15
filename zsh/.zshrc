@@ -85,6 +85,22 @@ export ZK_NOTEBOOK_DIR="$HOME/Documents/notes/zk/"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# fnm
+# export PATH="/home/fleetscut/.local/share/fnm:$PATH"
+if command -v fnm; then
+    eval "$(fnm env --use-on-cd)"
+fi
+
+if [[ -d /usr/share/fzf ]]; then
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
+fi
+
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules' --no-ignore"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
