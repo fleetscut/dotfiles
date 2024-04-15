@@ -76,22 +76,13 @@ export NPM_PACKAGES=$HOME/.npm-packages/bin
 export PATH="$PATH:$NPM_PACKAGES"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.yarn/bin"
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# fnm
-# export PATH="/home/fleetscut/.local/share/fnm:$PATH"
-eval "$(fnm env --use-on-cd)"
-
-# ~/.tmux/plugins
-export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
-# ~/.config/tmux/plugins
-export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+export ZK_NOTEBOOK_DIR="$HOME/Documents/notes/zk/"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules' --no-ignore"
@@ -157,21 +148,22 @@ zle -N edit-command-line
 
 bindkey -v
 bindkey '^v' edit-command-line
-bindkey -s "^g" "lf-cd\n"
 
-lf-cd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
+# bindkey -s "^g" "lf-cd\n"
+# lf-cd () {
+#     tmp="$(mktemp)"
+#     lf -last-dir-path="$tmp" "$@"
+#     if [ -f "$tmp" ]; then
+#         dir="$(cat "$tmp")"
+#         rm -f "$tmp"
+#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+#     fi
+# }
 
-cpicker () {
-    slurp -p | grim -g - - | convert - txt: | tail -n 1
-}
+ # What is this?
+# cpicker () {
+#     slurp -p | grim -g - - | convert - txt: | tail -n 1
+# }
 
 cu () {
     if [[ -z $1 ]]; then
@@ -186,12 +178,15 @@ cu () {
 }
 
 eval "$(starship init zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+
+# Missing some zsh features
+# eval "$(zoxide init --cmd cd zsh)"
+ eval "$(zoxide init zsh)"
+
+# fnm
+# export PATH="/home/fleetscut/.local/share/fnm:$PATH"
+eval "$(fnm env --use-on-cd)"
 
 # bun completions
 [ -s "/home/loschiav/.bun/_bun" ] && source "/home/loschiav/.bun/_bun"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export ZK_NOTEBOOK_DIR="$HOME/Documents/notes/zk/"
