@@ -425,8 +425,8 @@ bind M-c new-session
 # Yuck repeats
 bind p previous-window # select previous window
 bind n next-window     # select next window
- bind C-p previous-window
- bind C-n next-window
+bind C-p previous-window
+bind C-n next-window
 
 bind h select-pane -L  # move left
 bind j select-pane -D  # move down
@@ -437,6 +437,9 @@ bind l select-pane -R  # move right
 if-shell '[ $(uname -r | grep -i microsoft) ]' {
     bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'clip.exe'
 }
+
+unbind Enter
+bind Enter run-shell '~/.config/tmux/scripts/scrollback-vim.sh'
 
 ##### ROSE PINE #####
 set -g @rose_pine_variant 'moon'

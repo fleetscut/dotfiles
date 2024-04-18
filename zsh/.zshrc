@@ -81,14 +81,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export ZK_NOTEBOOK_DIR="$HOME/Documents/notes/zk/"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 if [[ -d /usr/share/fzf ]]; then
     source /usr/share/fzf/key-bindings.zsh
     source /usr/share/fzf/completion.zsh
