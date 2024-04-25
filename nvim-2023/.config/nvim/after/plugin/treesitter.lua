@@ -9,7 +9,7 @@ if not context_status then
 end
 
 local checkOS = require("fleetscut.osver").checkOS
-require("orgmode").setup_ts_grammar()
+--require("orgmode").setup_ts_grammar()
 
 treesitter.setup({
 	-- A list of parser names, or "all"
