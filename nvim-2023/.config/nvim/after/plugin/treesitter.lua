@@ -58,6 +58,7 @@ treesitter.setup({
 		"vim",
 		"vimdoc",
 		"xml",
+		"query",
 	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
