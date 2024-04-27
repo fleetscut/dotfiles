@@ -23,6 +23,7 @@ vim.opt.splitright = true
 
 vim.opt.cmdheight = 1
 vim.opt.updatetime = 50
+vim.o.timeoutlen = 300
 --vim.opt.colorcolumn = "80"
 
 vim.o.timeoutlen = 500
