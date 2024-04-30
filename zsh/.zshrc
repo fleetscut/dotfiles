@@ -85,6 +85,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+autoload -U edit-command-line
+zle -N edit-command-line
+
+bindkey -v
+bindkey '^v' edit-command-line
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 if [[ -d /usr/share/fzf ]]; then
     source /usr/share/fzf/key-bindings.zsh
@@ -102,6 +108,7 @@ export FZF_DEFAULT_OPTS=" \
 
 export EDITOR=nvim
 export VISUAL=nvim
+export MANPAGER="nvim -c 'Man!' -o -"
 
 if [[ "$(uname -n)" == "sazabi" ]]; then
     script_prefix="desktop"
@@ -148,12 +155,6 @@ if [[ $script_prefix ]]; then
 
 	unset $script_prefix
 fi
-
-autoload -U edit-command-line
-zle -N edit-command-line
-
-bindkey -v
-bindkey '^v' edit-command-line
 
 # bindkey -s "^g" "lf-cd\n"
 # lf-cd () {
