@@ -45,7 +45,7 @@ M.telescope_keymap = function(bufnr)
 	vim.keymap.set("n", "<Leader>tb", ":Telescope buffers<CR>", opts)
 	vim.keymap.set("n", "<Leader>th", ":Telescope help_tags<CR>", opts)
 	vim.keymap.set("n", "<Leader>tf", ":Telescope file_browser<CR>", opts)
-	vim.keymap.set("n", "<Leader>tw", ":Telescope file_browser path=%:p:h<CR>", opts)
+	vim.keymap.set("n", "<Leader>tw", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opts)
 	vim.keymap.set("n", "<Leader>tp", ":Telescope file_browser path=$HOME<CR>", opts)
 	vim.keymap.set("n", "<Leader>td", ":Telescope diagnostics<CR>", opts)
 end
@@ -101,7 +101,7 @@ end
 
 M.harpoon_keymap = function(harpoon)
 	vim.keymap.set("n", "<leader>ha", function()
-		harpoon:list():append()
+		harpoon:list():add()
 	end, opts)
 	vim.keymap.set("n", "<leader>hq", function()
 		harpoon.ui:toggle_quick_menu(harpoon:list())

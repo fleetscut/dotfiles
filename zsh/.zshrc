@@ -3,6 +3,8 @@
 #    export PATH=$HOME/.local/bin/:$PATH
 #fi
 
+# sleep 0.05s # fixes size issues from terminal spawn animation
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -72,12 +74,16 @@ source $ZSH/oh-my-zsh.sh
 # Exports
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 export NPM_PACKAGES=$HOME/.npm-packages/bin
-export PATH="$PATH:$NPM_PACKAGES"
-export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.yarn/bin"
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 # bun
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+
+if [[ -z $TMUX ]]; then
+    export PATH="$PATH:$NPM_PACKAGES"
+    export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.yarn/bin"
+    export PATH="$PATH:$BUN_INSTALL/bin"
+    export PATH="$PATH:$(go env GOPATH)/bin"
+fi
 
 export ZK_NOTEBOOK_DIR="$HOME/Documents/notes/zk/"
 
@@ -147,6 +153,9 @@ alias zz="zellij"
 alias zv='zellij --layout vim'
 #alias fd='fdfind'
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=/opt/apps/'
+# if command -v -- perl-rename > /dev/null 2>&1; then
+#     alias rename=perl-rename
+# fi
 
 if [[ $script_prefix ]]; then
 	source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
@@ -199,3 +208,6 @@ fi
 # bun completions
 [ -s "/home/loschiav/.bun/_bun" ] && source "/home/loschiav/.bun/_bun"
 
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#     exec tmux
+# fi

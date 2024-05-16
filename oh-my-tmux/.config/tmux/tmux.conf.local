@@ -418,6 +418,7 @@ bind t run-shell "sesh connect $(
  bind G kill-window \; detach
 
  bind C new-window -c "#{pane_current_path}"
+ bind C-d attach -c "#{pane_current_path}" \; display-message "Set CWD=#{pane_current_path}"
 
 # What to do with this?
 bind M-c new-session
