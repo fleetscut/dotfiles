@@ -44,10 +44,11 @@ M.telescope_keymap = function(bufnr)
 	vim.keymap.set("n", "<Leader>ts", ":Telescope live_grep<CR>", opts)
 	vim.keymap.set("n", "<Leader>tb", ":Telescope buffers<CR>", opts)
 	vim.keymap.set("n", "<Leader>th", ":Telescope help_tags<CR>", opts)
-	vim.keymap.set("n", "<Leader>tf", ":Telescope file_browser<CR>", opts)
-	vim.keymap.set("n", "<Leader>tw", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opts)
+	vim.keymap.set("n", "<Leader>tf", ":Telescope file_browser no_ignore=true<CR>", opts)
+	vim.keymap.set("n", "<Leader>tw", ":Telescope file_browser path=%:p:h select_buffer=true no_ignore=true<CR>", opts)
 	vim.keymap.set("n", "<Leader>tp", ":Telescope file_browser path=$HOME<CR>", opts)
 	vim.keymap.set("n", "<Leader>td", ":Telescope diagnostics<CR>", opts)
+	vim.keymap.set("n", "<Leader>tl", ":Telescope luasnip<CR>", opts)
 end
 
 M.general_keymap = function(bufnr)

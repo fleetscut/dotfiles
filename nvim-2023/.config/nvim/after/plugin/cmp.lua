@@ -20,6 +20,8 @@ end
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
+lspkind.init()
+
 --vim.o.completeopt = "menu,menuone"
 cmp.setup({
 	snippet = {
@@ -103,6 +105,10 @@ cmp.setup({
 		{ name = "vim-dadbod-completion" },
 		{ name = "orgmode" },
 	},
+	completion = {
+		completeopt = "menu,menuone,noinsert",
+	},
+	preselect = cmp.PreselectMode.None,
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,

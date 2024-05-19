@@ -27,7 +27,7 @@ vim.o.timeoutlen = 300
 --vim.opt.colorcolumn = "80"
 
 vim.o.timeoutlen = 500
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = "menu,menuone,noselect"
 
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
