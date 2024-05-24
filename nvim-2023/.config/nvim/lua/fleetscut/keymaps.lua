@@ -121,6 +121,18 @@ M.harpoon_keymap = function(harpoon)
 	vim.keymap.set("n", "<M-o>", function()
 		harpoon:list():select(4)
 	end, opts)
+	vim.keymap.set("n", "<leader><M-n>", function()
+		harpoon:list():replace_at(1)
+	end)
+	vim.keymap.set("n", "<leader><M-e>", function()
+		harpoon:list():replace_at(2)
+	end)
+	vim.keymap.set("n", "<leader><M-i>", function()
+		harpoon:list():replace_at(3)
+	end)
+	vim.keymap.set("n", "<leader><M-o>", function()
+		harpoon:list():replace_at(4)
+	end)
 end
 
 M.dap_keymap = function(bufnr)
@@ -244,6 +256,28 @@ M.gitsigns_keymap = function(bufnr)
 
 	-- Text object
 	map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+end
+
+M.oil_keymap = function(bufnr)
+	local oil = require("oil")
+
+	vim.keymap.set("n", "<leader>oo", ":lua require('oil').open()<CR>", { desc = "Open parent directory" })
+	vim.keymap.set(
+		"n",
+		"<leader>or",
+		":lua require('oil').open(vim.loop.cwd())<CR>",
+		{ desc = "Open parent directory" }
+	)
+end
+
+M.ls_keymap = function(bufnr)
+	local ls = require("luasnip")
+	vim.keymap.set({ "i", "s" }, "<C-l>", function()
+		ls.jump(1)
+	end, { silent = true })
+	vim.keymap.set({ "i", "s" }, "<C-h>", function()
+		ls.jump(-1)
+	end, { silent = true })
 end
 
 return M

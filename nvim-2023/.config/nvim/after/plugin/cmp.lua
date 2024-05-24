@@ -42,28 +42,28 @@ cmp.setup({
 		}),
 		-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 		["<C-s>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.confirm({ behaviour = cmp.ConfirmBehavior.Replace, select = true })
-			-- elseif require("copilot.suggestion").is_visible() then
-			-- 	require("copilot.suggestion").accept()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			-- elseif has_words_before() then
-			-- 	cmp.complete()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
+		-- ["<Tab>"] = cmp.mapping(function(fallback)
+		-- 	if cmp.visible() then
+		-- 		cmp.confirm({ behaviour = cmp.ConfirmBehavior.Replace, select = true })
+		-- 	-- elseif require("copilot.suggestion").is_visible() then
+		-- 	-- 	require("copilot.suggestion").accept()
+		-- 	elseif luasnip.expand_or_jumpable() then
+		-- 		luasnip.expand_or_jump()
+		-- 	-- elseif has_words_before() then
+		-- 	-- 	cmp.complete()
+		-- 	else
+		-- 		fallback()
+		-- 	end
+		-- end, { "i", "s" }),
+		-- ["<S-Tab>"] = cmp.mapping(function(fallback)
+		-- 	if cmp.visible() then
+		-- 		cmp.select_prev_item()
+		-- 	elseif luasnip.jumpable(-1) then
+		-- 		luasnip.jump(-1)
+		-- 	else
+		-- 		fallback()
+		-- 	end
+		-- end, { "i", "s" }),
 	}),
 	formatting = {
 		fields = { "kind", "abbr", "menu" },

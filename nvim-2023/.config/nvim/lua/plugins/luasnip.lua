@@ -8,6 +8,8 @@ return {
 			require("luasnip").filetype_extend("javascriptreact", { "html" })
 			require("luasnip").filetype_extend("typescriptreact", { "html" })
 			require("luasnip").filetype_extend("typescript", { "javascript" })
+
+			require("fleetscut.keymaps").ls_keymap()
 		end,
 	},
 	"saadparwaiz1/cmp_luasnip",

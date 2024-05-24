@@ -153,6 +153,8 @@ alias zz="zellij"
 alias zv='zellij --layout vim'
 #alias fd='fdfind'
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=/opt/apps/'
+alias tree='lsd --tree'
+
 # if command -v -- perl-rename > /dev/null 2>&1; then
 #     alias rename=perl-rename
 # fi
