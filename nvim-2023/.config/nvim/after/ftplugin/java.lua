@@ -140,6 +140,14 @@ local config = {
 			useBlocks = true,
 		},
 	},
+	handlers = {
+		["language/status"] = function(_, result)
+			-- Print or whatever.
+		end,
+		["$/progress"] = function(_, result, ctx)
+			-- disable progress updates.
+		end,
+	},
 
 	flags = { allow_incremental_sync = true },
 
