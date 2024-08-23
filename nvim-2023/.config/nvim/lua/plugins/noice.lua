@@ -1,8 +1,16 @@
+local profile = os.getenv("PROFILE")
+
 return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		enabled = true,
+		enabled = function()
+			if profile == "work" then
+				return require("fleetscut.work.noice").noice_enabled
+			else
+				return true
+			end
+		end,
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
@@ -26,7 +34,7 @@ return {
 						event = "msg_show",
 						find = "agenda command",
 					},
-					view = "popup",
+					view = "cmdline",
 				},
 				{
 					filter = {

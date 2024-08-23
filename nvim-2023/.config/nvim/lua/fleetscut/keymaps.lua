@@ -282,4 +282,10 @@ M.ls_keymap = function(bufnr)
 	end, { silent = true })
 end
 
+M.copilot_keymap = function(bufnr)
+	vim.keymap.set("i", "<C-y>", function()
+		require("copilot.suggestion").accept()
+	end, opts)
+end
+
 return M

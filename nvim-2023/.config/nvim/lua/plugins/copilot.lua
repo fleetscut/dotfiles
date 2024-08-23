@@ -1,14 +1,27 @@
+local profile = os.getenv("PROFILE")
+
 return {
 	{
 		"https://github.com/zbirenbaum/copilot.lua",
-		enabled = false,
+		enabled = function()
+			if profile == "work" then
+				return require("fleetscut.work.enabled").copilot_enabled
+			else
+				return false
+			end
+		end,
 		config = function()
-			-- vim.g.copilot_proxy = "localhost:3128"
-			-- vim.g.copilot_proxy_strict_ssl = false
+			if profile == "work" then
+				vim.g.copilot_proxy = require("fleetscut.work.copilot").copilot_proxy
+				vim.g.copilot_proxy_strict_ssl = require("fleetscut.work.copilot").copilot_proxy_strict_ssl
+			end
 			require("copilot").setup({
 				suggestion = { enabled = true, auto_trigger = true },
-				-- panel = { enabled = false },
+				panel = { enabled = true, auto_refresh = true },
 			})
+		end,
+		init = function()
+			require("fleetscut.keymaps").copilot_keymap()
 		end,
 	},
 	-- {
