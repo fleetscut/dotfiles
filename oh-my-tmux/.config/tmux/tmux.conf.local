@@ -398,8 +398,8 @@ unbind Down
 set -g prefix C-a
 
 # sesh session manager
-bind t run-shell "sesh connect $(
-	sesh list -tz | fzf-tmux -p 55%,60% \
+bind t run-shell "sesh connect \"$(
+	sesh list -i | fzf-tmux -p 55%,60% \
 		--no-sort --border-label ' sesh ' --prompt '⚡  ' \
 		--header '  ^a all ^t tmux ^x zoxide ^f find' \
 		--bind 'tab:down,btab:up' \
@@ -407,7 +407,7 @@ bind t run-shell "sesh connect $(
 		--bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t)' \
 		--bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z)' \
 		--bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)'
-)"
+)\""
 
 
  bind C-a send-prefix
