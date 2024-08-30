@@ -1,4 +1,6 @@
 vim.opt.textwidth = 80
+vim.opt.conceallevel = 2
+
 vim.cmd("set fo+=t")
 vim.cmd("set fo-=l")
 

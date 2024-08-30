@@ -71,6 +71,4 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
 
-dap_virtual_text.setup()
-
-require("fleetscut.keymaps").dap_keymap(bufnr)
+dap_virtual_text.setup({})

@@ -20,9 +20,15 @@ return {
 				panel = { enabled = true, auto_refresh = true },
 			})
 		end,
-		init = function()
-			require("fleetscut.keymaps").copilot_keymap()
-		end,
+		keys = {
+			{
+				"<C-y>",
+				function()
+					require("copilot.suggestion").accept()
+				end,
+				mode = { "i" },
+			},
+		},
 	},
 	-- {
 	-- 	"https://github.com/zbirenbaum/copilot-cmp",

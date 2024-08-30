@@ -19,9 +19,6 @@ return {
 			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		},
-		init = function()
-			require("fleetscut.keymaps").noice_keymap(bufnr)
-		end,
 		opts = {
 			cmdline = { enabled = true, view = "cmdline_popup" },
 			messages = {
@@ -65,6 +62,26 @@ return {
 					},
 					opts = { skip = true },
 				},
+			},
+		},
+		keys = {
+			{
+				"<c-f>",
+				function()
+					if not require("noice.lsp").scroll(4) then
+						return "<c-f>"
+					end
+				end,
+				{ silent = true, expr = true },
+			},
+			{
+				"<c-b>",
+				function()
+					if not require("noice.lsp").scroll(-4) then
+						return "<c-b>"
+					end
+				end,
+				{ silent = true, expr = true },
 			},
 		},
 	},

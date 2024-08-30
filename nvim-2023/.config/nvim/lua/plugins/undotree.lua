@@ -1,8 +1,8 @@
 return {
 	{
 		"mbbill/undotree",
-		init = function()
-			require("fleetscut.keymaps").undotree_keymap()
-		end,
+		keys = {
+			{ "<Leader>u", ":UndotreeToggle<CR>" },
+		},
 	},
 }

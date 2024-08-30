@@ -179,8 +179,9 @@ return {
 				border = "rounded",
 			},
 		},
-		init = function()
-			require("fleetscut.keymaps").oil_keymap()
-		end,
+		keys = {
+			{ "<leader>oo", ":lua require('oil').open()<CR>" },
+			{ "<leader>or", ":lua require('oil').open(vim.loop.cwd())<CR>" },
+		},
 	},
 }

@@ -397,6 +397,8 @@ unbind Down
 
 set -g prefix C-a
 
+bind M-l switch-client -l
+
 # sesh session manager
 bind t run-shell "sesh connect \"$(
 	sesh list -i | fzf-tmux -p 55%,60% \
@@ -441,6 +443,19 @@ if-shell '[ $(uname -r | grep -i microsoft) ]' {
 
 unbind Enter
 bind Enter run-shell '~/.config/tmux/scripts/scrollback-vim.sh'
+
+bind M-a run-shell '~/.config/tmux/scripts/harpoon -a'
+bind M-q run-shell '~/.config/tmux/scripts/harpoon -l'
+bind M-z run-shell '~/.config/tmux/scripts/harpoon -e'
+bind M-n run-shell '~/.config/tmux/scripts/harpoon -s 1'
+bind M-e run-shell '~/.config/tmux/scripts/harpoon -s 2'
+bind M-i run-shell '~/.config/tmux/scripts/harpoon -s 3'
+bind M-o run-shell '~/.config/tmux/scripts/harpoon -s 4'
+
+bind M-l run-shell '~/.config/tmux/scripts/harpoon -r 1'
+bind M-u run-shell '~/.config/tmux/scripts/harpoon -r 2'
+bind M-y run-shell '~/.config/tmux/scripts/harpoon -r 3'
+bind M-\' run-shell '~/.config/tmux/scripts/harpoon -r 4'
 
 ##### ROSE PINE #####
 set -g @rose_pine_variant 'moon'
