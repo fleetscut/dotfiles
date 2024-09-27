@@ -85,7 +85,8 @@
 
     # Defines color of the frame around the notification window.
     # frame_color = "#aaaaaa"
-    frame_color = "#8AADF4"
+    # frame_color = "#8AADF4"
+    frame_color = "#89b4fa"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
@@ -99,7 +100,8 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = auto
+    # separator_color = auto
+    separator_color= frame
 
     # Sort messages by urgency.
     sort = yes
@@ -307,8 +309,10 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     # background = "#222222"
     # foreground = "#888888"
-    background = "#24273A"
-    foreground = "#CAD3F5"
+    # background = "#24273A"
+    background = "#1e1e2e"
+    # foreground = "#CAD3F5"
+    foreground = "#cdd6f4"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
@@ -316,9 +320,11 @@
 [urgency_normal]
     # background = "#285577"
     # foreground = "#ffffff"
-    background = "#24273A"
-    foreground = "#CAD3F5"
-        timeout = 10
+    # background = "#24273A"
+    # foreground = "#CAD3F5"
+    background = "#1e1e2e"
+    foreground = "#cdd6f4"
+    timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -326,9 +332,12 @@
     # background = "#900000"
     # foreground = "#ffffff"
     # frame_color = "#ff0000"
-    background = "#24273A"
-    foreground = "#CAD3F5"
-    frame_color = "#F5A97F"0
+    # background = "#24273A"
+    # foreground = "#CAD3F5"
+    # frame_color = "#F5A97F"0
+    background = "#1e1e2e"
+    foreground = "#cdd6f4"
+    frame_color = "#fab387"
     timeout = 10
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon

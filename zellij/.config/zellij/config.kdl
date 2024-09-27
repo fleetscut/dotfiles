@@ -188,6 +188,7 @@ keybinds clear-defaults=true {
 }
 
 plugins {
+    sess-man location="file:/mnt/data/repos/zj-session-manager/target/wasm32-wasi/debug/zj-session-manager.wasm"
     tab-bar location="zellij:tab-bar"
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"

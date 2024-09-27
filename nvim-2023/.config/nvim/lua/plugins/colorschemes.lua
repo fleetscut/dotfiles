@@ -116,7 +116,7 @@ return {
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
-		enabled = true,
+		enabled = false,
 		priority = 1000,
 		opts = {
 			-- your configuration comes here
@@ -156,6 +156,37 @@ return {
 		config = function(lazy, opts)
 			require("tokyonight").setup(opts)
 			vim.cmd("colorscheme tokyonight-night")
+		end,
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		lazy = false,
+		enabled = true,
+		priority = 1000,
+		opts = {
+			transparent_background = true,
+			term_colors = true,
+			intergrations = {
+				harpoon = true,
+				noice = true,
+				dadbod_ui = true,
+				notify = true,
+			},
+			color_overrides = {
+				mocha = {
+					base = "#000000",
+					mantle = "#000000",
+					crust = "#000000",
+				},
+			},
+		},
+		config = function(lazy, opts)
+			require("catppuccin").setup(opts)
+			vim.cmd([[
+                hi NotifyBackground guibg = #000000
+            ]])
+			vim.cmd("colorscheme catppuccin-mocha")
 		end,
 	},
 }

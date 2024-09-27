@@ -543,6 +543,11 @@ set -g @plugin 'christoomey/vim-tmux-navigator'
 
 # set -g @plugin 'rose-pine/tmux'
 
+set -g @plugin 'catppuccin/tmux#latest'
+set -g @catppuccin_flavor 'mocha'
+set -g @catppuccin_status_modules_left 'session application'
+set -g @catppuccin_status_modules_right 'user host date_time'
+
 # -- custom variables ----------------------------------------------------------
 
 # to define a custom #{foo} variable, define a POSIX shell function between the
