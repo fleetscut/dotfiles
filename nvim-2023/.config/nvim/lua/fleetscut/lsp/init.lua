@@ -18,7 +18,7 @@ local servers = {
 	"lua_ls",
 	"yamlls",
 	"jsonls",
-	"tsserver",
+	"ts_ls",
 	"clangd",
 	"html",
 	"gopls",
@@ -49,7 +49,7 @@ for _, server in pairs(servers) do
 	if server == "jsonls" then
 		config = require("fleetscut.lsp.json").config
 	end
-	if server == "tsserver" then
+	if server == "ts_ls" then
 		config = require("fleetscut.lsp.javascript").config
 	end
 	if server == "clangd" then
