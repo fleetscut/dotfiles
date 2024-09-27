@@ -10,6 +10,7 @@ return {
 				return false
 			end
 		end,
+		lazy = false,
 		config = function()
 			if profile == "work" then
 				vim.g.copilot_proxy = require("fleetscut.work.copilot").copilot_proxy
@@ -30,12 +31,4 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	"https://github.com/zbirenbaum/copilot-cmp",
-	-- 	enabled = false,
-	-- 	dependencies = "copilot.lua",
-	-- 	config = function()
-	-- 		require("copilot_cmp").setup()
-	-- 	end,
-	-- },
 }

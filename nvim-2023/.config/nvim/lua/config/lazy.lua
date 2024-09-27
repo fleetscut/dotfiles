@@ -24,4 +24,5 @@ require("lazy").setup({
 	checker = {
 		enabled = true, -- check for plugin updates periodically
 	}, -- automatically check for plugin updates
+	concurrency = require("fleetscut.work.settings").concurrency or nil,
 })
