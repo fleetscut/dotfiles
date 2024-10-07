@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local settings_ok, settings = pcall(require, "fleetscut.work.settings")
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -24,5 +25,5 @@ require("lazy").setup({
 	checker = {
 		enabled = true, -- check for plugin updates periodically
 	}, -- automatically check for plugin updates
-	concurrency = require("fleetscut.work.settings").concurrency or nil,
+	concurrency = settings_ok and settings.concurrency or nil,
 })
