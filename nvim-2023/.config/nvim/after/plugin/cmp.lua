@@ -64,6 +64,10 @@ cmp.setup({
 		-- 		fallback()
 		-- 	end
 		-- end, { "i", "s" }),
+		["<BS>"] = cmp.mapping(function(fallback)
+			vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Del>", true, true, true), "x")
+			luasnip.jump(1)
+		end, { "s" }),
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },

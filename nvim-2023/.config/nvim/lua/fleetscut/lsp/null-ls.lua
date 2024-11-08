@@ -21,7 +21,8 @@ null_ls.setup({
 		diagnostics.yamllint,
 		-- formatting.tidy.with({ extra_args = { "--input-xml", "1", "--indent-attributes", "1" } }),
 		-- diagnostics.pylint.with({}),
-		-- diagnostics.eslint_d,
+		-- require("none-ls.diagnostics.eslint_d"),
+		-- require("none-ls.diagnostics.eslint"),
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

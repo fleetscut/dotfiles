@@ -22,6 +22,8 @@ local servers = {
 	"clangd",
 	"html",
 	"gopls",
+	"eslint",
+	"tailwindcss",
 	-- "rust_analyzer",
 }
 
@@ -60,6 +62,12 @@ for _, server in pairs(servers) do
 	end
 	if server == "gopls" then
 		config = require("fleetscut.lsp.go").config
+	end
+	if server == "eslint" then
+		config = require("fleetscut.lsp.eslint").config
+	end
+	if server == "tailwindcss" then
+		config = require("fleetscut.lsp.tailwind").config
 	end
 	-- if server == "rust_analyzer" then
 	-- 	config = require("fleetscut.lsp.rust").config
