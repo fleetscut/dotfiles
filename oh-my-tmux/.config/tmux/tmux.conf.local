@@ -408,9 +408,9 @@ bind t run-shell ~/.config/tmux/scripts/sessionmanager.sh
  # bind g run-shell ~/.config/tmux/scripts/popuptmux.sh
  # bind G kill-window \; detach
 
- bind C new-window -c "#{pane_current_path}"                                                    # New tab at current session dir
- bind C-c new-window -c "$HOME"                                                                 # New tab in home
- bind C-d attach -c "#{pane_current_path}" \; display-message "Set CWD=#{pane_current_path}"    # Change Session CWD
+ bind C new-window -c "#{pane_current_path}"                                                            # New tab at current pane dir
+ bind C-c new-window -c "$HOME"                                                                         # New tab in home
+ bind C-d attach -c "#{pane_current_path}" \; display-message "Set Session CWD=#{pane_current_path}"    # Change Session CWD to current pane path
 
 # What to do with this?
 bind C-s new-session -c "$HOME"                                                                 # New session in home
@@ -500,7 +500,7 @@ set -g @plugin 'catppuccin/tmux#latest'
 set -g @plugin 'omerxx/tmux-floax'
 
 set -g @catppuccin_flavor 'mocha'
-set -g @catppuccin_window_status_style "rounded"
+set -g @catppuccin_window_status_style "slanted"
 set -g @catppuccin_window_text " #W"
 set -g @catppuccin_window_current_text " #W"
 set -g status-left "#{E:@catppuccin_status_session}#{E:@catppuccin_status_application}"
