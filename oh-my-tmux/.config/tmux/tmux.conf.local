@@ -399,24 +399,14 @@ unbind Down
 set -g prefix C-a
 
 # sesh session manager
-bind t run-shell "sesh connect \"$(
-	sesh list -i | grep -v _popup |
-    fzf-tmux -p 55%,60% \
-		--no-sort --border-label ' sesh ' --prompt '⚡  ' \
-		--header '  ^a all ^t tmux ^x zoxide ^f find' \
-		--bind 'tab:down,btab:up' \
-		--bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list)' \
-		--bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t)' \
-		--bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z)' \
-		--bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)'
-)\""
+bind t run-shell ~/.config/tmux/scripts/sessionmanager.sh
 
  bind C-a send-prefix
  bind \? list-keys
  bind T clock-mode
 
- bind g run-shell ~/.config/tmux/scripts/popuptmux.sh
- bind G kill-window \; detach
+ # bind g run-shell ~/.config/tmux/scripts/popuptmux.sh
+ # bind G kill-window \; detach
 
  bind C new-window -c "#{pane_current_path}"                                                            # New tab at current pane dir
  bind C-c new-window -c "$HOME"                                                                         # New tab in home
@@ -476,12 +466,12 @@ bind M-\' run-shell '~/.config/tmux/scripts/harpoon -r 4'                       
 # by default, launching tmux will update tpm and all plugins
 #   - true (default)
 #   - false
-tmux_conf_update_plugins_on_launch=true
+tmux_conf_update_plugins_on_launch=false
 
 # by default, reloading the configuration will update tpm and all plugins
 #   - true (default)
 #   - false
-tmux_conf_update_plugins_on_reload=true
+tmux_conf_update_plugins_on_reload=false
 
 # by default, reloading the configuration will uninstall tpm and plugins when no
 # plugins are enabled
@@ -506,8 +496,9 @@ tmux_conf_uninstall_plugins_on_reload=false
 #set -g @continuum-restore 'on'
 
 set -g @plugin 'christoomey/vim-tmux-navigator'
-
 set -g @plugin 'catppuccin/tmux#latest'
+set -g @plugin 'omerxx/tmux-floax'
+
 set -g @catppuccin_flavor 'mocha'
 set -g @catppuccin_window_status_style "slanted"
 set -g @catppuccin_window_text " #W"
@@ -515,6 +506,8 @@ set -g @catppuccin_window_current_text " #W"
 set -g status-left "#{E:@catppuccin_status_session}#{E:@catppuccin_status_application}"
 set -g status-right "#{E:@catppuccin_status_user}#{E:@catppuccin_status_host}#{E:@catppuccin_status_date_time}"
 
+set -g @floax-bind 'g'
+set -g @floax-bind-menu 'G'
 # -- custom variables ----------------------------------------------------------
 
 # to define a custom #{foo} variable, define a POSIX shell function between the
