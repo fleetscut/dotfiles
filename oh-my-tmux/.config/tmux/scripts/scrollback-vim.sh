@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 SCROLLBACK_FILE=$(mktemp)
 SCROLLBACK_SIZE=32768

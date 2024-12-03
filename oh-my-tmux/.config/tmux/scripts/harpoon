@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 get_default_cache_dir() {
 	if [ -n "$XDG_CACHE_HOME" ]; then

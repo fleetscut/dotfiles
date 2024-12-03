@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/bin/bash
 
 CURRENT_SESSION=$(tmux display-message -p -F "#{session_name}")
 CURRENT_SESSION_PATH=$(tmux display-message -p -F "#{session_path}")
