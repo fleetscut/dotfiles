@@ -75,17 +75,18 @@ source $ZSH/oh-my-zsh.sh
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 export NPM_PACKAGES=$HOME/.npm-packages/bin
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
-# bun
+export ZK_NOTEBOOK_DIR="$HOME/Documents/notes/zk/"
+
+# BUN
 export BUN_INSTALL="$HOME/.bun"
 
+# TMUX
 if [[ -z $TMUX ]]; then
     export PATH="$PATH:$NPM_PACKAGES"
     export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.yarn/bin"
     export PATH="$PATH:$BUN_INSTALL/bin"
     export PATH="$PATH:$(go env GOPATH)/bin"
 fi
-
-export ZK_NOTEBOOK_DIR="$HOME/Documents/notes/zk/"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -147,21 +148,23 @@ fi
 
 alias vim=nvim
 alias sudo='sudo '
-#alias bat=batcat
+if command -v -- batcat > /dev/null 2>&1; then
+    alias bat=batcat
+fi
 alias cat=bat
-alias ls=lsd
+if command -v -- lsd > /dev/null 2>&1; then
+    alias ls=lsd
+fi
 alias src="source ~/.zshrc"
 alias crc="vim ~/.zshrc"
 alias ssh="TERM=xterm-256color ssh"
 alias zz="zellij"
 alias zv='zellij --layout vim'
-#alias fd='fdfind'
+if command -v -- fdfind > /dev/null 2>&1; then
+    alias fd='fdfind'
+fi
 alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=/opt/apps/'
 alias tree='lsd --tree'
-
-# if command -v -- perl-rename > /dev/null 2>&1; then
-#     alias rename=perl-rename
-# fi
 
 if [[ $script_prefix ]]; then
 	source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
@@ -171,16 +174,18 @@ if [[ $script_prefix ]]; then
 	unset $script_prefix
 fi
 
-# bindkey -s "^g" "lf-cd\n"
-# lf-cd () {
-#     tmp="$(mktemp)"
-#     lf -last-dir-path="$tmp" "$@"
-#     if [ -f "$tmp" ]; then
-#         dir="$(cat "$tmp")"
-#         rm -f "$tmp"
-#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-#     fi
-# }
+if command -v -- lf > /dev/null 2>&1; then
+    bindkey -s "^g" "lf-cd\n"
+    lf-cd () {
+        tmp="$(mktemp)"
+        lf -last-dir-path="$tmp" "$@"
+        if [ -f "$tmp" ]; then
+            dir="$(cat "$tmp")"
+            rm -f "$tmp"
+            [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+        fi
+    }
+fi
 
  # What is this?
 # cpicker () {
@@ -199,13 +204,14 @@ cu () {
     done
 }
 
+# Extra setups
 eval "$(starship init zsh)"
 
 # Missing some zsh features
 # eval "$(zoxide init --cmd cd zsh)"
- eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
 
-# fnm
+# FNM
 # export PATH="/home/fleetscut/.local/share/fnm:$PATH"
 if command -v -- fnm > /dev/null 2>&1; then
     eval "$(fnm env --use-on-cd)"
@@ -213,7 +219,3 @@ fi
 
 # bun completions
 [ -s "/home/loschiav/.bun/_bun" ] && source "/home/loschiav/.bun/_bun"
-
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#     exec sesh connect Home
-# fi
