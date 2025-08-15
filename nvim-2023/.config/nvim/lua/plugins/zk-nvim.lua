@@ -1,10 +1,20 @@
 return {
 	{
-		"mickael-menu/zk-nvim",
+		"zk-org/zk-nvim",
 		enabled = true,
 		config = function()
 			require("zk").setup({
 				picker = "telescope",
+				lsp = {
+					config = {
+						name = "zk",
+						cmd = { "zk", "lsp" },
+						filetypes = { "markdown", "md" },
+					},
+					auto_attach = {
+						enabled = true,
+					},
+				},
 			})
 		end,
 		keys = {

@@ -182,8 +182,8 @@ return {
 			},
 		},
 		keys = {
-			{ "<leader>oo", ":lua require('oil').open()<CR>" },
-			{ "<leader>or", ":lua require('oil').open(vim.loop.cwd())<CR>" },
+			{ "<leader>oo", ":lua require('oil').open_float()<CR>" },
+			{ "<leader>or", ":lua require('oil').open_float(vim.loop.cwd())<CR>" },
 		},
 	},
 }
