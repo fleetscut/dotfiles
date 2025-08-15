@@ -60,9 +60,9 @@ for _, server in pairs(servers) do
 	if server == "html" then
 		config = require("fleetscut.lsp.html").config
 	end
-	if server == "gopls" then
-		config = require("fleetscut.lsp.go").config
-	end
+	-- if server == "gopls" then
+	-- 	config = require("fleetscut.lsp.go").config
+	-- end
 	if server == "eslint" then
 		config = require("fleetscut.lsp.eslint").config
 	end
