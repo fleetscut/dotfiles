@@ -15,13 +15,11 @@ local servers = {
 	--"jedi_language_server",
 	"pyright", -- config options https://github.com/microsoft/pyright/blob/main/docs/configuration.md
 	-- "pylsp",
-	"lua_ls",
 	"yamlls",
 	"jsonls",
 	"ts_ls",
 	"clangd",
 	"html",
-	"gopls",
 	"eslint",
 	"tailwindcss",
 	-- "rust_analyzer",
@@ -41,9 +39,6 @@ for _, server in pairs(servers) do
 	if server == "pylsp" then
 		PYTHON_DAP_ACTIVE = true
 		config = require("fleetscut.lsp.python").config
-	end
-	if server == "lua_ls" then
-		config = require("fleetscut.lsp.lua-ls").config
 	end
 	if server == "yamlls" then
 		config = require("fleetscut.lsp.yaml").config

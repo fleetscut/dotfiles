@@ -1,7 +1,7 @@
-vim.lsp.enable({ "zk", "gopls" })
+vim.lsp.enable({ "zk", "gopls", "lua_ls" })
 vim.diagnostic.config({
-	virtual_lines = true,
-	virtual_text = false,
+	virtual_lines = false,
+	virtual_text = true,
 })
 
 require("fleetscut.lsp")
