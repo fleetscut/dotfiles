@@ -1,12 +1,25 @@
-theme = Catppuccin Mocha
-background-opacity = 0.95
-window-decoration = false
+# Dynamic theme colors
+config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
-font-family = "FiraCode Nerd Font"
-font-family-bold = "FiraCode Nerd Font"
-font-family-italic = "FiraCode Nerd Font"
-font-family-bold-italic = "FiraCode Nerd Font"
-font-size = 12.0
+# Font
+font-family = "CaskaydiaMono Nerd Font"
+font-style = Regular
+font-size = 12
 
+# Window
+window-padding-x = 14
+window-padding-y = 14
+confirm-close-surface=false
+resize-overlay = never
+
+# Cursor styling
+cursor-style = "block"
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+# Keyboard bindings
+keybind = f11=toggle_fullscreen
 keybind = ctrl+period=increase_font_size:1
 keybind = ctrl+enter=unbind
+
+command = "/usr/bin/zsh"
