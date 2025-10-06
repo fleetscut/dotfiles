@@ -1,6 +1,7 @@
 return {
 	"freddiehaddad/feline.nvim",
 	opts = {},
+    enabled = false,
 	config = function(_, opts)
 		local feline = require("feline")
 		local ctp_feline = require("catppuccin.groups.integrations.feline")
