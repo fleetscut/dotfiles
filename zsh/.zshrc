@@ -108,18 +108,18 @@ export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'nod
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
-export FZF_DEFAULT_OPTS=" \
---ansi \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
---color=selected-bg:#45475a \
+export FZF_DEFAULT_OPTS=' 
+--ansi 
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc 
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 
+--color=selected-bg:#45475a 
 --reverse
---multi"
+--multi'
 
 export EDITOR=nvim
 export VISUAL=nvim
-export MANPAGER="nvim -c 'Man!' -o -"
+#export MANPAGER="nvim -c 'Man!' -o -"
 
 if [[ "$(uname -n)" == "sazabi" ]]; then
     script_prefix="desktop"
@@ -163,7 +163,7 @@ alias zv='zellij --layout vim'
 if command -v -- fdfind > /dev/null 2>&1; then
     alias fd='fdfind'
 fi
-alias kittyupdate='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin dest=/opt/apps/'
+
 alias tree='lsd --tree'
 
 if [[ $script_prefix ]]; then
@@ -187,11 +187,6 @@ if command -v -- lf > /dev/null 2>&1; then
     }
 fi
 
- # What is this?
-# cpicker () {
-#     slurp -p | grim -g - - | convert - txt: | tail -n 1
-# }
-
 cu () {
     if [[ -z $1 ]]; then
         local num=1
@@ -207,6 +202,9 @@ cu () {
 # Extra setups
 eval "$(starship init zsh)"
 
+# man pager
+eval "$(batman --export-env)"
+
 # Missing some zsh features
 # eval "$(zoxide init --cmd cd zsh)"
 eval "$(zoxide init zsh)"
@@ -216,6 +214,3 @@ eval "$(zoxide init zsh)"
 if command -v -- fnm > /dev/null 2>&1; then
     eval "$(fnm env --use-on-cd)"
 fi
-
-# bun completions
-[ -s "/home/loschiav/.bun/_bun" ] && source "/home/loschiav/.bun/_bun"
