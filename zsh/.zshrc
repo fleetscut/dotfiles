@@ -70,12 +70,17 @@ plugins=(git zsh-autosuggestions fast-syntax-highlighting)
 
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+source ~/.local/share/omarchy/default/bash/aliases
 
 # Exports
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 export NPM_PACKAGES=$HOME/.npm-packages/bin
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 export ZK_NOTEBOOK_DIR="$HOME/Documents/notes/zk/"
+
+if command -v mise > /dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
 
 # BUN
 export BUN_INSTALL="$HOME/.bun"
@@ -214,3 +219,4 @@ eval "$(zoxide init zsh)"
 if command -v -- fnm > /dev/null 2>&1; then
     eval "$(fnm env --use-on-cd)"
 fi
+
