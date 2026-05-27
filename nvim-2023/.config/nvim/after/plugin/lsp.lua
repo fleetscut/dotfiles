@@ -7,3 +7,5 @@ vim.diagnostic.config({
 --require("fleetscut.lsp")
 --require("fleetscut.lsp.rust")
 require("fleetscut.keymaps").lsp_keymap(bufnr)
+require("fleetscut.lsp.null-ls")
+require("fleetscut.lsp.lsp-signature")

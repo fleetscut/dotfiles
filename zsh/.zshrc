@@ -169,7 +169,7 @@ if command -v -- fdfind > /dev/null 2>&1; then
     alias fd='fdfind'
 fi
 
-alias tree='lsd --tree'
+alias tree='eza --tree'
 
 if [[ $script_prefix ]]; then
 	source $HOME/.config/machine_configs/${script_prefix}_aliases.sh
