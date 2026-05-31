@@ -59,6 +59,9 @@ blink.setup({
 			sql = { "snippets", "dadbod", "buffer" },
 		},
 		providers = {
+			snippets = {
+				module = "blink.cmp.sources.snippets",
+			},
 			lazydev = {
 				name = "LazyDev",
 				module = "lazydev.integrations.blink",
@@ -76,5 +79,8 @@ blink.setup({
 	},
 	snippets = {
 		preset = "mini_snippets",
+	},
+	signature = {
+		enabled = true,
 	},
 })

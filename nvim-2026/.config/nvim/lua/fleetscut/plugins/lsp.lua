@@ -1,5 +1,6 @@
 local lint = require("lint")
 lint.linters_by_ft = {
+	lua = { "luacheck" },
 	-- markdown = {'vale'},
 	javascript = { "eslint_d" },
 	typescript = { "eslint_d" },
@@ -7,7 +8,7 @@ lint.linters_by_ft = {
 	typescriptreact = { "eslint_d" },
 }
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
 	callback = function()
 		lint.try_lint()
 	end,
@@ -26,6 +27,12 @@ conform.setup({
 		javascript = { "prettierd", "prettier", stop_after_first = true },
 		go = { "gofmt" },
 		-- java google_java_format extra_args = "--aosp"
+		markdown = { "prettier" },
+	},
+	format_on_save = {
+		timeout_ms = 500,
+		lsp_fallback = true,
+		async = false,
 	},
 })
 

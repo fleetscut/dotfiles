@@ -50,9 +50,9 @@ vim.pack.add({
 	"https://github.com/kristijanhusak/vim-dadbod-completion",
 
 	-- noice
-	"https://github.com/MunifTanjim/nui.nvim",
-	"https://github.com/rcarriga/nvim-notify",
-	"https://github.com/folke/noice.nvim",
+	-- "https://github.com/MunifTanjim/nui.nvim",
+	-- "https://github.com/rcarriga/nvim-notify",
+	-- "https://github.com/folke/noice.nvim",
 
 	"https://github.com/tpope/vim-fugitive",
 
@@ -77,7 +77,7 @@ require("fleetscut.plugins.telescope")
 require("fleetscut.plugins.outline")
 require("fleetscut.plugins.lsp")
 require("fleetscut.plugins.treesitter")
-require("fleetscut.plugins.noice")
+-- require("fleetscut.plugins.noice")
 require("fleetscut.plugins.blink")
 require("fleetscut.plugins.mini")
 require("fleetscut.plugins.colorizer")

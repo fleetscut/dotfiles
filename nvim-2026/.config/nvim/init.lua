@@ -1,18 +1,8 @@
-require('vim._core.ui2').enable({
-    enable = true,
-    msg = {
-        -- targets = {
-        --     list_cmd = "pager",
-        --     lua_print = "msg",
-        --     emsg = "pager"
-        -- },
-        msg = "cmd", pager = { height = 0.5 },
-        dialog = { height = 0.5} ,
-        cmd = { height = 0.5},
-        msg = { height = 0.5 }
-    }
-})
 vim.g.mapleader = " "
 
-require('fleetscut.config')
-require('fleetscut.plugins')
+require("fleetscut.config")
+
+local ok, err = pcall(require, "fleetscut.plugins")
+if not ok then
+	vim.notify("Error loading plugins: " .. err, vim.log.levels.ERROR)
+end
