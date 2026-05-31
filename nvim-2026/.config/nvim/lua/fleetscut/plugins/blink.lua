@@ -5,6 +5,13 @@ blink.build():wait(10000)
 blink.setup({
 	keymap = {
 		preset = "default",
+		["<c-n>"] = { "select_next" },
+		["<c-p>"] = { "select_prev" },
+		["<c-b>"] = { "scroll_documentation_up" },
+		["<c-f>"] = { "scroll_documentation_down" },
+		["<c-space>"] = { "show" },
+		["<c-t>"] = { "cancel" },
+		["<c-s>"] = { "select_and_accept" },
 	},
 	completion = {
 		trigger = {
