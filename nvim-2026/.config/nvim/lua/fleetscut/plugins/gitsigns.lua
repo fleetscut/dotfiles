@@ -42,6 +42,6 @@ gitsigns.setup({
         col = 1,
     },
     on_attach = function(bufnr)
-        require("fleetscut.keymaps").gitsigns_keymap(bufnr)
+        require("fleetscut.keymaps.gitsigns")
     end,
 })

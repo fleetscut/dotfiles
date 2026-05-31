@@ -32,6 +32,14 @@
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
     },
+    "lsp_signature.nvim": {
+      "rev": "b7ace9ddb1640ce266012a45a672dfdaedfa5ec6",
+      "src": "https://github.com/ray-x/lsp_signature.nvim"
+    },
+    "lspkind.nvim": {
+      "rev": "c7274c48137396526b59d86232eabcdc7fed8a32",
+      "src": "https://github.com/onsails/lspkind.nvim"
+    },
     "lualine.nvim": {
       "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
@@ -144,6 +152,10 @@
     "tree-climber.nvim": {
       "rev": "9a6fdfb186f70b3e454031c20b9d50aac02ff500",
       "src": "https://github.com/drybalka/tree-climber.nvim"
+    },
+    "undotree": {
+      "rev": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d",
+      "src": "https://github.com/mbbill/undotree"
     },
     "vim-dadbod": {
       "rev": "6d1d41da4873a445c5605f2005ad2c68c99d8770",

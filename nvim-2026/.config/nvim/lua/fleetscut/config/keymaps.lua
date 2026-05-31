@@ -46,8 +46,3 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 vim.keymap.set("n", "<Leader>lf", ":lua vim.lsp.buf.format({ async = true })<CR>", opts)
-
-vim.keymap.set("n", "<leader>u", function()
-  vim.cmd("packadd nvim.undotree")
-  vim.cmd("UndotreeToggle")
-end, { desc = "Toggle Undotree" })
