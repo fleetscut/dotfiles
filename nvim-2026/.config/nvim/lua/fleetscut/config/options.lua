@@ -6,7 +6,7 @@ require("vim._core.ui2").enable({
 		--     lua_print = "msg",
 		--     emsg = "pager"
 		-- },
-		msg = "cmd",
+		--msg = "cmd",
 		pager = { height = 0.5 },
 		dialog = { height = 0.5 },
 		cmd = { height = 0.5 },
@@ -37,7 +37,6 @@ vim.opt.listchars:append("eol:$")
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
---vim.opt.cmdheight = 1
 vim.opt.updatetime = 50
 vim.o.timeoutlen = 300
 --vim.opt.colorcolumn = "80"
@@ -53,7 +52,7 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 20
 
---vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 
 vim.opt.list = true
 vim.opt.listchars:append("eol:↴")

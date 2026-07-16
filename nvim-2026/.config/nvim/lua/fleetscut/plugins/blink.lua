@@ -30,9 +30,16 @@ blink.setup({
 					},
 				},
 			},
+			border = "rounded",
+			winblend = 10,
+			-- winhighlight = "Normal:Normal,FloatBorder:NormalFloat",
+			scrollbar = true,
 		},
 		documentation = {
 			auto_show = true,
+			window = {
+				border = "rounded",
+			},
 		},
 		accept = {
 			auto_brackets = {
@@ -75,7 +82,7 @@ blink.setup({
 	},
 
 	appearance = {
-		use_nvim_cmp_as_default = false,
+		use_nvim_cmp_as_default = true,
 	},
 	snippets = {
 		preset = "mini_snippets",

@@ -1,6 +1,6 @@
 local lint = require("lint")
 lint.linters_by_ft = {
-	lua = { "luacheck" },
+	--lua = { "luacheck" },
 	-- markdown = {'vale'},
 	javascript = { "eslint_d" },
 	typescript = { "eslint_d" },
@@ -42,3 +42,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		require("conform").format({ bufnr = args.buf })
 	end,
 })
+
+require("fleetscut.keymaps.lsp")

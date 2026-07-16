@@ -26,3 +26,5 @@ nvim-test
 *test.sh
 
 **/work
+
+nvim-2026/.config/nvim/nvim-pack-lock.json
