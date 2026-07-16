@@ -5,6 +5,7 @@ polybar/.config/polybar/polybar/
 nvim-lua/.config/nvim/plugin/packer_compiled.lua
 nvim-lua/.config/nvim/lua/.luarc.json
 hypr/.config/hypr/shaders
+hypr/.config/hypr/*.bak.*
 
 mpd/.config/mpd/state
 mpd/.config/mpd/database
