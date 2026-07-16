@@ -160,6 +160,9 @@ alias cat=bat
 if command -v -- lsd > /dev/null 2>&1; then
     alias ls=lsd
 fi
+if command -v -- eza > /dev/null 2>&1; then
+    alias lrt="eza -l --sort=modified"
+fi
 alias src="source ~/.zshrc"
 alias crc="vim ~/.zshrc"
 alias ssh="TERM=xterm-256color ssh"
